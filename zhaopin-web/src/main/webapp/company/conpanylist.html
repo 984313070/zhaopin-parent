@@ -1,0 +1,588 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=gb2312">-->
+    <meta charset="utf-8">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/vue/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/pager.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/bootstrap-bootbox/bootbox.all.min.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/74cms_v4.2.111/upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <!--<script src="/74cms_v4.2.111/upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+    <script src="/74cms_v4.2.111/upload/Application/Admin/View/default/public/js/common.js"></script>-->
+    <script>
+        var URL = '/74cms_v4.2.111/upload/index.php/admin/company',
+            SELF = '/74cms_v4.2.111/upload/index.php?m=admin&amp;c=company&amp;a=index',
+            ROOT_PATH = '/74cms_v4.2.111/upload/index.php/admin',
+            APP	 =	 '/74cms_v4.2.111/upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+
+<body>
+
+<!-- public:header 以上内容 -->
+<div id="contentcategory_grid">
+<div class="allpagetop">企业<strong>/</strong>企业管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            企业管理                        </div>
+        <div class="topnav">
+            <a href="conpanylist.html" class="select">企业列表</a><a href="unbindlist.html" class="">解绑记录</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+
+    <div class="seltpye_y">
+        <div class="tit">企业认证</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=company&a=index&audit=&audit_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&audit=1&audit_cn=%E5%B7%B2%E9%80%9A%E8%BF%87">已通过</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&audit=2&audit_cn=%E5%BE%85%E8%AE%A4%E8%AF%81">待认证</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&audit=3&audit_cn=%E6%9C%AA%E9%80%9A%E8%BF%87">未通过</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&audit=0&audit_cn=%E6%9C%AA%E8%AE%A4%E8%AF%81">未认证</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">套餐类型</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=company&a=index&setmeal_id=&setmeal_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&setmeal_id=2&setmeal_cn=%E6%9C%88%E5%BA%A6%E4%BC%9A%E5%91%98">月度会员</li><li url="../upload/index.php?m=admin&c=company&a=index&setmeal_id=3&setmeal_cn=%E5%AD%A3%E5%BA%A6%E4%BC%9A%E5%91%98">季度会员</li><li url="../upload/index.php?m=admin&c=company&a=index&setmeal_id=4&setmeal_cn=%E5%B9%B4%E5%BA%A6%E4%BC%9A%E5%91%98">年度会员</li>    </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">注册时间</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=&settr_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=3&settr_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=7&settr_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=30&settr_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=180&settr_cn=%E5%8D%8A%E5%B9%B4%E5%86%85">半年内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&settr=360&settr_cn=%E4%B8%80%E5%B9%B4%E5%86%85">一年内</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">套餐到期</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=company&a=index&overtime=&overtime_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&overtime=3&overtime_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&overtime=7&overtime_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&overtime=30&overtime_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&overtime=-1&overtime_cn=%E5%8D%8A%E5%B9%B4%E5%86%85">半年内</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">微信绑定</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=company&a=index&is_bind=&is_bind_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&is_bind=1&is_bind_cn=%E7%BB%91%E5%AE%9A">绑定</li>
+            <li url="../upload/index.php?m=admin&c=company&a=index&is_bind=0&is_bind_cn=%E6%9C%AA%E7%BB%91%E5%AE%9A">未绑定</li>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+        <div class="list_th">
+            <div class="td" style=" width:20%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>公司名称
+                </label>
+            </div>
+            <div class="td" style=" width:8%;">企业认证</div>
+            <div class="td center" style=" width:8%;">实地认证</div>
+            <div class="td center" style=" width:8%;">创建时间</div>
+            <div class="td center" style=" width:8%;">刷新时间</div>
+            <div class="td center" style=" width:8%;">套餐名称</div>
+            <div class="td center" style=" width:8%;">在招职位</div>
+            <div class="td" style=" width:19%;">操作</div>
+            <div class="clear"></div>
+        </div>
+        <div class="list_th"  v-for="entity in contentCategoryList">
+            <div class="td" style=" width:20%;"><input  type="checkbox" id="checkboxs">{{entity.companyname}}</div>
+            <div class="td" style=" width:8%;">{{entity.audit}}</div>
+            <div class="td center" style=" width:8%;">否</div>
+            <div class="td center" style=" width:8%;">{{new Date(entity.addtime*1000).toLocaleString()}}</div>
+            <div class="td center" style=" width:8%;">{{new Date(entity.refreshtime*1000).toLocaleString()}}</div>
+            <div class="td center" style=" width:8%;">{{entity.setmealName}}</div>
+            <div class="td center" style=" width:8%;">{{entity.jobs}}</div>
+            <div  class="td edit" style=" width:19%;" class="text-center">
+                <a href="javascript:void(0);" class="business" parameter="uid=2" hideFocus="true">业务</a>
+                <a href="updcompany.html">编辑</a>
+                <a href="javascript:void(0);" class="blue jobs_log" parameter="id=4">日志</a>
+                <a href="../upload/index.php?m=admin&c=company&a=statistics_visitor&id=3&_k_v=3">统计</a>
+                <a href="javascript:;" class="J_message" parameter="uid=2">发消息</a>
+            </div>
+        </div>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit"  value="添加企业" onclick="window.location.href='addconpany.html'"/>
+            <div class="btnbox">
+                <button  class="admin_submit" data-toggle="modal" data-target="#myModal" >
+                    认证企业
+                </button>
+                <!-- 模态框（Modal） -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    审核企业
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table">
+                                    <tr>
+                                        <td>将所选企业设置为：</td>
+                                        <td>
+                                            <input type="radio" value="1"  name="audit" />审核通过
+                                            <input type="radio" value="3"  name="audit" />审核未通过
+                                            <input type="radio" value="2"  name="audit" />等待审核
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>备注：</td>
+                                        <td>
+                                            <!--<textarea  style="height: 100px;width: 200px"></textarea>-->
+                                            <textarea  class="input_text_default" style="height: 100px;width: 200px " /></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="updateCompany()" class="admin_submit"  data-dismiss="modal">
+                                    确定
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            <input type="button" class="admin_submit" id="ButConsultant" value="设置顾问"/>
+            <input type="button" class="admin_submit" id="ButRefresh" value="刷新"/>
+            <input type="button" onclick="deleteCompany()" class="admin_submit"  value="删除"/>
+        </div>
+
+
+
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="Company">
+                    <input type="hidden" name="a" value="index">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="公司名"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">公司名</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="公司名">公司名</li>
+                            <li id="2" title="公司ID">公司ID</li>
+                            <li id="3" title="会员名">会员名</li>
+                            <li id="4" title="会员ID">会员ID</li>
+                            <li id="5" title="地址">地址</li>
+                            <li id="6" title="电话">电话</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--<div class="pages"> <a class='unable'>上一页</a>  <span class='current'>1</span> <a class='unable'>下一页</a> </div>-->
+<!--    <div id="app">
+        <div class="container">
+            <pagination :total="total" :current.sync="current" @pagechange="pagechange"></pagination>
+        </div>
+    </div>-->
+</div>
+<!--    <template id="template_pagination">
+        <nav>
+            <ul class="pagination">
+                <li :class="{'disabled': current == 1}"><a href="javascript:searchByPage();" @click="setCurrent(1)"> 首页 </a></li>
+                <li :class="{'disabled': current == 1}"><a href="javascript:searchByPage();" @click="setCurrent(current - 1)"> 上一页 </a></li>
+                <li >
+                    <select id="tests" @change="setDisplay()">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </li>
+                <li v-for="p in grouplist" :class="{'active': current == p.val}"><a href="javascript:searchByPage();" @click="setCurrent(p.val)"> {{ p.text }} </a></li>
+                <li :class="{'disabled': current == page}"><a href="javascript:searchByPage();" @click="setCurrent(current + 1)"> 下一页</a></li>
+                <li :class="{'disabled': current == page}"><a href="javascript:searchByPage();" @click="setCurrent(page)"> 尾页 </a></li>
+            </ul>
+            <ul class="pagination pull-right">
+                <li><span> 共 {{total}}  条数据 </span></li>
+                <li><span> 每页显示 {{display}}  条数据 </span></li>
+                <li><span> 共 {{page}} 页 </span></li>
+                <li><span > 当前第 {{current}} 页 </span></li>
+                <li><span id="current"  name="current" style="display: none">{{current}}</span></li>
+                <li><span id="display"  name="display" style="display: none">{{display}}</span></li>
+            </ul>
+        </nav>
+    </template>-->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+</div>
+</body>
+<script type="text/javascript">
+    var vm ;
+    $(function () {
+        searchCompany();
+    })
+
+    function searchCompany() {
+        $.ajax({
+            type: "post",
+            url: "../company/findCompanylist.do",
+            data:"",
+            dataType: "json",
+            success: function (result) {
+                console.info(result)
+                productListVue = new Vue({
+                    el: '#contentcategory_grid',
+                    data: {
+                        contentCategoryList: result.rows
+                    }
+                })
+               /* new Vue({
+                    el: '#app',
+                    data: {
+                        total: result.total,     // 记录总条数
+                        display: 5,   // 每页显示条数
+                        current: 1     // 当前第n页 ， 也可以 watch current 的变化
+                    },
+                    methods: {
+                        pagechange: function (p) {
+                            this.current = p;// 页码改变event ， p 为新的 current
+                        }
+                    }
+                });*/
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+
+    function delCompany() {
+        var tbodyObj = document.getElementById('dataList');
+        var id =[];
+        $("table :checkbox").each(function(key,value){
+            if($(value).prop('checked')){
+                id.push(tbodyObj.rows[key].cells[1].innerHTML);
+            }
+        })
+        $.ajax({
+            type: "POST",
+            dataType:"json",
+            url: "../company/delCompany.do",
+            traditional:true,
+            data: {
+                ids: id
+            },
+            success: function (data) {
+                if (data) {
+                    alert("恭喜您成功删除")
+                    location.reload();
+                } else {
+                    alert("删除失败，请重新操作!")
+                    location.reload();
+                }
+            }
+        });
+    }
+    function deleteCompany(id) {
+        if (confirm('你确定要删除吗？')){
+            $.post('../company/deleteCompany.do',{id:id},function (data) {
+                if (data.success==true) {
+                    alert(data.message);
+                    location.reload();
+                }else {
+                    alert(data.message);
+                }
+            })
+        }
+
+    }
+
+    /*function searchByPage(page,rows) {
+        if(page == null){
+            page = document.getElementById("current").innerHTML;
+        }
+        if(rows == null){
+            rows = document.getElementById("display").innerHTML;
+        }
+        $.ajax({
+            type: "post",
+            url: "../company/findCompanylist.do",
+            data:{
+                "page":page,
+                "rows":rows
+            },
+            dataType: "json",
+            success: function (result) {
+                productListVue.productList = result.rows;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $(document).ready(function () {
+        $(".J_message").click(function () {
+            $('.modal_backdrop').remove();
+            $('.modal').remove();
+            var qsDialog = $(this).dialog({
+                title: '发消息',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=ajax_message&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //审核日志
+        $(".audit_log").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '审核日志',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=company_audit_log&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        $(".company_log").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '企业日志',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=company_log&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //诚聘通记录
+        $(".famous_log").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '诚聘通',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=famous_log&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //套餐详情
+        $(".setmeal_detail").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '套餐详情',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=setmeal_detail&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //业务
+        $(".business").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '业务',
+                loading: true,
+                footer : false
+            });
+            var param = $(this).attr('parameter');
+            var url = "../upload/index.php?m=admin&c=ajax&a=business&" + param;
+            $.getJSON(url, function (result) {
+                qsDialog.setContent(result.data);
+            });
+        });
+        //批量审核
+        $("#ButAudit").click(function () {
+            var data = $("form[name=form1]").serialize();
+            if(data.length == 0){
+                disapperTooltip('remind','请选择企业！');
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '审核企业',
+                    loading: true,
+                    footer : false
+                });
+                var url = "../upload/index.php?m=admin&c=ajax&a=company_audit";
+                $.post(url, data, function (result) {
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data);
+                    } else {
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            }
+        });
+        //批量刷新
+        $("#ButRefresh").click(function () {
+            var data = $("form[name=form1]").serialize();
+            if(data.length == 0){
+                disapperTooltip('remind','请选择企业！');
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '刷新',
+                    loading: true,
+                    footer : false
+                });
+                var url = "../upload/index.php?m=admin&c=ajax&a=refresh_company";
+                $.post(url, data, function (result) {
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data);
+                    } else {
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            }
+        });
+        //点击批量删除
+  /*      $("#ButDel").click(function () {
+            if (confirm('你确定要删除吗？')) {
+                $("form[name=form1]").attr("action", "../company/delcompany.do");
+                $("form[name=form1]").submit();
+            }
+        });*/
+        /*//批量删除
+        $("#ButDel").click(function () {
+            var data = $("form[name=form1]").serialize();
+            if(data.length == 0){
+                disapperTooltip('remind','请选择企业！');
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '删除企业',
+                    loading: true,
+                    footer : false
+                });
+                var url = "../upload/index.php?m=admin&c=ajax&a=delete_company";
+                $.post(url, data, function (result) {
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data);
+                    } else {
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            }
+        });*/
+        //设置顾问
+        $("#ButConsultant").click(function () {
+            var ids = $("input[name='y_id[]']:checked");
+            if(ids.length == 0){
+                disapperTooltip('remind','请选择会员！');
+            } else {
+                var qsDialog = $(this).dialog({
+                    title: '设置顾问',
+                    loading: true,
+                    footer : false
+                });
+                var data = $("[name=form1]").serialize();
+                var url = "../upload/index.php?m=admin&c=ajax&a=set_consultant";
+                $.post(url, data, function (result) {
+                    if(result.status == 1){
+                        qsDialog.setContent(result.data);
+                    } else {
+                        qsDialog.hide();
+                        disapperTooltip('remind',result.msg);
+                    }
+                });
+            }
+        });
+    });
+</script>
+</html>
