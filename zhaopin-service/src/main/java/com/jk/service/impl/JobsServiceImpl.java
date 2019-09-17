@@ -1,11 +1,9 @@
 package com.jk.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jk.mapper.QsJobsMapper;
 import com.jk.pojo.QsJobs;
-import com.jk.pojo.QsJobsExample;
 import com.jk.service.JobsService;
 import entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ import java.util.List;
  */
 @Service(timeout = 1200000)
 public class JobsServiceImpl implements JobsService {
+
     @Autowired
     private QsJobsMapper qsJobsMapper;
 
@@ -50,16 +49,14 @@ public class JobsServiceImpl implements JobsService {
     }
 
     @Override
-    public void delJobs(Integer[] ids) {
-        for(Integer  id: ids){
-            qsJobsMapper.deleteByPrimaryKey(id);
+    public void delJobs(String ids) {
+        String[] idss = ids.split(",");
+        for(String  id: idss){
+            qsJobsMapper.deleteByPrimaryKey(Integer.parseInt(id));
         }
     }
 
-    @Override
-    public void deleteJobs(Integer id) {
-        qsJobsMapper.deleteByPrimaryKey(id);
-    }
+
 
 
 }
