@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.QsCompanyProfileMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.QsCompanyProfile" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="tpl" property="tpl" jdbcType="VARCHAR" />
+    <result column="companyname" property="companyname" jdbcType="VARCHAR" />
+    <result column="nature" property="nature" jdbcType="SMALLINT" />
+    <result column="nature_cn" property="natureCn" jdbcType="VARCHAR" />
+    <result column="trade" property="trade" jdbcType="SMALLINT" />
+    <result column="trade_cn" property="tradeCn" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="district_cn" property="districtCn" jdbcType="VARCHAR" />
+    <result column="street" property="street" jdbcType="SMALLINT" />
+    <result column="street_cn" property="streetCn" jdbcType="VARCHAR" />
+    <result column="scale" property="scale" jdbcType="SMALLINT" />
+    <result column="scale_cn" property="scaleCn" jdbcType="VARCHAR" />
+    <result column="registered" property="registered" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="landline_tel" property="landlineTel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="certificate_img" property="certificateImg" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="setmeal_id" property="setmealId" jdbcType="SMALLINT" />
+    <result column="setmeal_name" property="setmealName" jdbcType="VARCHAR" />
+    <result column="audit" property="audit" jdbcType="TINYINT" />
+    <result column="map_open" property="mapOpen" jdbcType="TINYINT" />
+    <result column="map_x" property="mapX" jdbcType="DECIMAL" />
+    <result column="map_y" property="mapY" jdbcType="DECIMAL" />
+    <result column="map_zoom" property="mapZoom" jdbcType="TINYINT" />
+    <result column="addtime" property="addtime" jdbcType="INTEGER" />
+    <result column="refreshtime" property="refreshtime" jdbcType="INTEGER" />
+    <result column="click" property="click" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="TINYINT" />
+    <result column="contact_show" property="contactShow" jdbcType="BIT" />
+    <result column="telephone_show" property="telephoneShow" jdbcType="BIT" />
+    <result column="email_show" property="emailShow" jdbcType="BIT" />
+    <result column="landline_tel_show" property="landlineTelShow" jdbcType="BIT" />
+    <result column="robot" property="robot" jdbcType="TINYINT" />
+    <result column="comment" property="comment" jdbcType="INTEGER" />
+    <result column="resume_processing" property="resumeProcessing" jdbcType="TINYINT" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="wzp_tpl" property="wzpTpl" jdbcType="BIT" />
+    <result column="jobs" property="jobs" jdbcType="INTEGER" />
+    <result column="replys" property="replys" jdbcType="INTEGER" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
+    <result column="short_desc" property="shortDesc" jdbcType="VARCHAR" />
+    <result column="famous" property="famous" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jk.pojo.QsCompanyProfile" extends="BaseResultMap" >
+    <result column="contents" property="contents" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, uid, tpl, companyname, nature, nature_cn, trade, trade_cn, district, district_cn, 
+    street, street_cn, scale, scale_cn, registered, currency, address, contact, telephone, 
+    landline_tel, email, website, certificate_img, logo, setmeal_id, setmeal_name, audit, 
+    map_open, map_x, map_y, map_zoom, addtime, refreshtime, click, user_status, contact_show, 
+    telephone_show, email_show, landline_tel_show, robot, comment, resume_processing, 
+    tag, wzp_tpl, jobs, replys, qq, short_name, short_desc, famous
+  </sql>
+  <sql id="Blob_Column_List" >
+    contents
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.jk.pojo.QsCompanyProfileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qs_company_profile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jk.pojo.QsCompanyProfileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from qs_company_profile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qs_company_profile
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qs_company_profile
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jk.pojo.QsCompanyProfileExample" >
+    delete from qs_company_profile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.QsCompanyProfile" >
+    insert into qs_company_profile (id, uid, tpl, 
+      companyname, nature, nature_cn, 
+      trade, trade_cn, district, 
+      district_cn, street, street_cn, 
+      scale, scale_cn, registered, 
+      currency, address, contact, 
+      telephone, landline_tel, email, 
+      website, certificate_img, logo, 
+      setmeal_id, setmeal_name, audit, 
+      map_open, map_x, map_y, 
+      map_zoom, addtime, refreshtime, 
+      click, user_status, contact_show, 
+      telephone_show, email_show, landline_tel_show, 
+      robot, comment, resume_processing, 
+      tag, wzp_tpl, jobs, replys, 
+      qq, short_name, short_desc, 
+      famous, contents)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{tpl,jdbcType=VARCHAR}, 
+      #{companyname,jdbcType=VARCHAR}, #{nature,jdbcType=SMALLINT}, #{natureCn,jdbcType=VARCHAR}, 
+      #{trade,jdbcType=SMALLINT}, #{tradeCn,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{districtCn,jdbcType=VARCHAR}, #{street,jdbcType=SMALLINT}, #{streetCn,jdbcType=VARCHAR}, 
+      #{scale,jdbcType=SMALLINT}, #{scaleCn,jdbcType=VARCHAR}, #{registered,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{landlineTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{certificateImg,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{setmealId,jdbcType=SMALLINT}, #{setmealName,jdbcType=VARCHAR}, #{audit,jdbcType=TINYINT}, 
+      #{mapOpen,jdbcType=TINYINT}, #{mapX,jdbcType=DECIMAL}, #{mapY,jdbcType=DECIMAL}, 
+      #{mapZoom,jdbcType=TINYINT}, #{addtime,jdbcType=INTEGER}, #{refreshtime,jdbcType=INTEGER}, 
+      #{click,jdbcType=INTEGER}, #{userStatus,jdbcType=TINYINT}, #{contactShow,jdbcType=BIT}, 
+      #{telephoneShow,jdbcType=BIT}, #{emailShow,jdbcType=BIT}, #{landlineTelShow,jdbcType=BIT}, 
+      #{robot,jdbcType=TINYINT}, #{comment,jdbcType=INTEGER}, #{resumeProcessing,jdbcType=TINYINT}, 
+      #{tag,jdbcType=VARCHAR}, #{wzpTpl,jdbcType=BIT}, #{jobs,jdbcType=INTEGER}, #{replys,jdbcType=INTEGER}, 
+      #{qq,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{shortDesc,jdbcType=VARCHAR}, 
+      #{famous,jdbcType=BIT}, #{contents,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.QsCompanyProfile" >
+    insert into qs_company_profile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="tpl != null" >
+        tpl,
+      </if>
+      <if test="companyname != null" >
+        companyname,
+      </if>
+      <if test="nature != null" >
+        nature,
+      </if>
+      <if test="natureCn != null" >
+        nature_cn,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="tradeCn != null" >
+        trade_cn,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="districtCn != null" >
+        district_cn,
+      </if>
+      <if test="street != null" >
+        street,
+      </if>
+      <if test="streetCn != null" >
+        street_cn,
+      </if>
+      <if test="scale != null" >
+        scale,
+      </if>
+      <if test="scaleCn != null" >
+        scale_cn,
+      </if>
+      <if test="registered != null" >
+        registered,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="landlineTel != null" >
+        landline_tel,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="certificateImg != null" >
+        certificate_img,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="setmealId != null" >
+        setmeal_id,
+      </if>
+      <if test="setmealName != null" >
+        setmeal_name,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="mapOpen != null" >
+        map_open,
+      </if>
+      <if test="mapX != null" >
+        map_x,
+      </if>
+      <if test="mapY != null" >
+        map_y,
+      </if>
+      <if test="mapZoom != null" >
+        map_zoom,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="refreshtime != null" >
+        refreshtime,
+      </if>
+      <if test="click != null" >
+        click,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="contactShow != null" >
+        contact_show,
+      </if>
+      <if test="telephoneShow != null" >
+        telephone_show,
+      </if>
+      <if test="emailShow != null" >
+        email_show,
+      </if>
+      <if test="landlineTelShow != null" >
+        landline_tel_show,
+      </if>
+      <if test="robot != null" >
+        robot,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="resumeProcessing != null" >
+        resume_processing,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="wzpTpl != null" >
+        wzp_tpl,
+      </if>
+      <if test="jobs != null" >
+        jobs,
+      </if>
+      <if test="replys != null" >
+        replys,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="shortName != null" >
+        short_name,
+      </if>
+      <if test="shortDesc != null" >
+        short_desc,
+      </if>
+      <if test="famous != null" >
+        famous,
+      </if>
+      <if test="contents != null" >
+        contents,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="tpl != null" >
+        #{tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        #{nature,jdbcType=SMALLINT},
+      </if>
+      <if test="natureCn != null" >
+        #{natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=SMALLINT},
+      </if>
+      <if test="tradeCn != null" >
+        #{tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCn != null" >
+        #{districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        #{street,jdbcType=SMALLINT},
+      </if>
+      <if test="streetCn != null" >
+        #{streetCn,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        #{scale,jdbcType=SMALLINT},
+      </if>
+      <if test="scaleCn != null" >
+        #{scaleCn,jdbcType=VARCHAR},
+      </if>
+      <if test="registered != null" >
+        #{registered,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="landlineTel != null" >
+        #{landlineTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateImg != null" >
+        #{certificateImg,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="setmealId != null" >
+        #{setmealId,jdbcType=SMALLINT},
+      </if>
+      <if test="setmealName != null" >
+        #{setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="mapOpen != null" >
+        #{mapOpen,jdbcType=TINYINT},
+      </if>
+      <if test="mapX != null" >
+        #{mapX,jdbcType=DECIMAL},
+      </if>
+      <if test="mapY != null" >
+        #{mapY,jdbcType=DECIMAL},
+      </if>
+      <if test="mapZoom != null" >
+        #{mapZoom,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="refreshtime != null" >
+        #{refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="click != null" >
+        #{click,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactShow != null" >
+        #{contactShow,jdbcType=BIT},
+      </if>
+      <if test="telephoneShow != null" >
+        #{telephoneShow,jdbcType=BIT},
+      </if>
+      <if test="emailShow != null" >
+        #{emailShow,jdbcType=BIT},
+      </if>
+      <if test="landlineTelShow != null" >
+        #{landlineTelShow,jdbcType=BIT},
+      </if>
+      <if test="robot != null" >
+        #{robot,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="resumeProcessing != null" >
+        #{resumeProcessing,jdbcType=TINYINT},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="wzpTpl != null" >
+        #{wzpTpl,jdbcType=BIT},
+      </if>
+      <if test="jobs != null" >
+        #{jobs,jdbcType=INTEGER},
+      </if>
+      <if test="replys != null" >
+        #{replys,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null" >
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="shortDesc != null" >
+        #{shortDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="famous != null" >
+        #{famous,jdbcType=BIT},
+      </if>
+      <if test="contents != null" >
+        #{contents,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jk.pojo.QsCompanyProfileExample" resultType="java.lang.Integer" >
+    select count(*) from qs_company_profile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update qs_company_profile
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.tpl != null" >
+        tpl = #{record.tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyname != null" >
+        companyname = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nature != null" >
+        nature = #{record.nature,jdbcType=SMALLINT},
+      </if>
+      <if test="record.natureCn != null" >
+        nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trade != null" >
+        trade = #{record.trade,jdbcType=SMALLINT},
+      </if>
+      <if test="record.tradeCn != null" >
+        trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.district != null" >
+        district = #{record.district,jdbcType=VARCHAR},
+      </if>
+      <if test="record.districtCn != null" >
+        district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.street != null" >
+        street = #{record.street,jdbcType=SMALLINT},
+      </if>
+      <if test="record.streetCn != null" >
+        street_cn = #{record.streetCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scale != null" >
+        scale = #{record.scale,jdbcType=SMALLINT},
+      </if>
+      <if test="record.scaleCn != null" >
+        scale_cn = #{record.scaleCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registered != null" >
+        registered = #{record.registered,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currency != null" >
+        currency = #{record.currency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        contact = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.landlineTel != null" >
+        landline_tel = #{record.landlineTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.website != null" >
+        website = #{record.website,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificateImg != null" >
+        certificate_img = #{record.certificateImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null" >
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setmealId != null" >
+        setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
+      </if>
+      <if test="record.setmealName != null" >
+        setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.audit != null" >
+        audit = #{record.audit,jdbcType=TINYINT},
+      </if>
+      <if test="record.mapOpen != null" >
+        map_open = #{record.mapOpen,jdbcType=TINYINT},
+      </if>
+      <if test="record.mapX != null" >
+        map_x = #{record.mapX,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mapY != null" >
+        map_y = #{record.mapY,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mapZoom != null" >
+        map_zoom = #{record.mapZoom,jdbcType=TINYINT},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.refreshtime != null" >
+        refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.click != null" >
+        click = #{record.click,jdbcType=INTEGER},
+      </if>
+      <if test="record.userStatus != null" >
+        user_status = #{record.userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.contactShow != null" >
+        contact_show = #{record.contactShow,jdbcType=BIT},
+      </if>
+      <if test="record.telephoneShow != null" >
+        telephone_show = #{record.telephoneShow,jdbcType=BIT},
+      </if>
+      <if test="record.emailShow != null" >
+        email_show = #{record.emailShow,jdbcType=BIT},
+      </if>
+      <if test="record.landlineTelShow != null" >
+        landline_tel_show = #{record.landlineTelShow,jdbcType=BIT},
+      </if>
+      <if test="record.robot != null" >
+        robot = #{record.robot,jdbcType=TINYINT},
+      </if>
+      <if test="record.comment != null" >
+        comment = #{record.comment,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeProcessing != null" >
+        resume_processing = #{record.resumeProcessing,jdbcType=TINYINT},
+      </if>
+      <if test="record.tag != null" >
+        tag = #{record.tag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wzpTpl != null" >
+        wzp_tpl = #{record.wzpTpl,jdbcType=BIT},
+      </if>
+      <if test="record.jobs != null" >
+        jobs = #{record.jobs,jdbcType=INTEGER},
+      </if>
+      <if test="record.replys != null" >
+        replys = #{record.replys,jdbcType=INTEGER},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shortName != null" >
+        short_name = #{record.shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shortDesc != null" >
+        short_desc = #{record.shortDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.famous != null" >
+        famous = #{record.famous,jdbcType=BIT},
+      </if>
+      <if test="record.contents != null" >
+        contents = #{record.contents,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update qs_company_profile
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      tpl = #{record.tpl,jdbcType=VARCHAR},
+      companyname = #{record.companyname,jdbcType=VARCHAR},
+      nature = #{record.nature,jdbcType=SMALLINT},
+      nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      trade = #{record.trade,jdbcType=SMALLINT},
+      trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      district = #{record.district,jdbcType=VARCHAR},
+      district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      street = #{record.street,jdbcType=SMALLINT},
+      street_cn = #{record.streetCn,jdbcType=VARCHAR},
+      scale = #{record.scale,jdbcType=SMALLINT},
+      scale_cn = #{record.scaleCn,jdbcType=VARCHAR},
+      registered = #{record.registered,jdbcType=VARCHAR},
+      currency = #{record.currency,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      landline_tel = #{record.landlineTel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      website = #{record.website,jdbcType=VARCHAR},
+      certificate_img = #{record.certificateImg,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
+      setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
+      audit = #{record.audit,jdbcType=TINYINT},
+      map_open = #{record.mapOpen,jdbcType=TINYINT},
+      map_x = #{record.mapX,jdbcType=DECIMAL},
+      map_y = #{record.mapY,jdbcType=DECIMAL},
+      map_zoom = #{record.mapZoom,jdbcType=TINYINT},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER},
+      user_status = #{record.userStatus,jdbcType=TINYINT},
+      contact_show = #{record.contactShow,jdbcType=BIT},
+      telephone_show = #{record.telephoneShow,jdbcType=BIT},
+      email_show = #{record.emailShow,jdbcType=BIT},
+      landline_tel_show = #{record.landlineTelShow,jdbcType=BIT},
+      robot = #{record.robot,jdbcType=TINYINT},
+      comment = #{record.comment,jdbcType=INTEGER},
+      resume_processing = #{record.resumeProcessing,jdbcType=TINYINT},
+      tag = #{record.tag,jdbcType=VARCHAR},
+      wzp_tpl = #{record.wzpTpl,jdbcType=BIT},
+      jobs = #{record.jobs,jdbcType=INTEGER},
+      replys = #{record.replys,jdbcType=INTEGER},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      short_name = #{record.shortName,jdbcType=VARCHAR},
+      short_desc = #{record.shortDesc,jdbcType=VARCHAR},
+      famous = #{record.famous,jdbcType=BIT},
+      contents = #{record.contents,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update qs_company_profile
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      tpl = #{record.tpl,jdbcType=VARCHAR},
+      companyname = #{record.companyname,jdbcType=VARCHAR},
+      nature = #{record.nature,jdbcType=SMALLINT},
+      nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      trade = #{record.trade,jdbcType=SMALLINT},
+      trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      district = #{record.district,jdbcType=VARCHAR},
+      district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      street = #{record.street,jdbcType=SMALLINT},
+      street_cn = #{record.streetCn,jdbcType=VARCHAR},
+      scale = #{record.scale,jdbcType=SMALLINT},
+      scale_cn = #{record.scaleCn,jdbcType=VARCHAR},
+      registered = #{record.registered,jdbcType=VARCHAR},
+      currency = #{record.currency,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      landline_tel = #{record.landlineTel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      website = #{record.website,jdbcType=VARCHAR},
+      certificate_img = #{record.certificateImg,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
+      setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
+      audit = #{record.audit,jdbcType=TINYINT},
+      map_open = #{record.mapOpen,jdbcType=TINYINT},
+      map_x = #{record.mapX,jdbcType=DECIMAL},
+      map_y = #{record.mapY,jdbcType=DECIMAL},
+      map_zoom = #{record.mapZoom,jdbcType=TINYINT},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER},
+      user_status = #{record.userStatus,jdbcType=TINYINT},
+      contact_show = #{record.contactShow,jdbcType=BIT},
+      telephone_show = #{record.telephoneShow,jdbcType=BIT},
+      email_show = #{record.emailShow,jdbcType=BIT},
+      landline_tel_show = #{record.landlineTelShow,jdbcType=BIT},
+      robot = #{record.robot,jdbcType=TINYINT},
+      comment = #{record.comment,jdbcType=INTEGER},
+      resume_processing = #{record.resumeProcessing,jdbcType=TINYINT},
+      tag = #{record.tag,jdbcType=VARCHAR},
+      wzp_tpl = #{record.wzpTpl,jdbcType=BIT},
+      jobs = #{record.jobs,jdbcType=INTEGER},
+      replys = #{record.replys,jdbcType=INTEGER},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      short_name = #{record.shortName,jdbcType=VARCHAR},
+      short_desc = #{record.shortDesc,jdbcType=VARCHAR},
+      famous = #{record.famous,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.QsCompanyProfile" >
+    update qs_company_profile
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="tpl != null" >
+        tpl = #{tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null" >
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        nature = #{nature,jdbcType=SMALLINT},
+      </if>
+      <if test="natureCn != null" >
+        nature_cn = #{natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade,jdbcType=SMALLINT},
+      </if>
+      <if test="tradeCn != null" >
+        trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCn != null" >
+        district_cn = #{districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        street = #{street,jdbcType=SMALLINT},
+      </if>
+      <if test="streetCn != null" >
+        street_cn = #{streetCn,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null" >
+        scale = #{scale,jdbcType=SMALLINT},
+      </if>
+      <if test="scaleCn != null" >
+        scale_cn = #{scaleCn,jdbcType=VARCHAR},
+      </if>
+      <if test="registered != null" >
+        registered = #{registered,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="landlineTel != null" >
+        landline_tel = #{landlineTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateImg != null" >
+        certificate_img = #{certificateImg,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="setmealId != null" >
+        setmeal_id = #{setmealId,jdbcType=SMALLINT},
+      </if>
+      <if test="setmealName != null" >
+        setmeal_name = #{setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="mapOpen != null" >
+        map_open = #{mapOpen,jdbcType=TINYINT},
+      </if>
+      <if test="mapX != null" >
+        map_x = #{mapX,jdbcType=DECIMAL},
+      </if>
+      <if test="mapY != null" >
+        map_y = #{mapY,jdbcType=DECIMAL},
+      </if>
+      <if test="mapZoom != null" >
+        map_zoom = #{mapZoom,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="refreshtime != null" >
+        refreshtime = #{refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="click != null" >
+        click = #{click,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="contactShow != null" >
+        contact_show = #{contactShow,jdbcType=BIT},
+      </if>
+      <if test="telephoneShow != null" >
+        telephone_show = #{telephoneShow,jdbcType=BIT},
+      </if>
+      <if test="emailShow != null" >
+        email_show = #{emailShow,jdbcType=BIT},
+      </if>
+      <if test="landlineTelShow != null" >
+        landline_tel_show = #{landlineTelShow,jdbcType=BIT},
+      </if>
+      <if test="robot != null" >
+        robot = #{robot,jdbcType=TINYINT},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="resumeProcessing != null" >
+        resume_processing = #{resumeProcessing,jdbcType=TINYINT},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="wzpTpl != null" >
+        wzp_tpl = #{wzpTpl,jdbcType=BIT},
+      </if>
+      <if test="jobs != null" >
+        jobs = #{jobs,jdbcType=INTEGER},
+      </if>
+      <if test="replys != null" >
+        replys = #{replys,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null" >
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="shortDesc != null" >
+        short_desc = #{shortDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="famous != null" >
+        famous = #{famous,jdbcType=BIT},
+      </if>
+      <if test="contents != null" >
+        contents = #{contents,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jk.pojo.QsCompanyProfile" >
+    update qs_company_profile
+    set uid = #{uid,jdbcType=INTEGER},
+      tpl = #{tpl,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      nature = #{nature,jdbcType=SMALLINT},
+      nature_cn = #{natureCn,jdbcType=VARCHAR},
+      trade = #{trade,jdbcType=SMALLINT},
+      trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      district_cn = #{districtCn,jdbcType=VARCHAR},
+      street = #{street,jdbcType=SMALLINT},
+      street_cn = #{streetCn,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=SMALLINT},
+      scale_cn = #{scaleCn,jdbcType=VARCHAR},
+      registered = #{registered,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      landline_tel = #{landlineTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      certificate_img = #{certificateImg,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      setmeal_id = #{setmealId,jdbcType=SMALLINT},
+      setmeal_name = #{setmealName,jdbcType=VARCHAR},
+      audit = #{audit,jdbcType=TINYINT},
+      map_open = #{mapOpen,jdbcType=TINYINT},
+      map_x = #{mapX,jdbcType=DECIMAL},
+      map_y = #{mapY,jdbcType=DECIMAL},
+      map_zoom = #{mapZoom,jdbcType=TINYINT},
+      addtime = #{addtime,jdbcType=INTEGER},
+      refreshtime = #{refreshtime,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=TINYINT},
+      contact_show = #{contactShow,jdbcType=BIT},
+      telephone_show = #{telephoneShow,jdbcType=BIT},
+      email_show = #{emailShow,jdbcType=BIT},
+      landline_tel_show = #{landlineTelShow,jdbcType=BIT},
+      robot = #{robot,jdbcType=TINYINT},
+      comment = #{comment,jdbcType=INTEGER},
+      resume_processing = #{resumeProcessing,jdbcType=TINYINT},
+      tag = #{tag,jdbcType=VARCHAR},
+      wzp_tpl = #{wzpTpl,jdbcType=BIT},
+      jobs = #{jobs,jdbcType=INTEGER},
+      replys = #{replys,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      short_desc = #{shortDesc,jdbcType=VARCHAR},
+      famous = #{famous,jdbcType=BIT},
+      contents = #{contents,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.QsCompanyProfile" >
+    update qs_company_profile
+    set uid = #{uid,jdbcType=INTEGER},
+      tpl = #{tpl,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      nature = #{nature,jdbcType=SMALLINT},
+      nature_cn = #{natureCn,jdbcType=VARCHAR},
+      trade = #{trade,jdbcType=SMALLINT},
+      trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      district_cn = #{districtCn,jdbcType=VARCHAR},
+      street = #{street,jdbcType=SMALLINT},
+      street_cn = #{streetCn,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=SMALLINT},
+      scale_cn = #{scaleCn,jdbcType=VARCHAR},
+      registered = #{registered,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      landline_tel = #{landlineTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      certificate_img = #{certificateImg,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      setmeal_id = #{setmealId,jdbcType=SMALLINT},
+      setmeal_name = #{setmealName,jdbcType=VARCHAR},
+      audit = #{audit,jdbcType=TINYINT},
+      map_open = #{mapOpen,jdbcType=TINYINT},
+      map_x = #{mapX,jdbcType=DECIMAL},
+      map_y = #{mapY,jdbcType=DECIMAL},
+      map_zoom = #{mapZoom,jdbcType=TINYINT},
+      addtime = #{addtime,jdbcType=INTEGER},
+      refreshtime = #{refreshtime,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=TINYINT},
+      contact_show = #{contactShow,jdbcType=BIT},
+      telephone_show = #{telephoneShow,jdbcType=BIT},
+      email_show = #{emailShow,jdbcType=BIT},
+      landline_tel_show = #{landlineTelShow,jdbcType=BIT},
+      robot = #{robot,jdbcType=TINYINT},
+      comment = #{comment,jdbcType=INTEGER},
+      resume_processing = #{resumeProcessing,jdbcType=TINYINT},
+      tag = #{tag,jdbcType=VARCHAR},
+      wzp_tpl = #{wzpTpl,jdbcType=BIT},
+      jobs = #{jobs,jdbcType=INTEGER},
+      replys = #{replys,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      short_desc = #{shortDesc,jdbcType=VARCHAR},
+      famous = #{famous,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

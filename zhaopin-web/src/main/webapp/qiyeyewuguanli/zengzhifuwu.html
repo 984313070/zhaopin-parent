@@ -1,0 +1,180 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="/74cms_v4.2.111/upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>业务管理</div>
+<div class="mains" id="vueTable_id">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="yewuguanli.html" class="">套餐</a>
+            <a href="jifen.html" class="">积分</a>
+            <a href="dingdanguanli.html" class="">订单管理</a>
+            <a href="qiyetuiguang.html" class="">企业推广</a>
+            <a href="zengzhifuwu.html" class="select">增值服务</a>
+            <a href="fapiaoguanli.html" class="">发票管理</a>
+            <a href="mobanguanli.html" class="">模板</a>
+            <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">统计：</div>
+        <p>今天：2&nbsp;&nbsp;&nbsp;昨天：5&nbsp;&nbsp;&nbsp;前天：0</p>
+        <p>
+            简历包：0&nbsp;&nbsp;&nbsp;
+            短信包：0&nbsp;&nbsp;&nbsp;
+            职位置顶：5&nbsp;&nbsp;&nbsp;
+            职位紧急：2&nbsp;&nbsp;&nbsp;
+            企业模板：0&nbsp;&nbsp;&nbsp;
+            诚聘通：0&nbsp;&nbsp;&nbsp;
+            预约刷新职位：0&nbsp;&nbsp;&nbsp;
+            职位刷新：0&nbsp;&nbsp;&nbsp;
+            简历下载：0&nbsp;&nbsp;&nbsp;
+        </p>
+
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">类型</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&order_type=&order_type_cn=%E4%B8%8D%E9%99%90">不限</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">添加时间</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=&settr_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=3&settr_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=7&settr_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=30&settr_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=180&settr_cn=%E5%8D%8A%E5%B9%B4%E5%86%85">半年内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=index&settr=360&settr_cn=%E4%B8%80%E5%B9%B4%E5%86%85">一年内</li>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <form id="form1" name="form1" method="post" action="/74cms_v4.2.111/upload/index.php?m=admin&c=business_increment&a=delete">
+        <div class="list_th">
+            <div class="td" style=" width:25%;">
+                <div class="left_padding">服务内容</div>
+            </div>
+            <div class="td" style=" width:25%;">公司名称</div>
+            <div class="td center" style=" width:15%;">申请会员</div>
+            <div class="td center" style=" width:15%;">金额</div>
+            <div class="td center" style=" width:15%;">时间</div>
+            <div class="td" style=" width:5%;">操作</div>
+            <div class="clear"></div>
+        </div>
+        <div class="list_tr link_black" v-for="zengzhifuwu in zengzhifuwuList">
+            <div class="td" style=" width:25%;">
+                <div class="left_padding striking">{{zengzhifuwu.order.serviceName}}</div>
+            </div>
+            <div class="td" style=" width:25%;">
+                {{zengzhifuwu.jobs.companyname}}            </div>
+            <div class="td center" style=" width:15%;">{{zengzhifuwu.members.username}}</div>
+            <div class="td center" style=" width: 15%;">￥<strong>{{zengzhifuwu.order.amount}}</strong>元</div>
+            <div class="td center" style=" width:15%;">{{new Date(zengzhifuwu.order.addtime*1000).toLocaleString()}}</div>
+            <div class="td edit" style=" width:5%;">
+                <a href="javascript:void(0);" class="increment_log blue" parameter="uid=3" hideFocus="true">日志</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+    <div class="list_empty">没有任何信息！</div>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit"  value="导出数据" onclick="exportDaoChu()"/>
+        </div>
+
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="BusinessIncrement">
+                    <input type="hidden" name="a" value="index">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="公司名"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">公司名</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="公司名">公司名</li>
+                            <li id="2" title="会员名">会员名</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="pages">
+        <a class='unable'>上一页</a>
+        <span class='current'>{{total}}</span>
+        <a class='unable'>下一页</a>
+    </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+
+</body>
+<script type="text/javascript">
+    var a;
+    $(function () {
+        findZhengZhiFuWu();
+    })
+    function findZhengZhiFuWu() {
+        $.ajax({
+            url:'../membersSetmealProfilePoints/findZhengZhiFuWu.do',
+            type:'post',
+            data:{
+                "page":1,
+                "rows":5
+            },
+            success:function (data) {
+                a=new Vue({
+                    el: '#vueTable_id',
+                    data: {
+                        zengzhifuwuList:data.rows,
+                        total:Math.ceil(data.total/5),
+                        yiwancheng:[],
+                        daifukuan:[],
+                        yiquxiao:[]
+                    },
+                })
+            },
+            error:function () {
+                alert("后台错误")
+            }
+        })
+    }
+
+    function exportDaoChu() {
+        window.location.href = "../membersSetmealProfilePoints/exportZhengZhiFuWu.do?page=1&rows=5";
+    }
+</script>
+
+</html>

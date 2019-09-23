@@ -1,0 +1,120 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/jquery-1.9.1.min.js"></script>
+    <script src="../upload/jquery.params.js"></script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>业务管理</div>
+<div class="mains" id="vueTable_id">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理
+        </div>
+        <div class="topnav">
+            <a href="yewuguanli.html" class="">套餐</a>
+            <a href="jifen.html" class="">积分</a>
+            <a href="dingdanguanli.html" class="select">订单管理</a>
+            <a href="qiyetuiguang.html" class="">企业推广</a>
+            <a href="zengzhifuwu.html" class="">增值服务</a>
+            <a href="fapiaoguanli.html" class="">发票管理</a>
+            <a href="mobanguanli.html" class="">模板</a>
+            <div class="clear"></div>
+            <div class="clear">
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>确认收款后系统将会自动为会员充值积分或开通服务，此操作无法撤销。</p>
+    </div>
+    <div class="toptit">设置订单</div>
+    <div class="form_main width120">
+        <form action="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=order_set" method="post" name="FormData" id="FormData">
+            <div class="fl">付款状态:</div>
+            <div class="fr txt">
+                <span style="color: #FF6600" v-if="order.order.isPaid==1">待付款</span>
+                <span style="color:  #009900" v-if="order.order.isPaid==2">已完成</span>
+                <span style="color: #999;" v-if="order.order.isPaid==3">已取消</span>
+            </div>
+            <div class="fl">申请充值会员:</div>
+            <div class="fr txt">{{order.members.username}}</div>
+            <div class="fl">订单金额:</div>
+            <div class="fr txt">￥<span style="color:#0033CC; font-size:18px;">{{order.order.amount}}</span> 元</div>
+            <div class="fl">应付金额:</div>
+            <div class="fr txt">
+                ￥<span style="color:#0033CC; font-size:18px;">{{order.order.payAmount}}</span> 元
+            </div>
+            <div class="fl">订单描述:</div>
+            <div class="fr txt">{{order.order.description}}</div>
+            <div class="fl">支付方式:</div>
+            <div class="fr txt">{{order.order.paymentCn}}</div>
+            <div class="fl">订单号:</div>
+            <div class="fr txt">
+                {{order.order.oid}}
+                <input type="hidden" name="oid"  value="A-190918-142007" />
+            </div>
+            <div class="fl">申请时间:</div>
+            <div class="fr txt">{{new Date(order.order.addtime*1000).toLocaleString()}}</div>
+            <div class="fl">添加备注:</div>
+            <div class="fr">
+                <textarea name="notes" class="input_text_default middle" style="height: 80px; line-height: 20px;">{{order.order.notes}}</textarea>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="id" value="7" />
+                <input type="button" onclick="addPromotion()" class="admin_submit" value="确认收款"/>
+                <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+                <span style="color: #999999;">(确认收到款后，系统将会自动为会员充值)</span>
+            </div>
+            <div class="clear"></div>
+        </form>
+    </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+</body>
+<script type="text/javascript">
+    var a;
+    var id = $.query.get("id");
+    $(function () {
+            $.ajax({
+                url:'../membersSetmealProfilePoints/findOrderMembersJobsResultById.do',
+                type:'post',
+                data:{
+                    "id":id,
+                },
+                success:function (data) {
+                    a=new Vue({
+                        el: '#vueTable_id',
+                        data: {
+                                order:data
+
+                        },
+                    })
+                },
+                error:function () {
+                    alert("后台错误")
+                }
+            })
+    })
+
+</script>
+</html>
