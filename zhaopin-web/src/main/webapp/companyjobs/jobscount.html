@@ -1,0 +1,342 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>招聘效果统计-企业会员中心-骑士人才系统</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Home/View/default/public/js/jquery.min.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/htmlspecialchars.js"></script>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    <script type="text/javascript">
+        var app_spell = "1";
+        var qscms = {
+            base : "",
+            keyUrlencode:"0",
+            domain : "http://localhost",
+            root : "../upload/index.php",
+            companyRepeat:"1",
+            regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+            is_subsite : 0,
+            subsite_level : "3",
+            smsTatus: "0",
+            captcha_open:"1",
+            varify_mobile:"1",
+            varify_suggest:"1",
+            varify_user_login:"",
+            is_login:"1",
+            default_district : "1.35",
+            default_district_spell : "beijing.beijingshi"
+        };
+        $(function(){
+            $.getJSON("../upload/index.php?m=home&c=ajax_common&a=get_header_min",function(result){
+                if(result.status == 1){
+                    $('#J_header').html(result.data.html);
+                }
+            });
+        })
+    </script>
+    <link href="../upload/Application/Home/View/default/public/css/company/common.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_jobs.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />
+    <script src="../upload/Application/Home/View/default/public/js/company/jquery.common.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" src="../upload/Application/Home/View/default/public/js/company/fusioncharts/fusioncharts.js"></script>
+    <script type="text/javascript" src="../upload/Application/Home/View/default/public/js/company/fusioncharts/fusioncharts.theme.fint.js"></script>
+</head>
+<body>
+<div class="header_min" id="header">
+    <div class="header_min_top">
+        <div id="J_header" class="itopl font_gray6 link_gray6">
+            <span class="link_yellow">欢迎登录骑士人才系统！请 <a id="J_site_login" href="javascript:;">登录</a> 或 <a id="J_site_reg" href="javascript:;">免费注册</a></span>
+        </div>
+        <div class="itopr font_gray9 link_gray6 substring"> <a href="../upload/" class="home">网站首页</a>|<a href="../upload/index.php?m=&c=m&a=index" class="m">手机访问</a>|<a href="../upload/index.php?m=&c=help&a=index" class="help">帮助中心</a>|<a href="../upload/index.php?m=home&c=index&a=shortcut" class="last">保存到桌面</a> </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="other_top_nav">
+    <div class="ot_nav_box">
+        <div class="ot_nav_logo"><a href="../upload/"><img src="../upload/Application/Home/View/default/public/images/logo.gif" border="0"/></a></div>
+        <div class="ot_nav_sub">
+        </div>
+        <div class="ot_nav_link ">
+            <ul class="link_gray6 nowrap">
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company&a=index&uid=1">企业中心</a></li>
+                <li class="on_li J_hoverbut select"><a href="../upload/index.php?m=&c=company&a=jobs_list">职位管理</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company&a=jobs_apply">简历管理</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company_service&a=index">会员服务</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company&a=com_info">账号管理</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<div class="user_main">
+    <div class="mleft">
+        <div class="left_jobs">
+            <div class="li link_gray6 J_hoverbut t1 " onclick="window.location='../upload/index.php?m=&c=company&a=jobs_add'"><a href="../upload/index.php?m=&c=company&a=jobs_add">发布职位</a></div>  <div class="li link_gray6 J_hoverbut t2 " onclick="window.location='../upload/index.php?m=&c=company&a=jobs_list'"><a href="../upload/index.php?m=&c=company&a=jobs_list">管理职位</a></div>
+            <div class="li link_gray6 J_hoverbut t3 " onclick="window.location='../upload/index.php?m=&c=company&a=mobile_recruit'"><a href="../upload/index.php?m=&c=company&a=mobile_recruit">手机招聘</a></div>
+            <div class="li link_gray6 J_hoverbut t4 select" onclick="window.location='../upload/index.php?m=&c=company&a=statistics_visitor'"><a href="../upload/index.php?m=&c=company&a=statistics_visitor">招聘效果统计</a></div>
+            <!-- -->
+            <link href="../upload/Application/Home/View/default/public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+            <!-- -->
+        </div>
+
+    </div>
+    <div class="mright">
+        <div class="user_pagetitle">
+            <div class="pat_l">招聘效果统计</div>
+            <div class="clear"></div>
+        </div>
+        <div class="user_tab mt15">
+            <a href="../upload/index.php?m=&c=company&a=statistics_visitor" class="tabli select">访客统计</a>
+            <a href="../upload/index.php?m=&c=company&a=statistics_viewjobs" class="tabli">职位浏览统计</a>
+            <a href="../upload/index.php?m=&c=company&a=statistics_apply" class="tabli">应聘统计</a>
+            <div class="clear"></div>
+        </div>
+        <div class="line_wrap">
+            <div class="line_top">
+                <div class="select_input input_140_30_div J_hoverinput J_dropdown J_listitme_parent">
+							<span class="J_listitme_text">
+								最近7天
+							</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&settr=7" >最近7天</a></li>
+                                <li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&settr=15" >最近15天</a></li>
+                                <li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&settr=30" >最近30天</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="select_input input_140_30_div J_hoverinput J_dropdown J_listitme_parent">
+							<span class="J_listitme_text">
+								全部来源
+															</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&source=" >全部来源</a></li>
+                                <li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&source=1" >PC端</a></li><li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&source=2" >触屏端</a></li><li><a class="J_listitme" href="../upload/index.php?m=&c=company&a=statistics_visitor&source=3" >移动端</a></li>					                </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="line_main">
+                <div id="line_box" style="margin:20px 0 0 10px;"></div>
+                <script type="text/javascript">
+                    FusionCharts.ready(function(){
+                        var revenueChart = new FusionCharts({
+                            "type": "msline",
+                            "height":"280px",
+                            "renderAt": "line_box",
+                            "width":"99%",
+                            "dataFormat": "xml",
+                            "showLegend":"1",
+                            "dataSource": '<chart palettecolors="#0075c2,#1aaf5d" bgcolor="#ffffff" showborder="0" showshadow="0" showcanvasborder="0" useplotgradientcolor="0" legendborderalpha="0" legendshadow="0" showaxislines="0" showalternatehgridcolor="0" divlinethickness="1" divlinedashed="1" divlinedashlen="1" showvalues="0"><categories><category label="2019-09-14" /><category label="2019-09-15" /><category label="2019-09-16" /><category label="2019-09-17" /><category label="2019-09-18" /><category label="2019-09-19" /><category label="2019-09-20" /></categories><dataset seriesname="总浏览次数"><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /></dataset><dataset seriesname="登录用户浏览次数"><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /><set value="0" /></dataset></chart>',
+                        });
+                        revenueChart.render();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="detail_wrap">
+            <div class="detail_title">
+                <div class="pat_l">
+                    用户详细数据
+                    <span class="num_tip">登录 <span class="num">0</span> 人，未登录 <span class="num">0</span> 人（列表内只显示登录用户）</span>
+                </div>
+                <div class="pat_r">
+                    <div class="radio_list">
+                        <div class="rli checked tab_select" data="chart">登录用户分布统计图</div>
+                        <div class="rli tab_select" data="list">登录用户详细列表</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="chart_wrap data_wrap">
+                <div class="chart_item">
+                    <div id="sex_box" style="margin:20px 0 0;"></div>
+                    <script type="text/javascript">
+                        FusionCharts.ready(function(){
+                            var revenueChart = new FusionCharts({
+                                "type": "doughnut2d",
+                                "renderAt": "sex_box",
+                                "width":"450px",
+                                "dataFormat": "xml",
+                                "showLegend":"1",
+                                "dataSource": '<chart showborder="0" enablesmartlabels="0" showlabels="0" showpercentvalues="1" showlegend="1" defaultcenterlabel="性别 （0人）" centerlabel="$label: $value人" centerlabelbold="0" showtooltip="0" decimals="0" usedataplotcolorforlabels="1" theme="fint"></chart>',
+                            });
+                            revenueChart.render();
+                        });
+                    </script>
+                </div>
+                <div class="chart_item">
+                    <div id="experience_box" style="margin:20px 0 0;"></div>
+                    <script type="text/javascript">
+                        FusionCharts.ready(function(){
+                            var revenueChart = new FusionCharts({
+                                "type": "doughnut2d",
+                                "renderAt": "experience_box",
+                                "width":"450px",
+                                "dataFormat": "xml",
+                                "showLegend":"1",
+                                "dataSource": '<chart showborder="0" enablesmartlabels="0" showlabels="0" showpercentvalues="1" showlegend="1" defaultcenterlabel="工作经验 （人）" centerlabel="$label: $value人" centerlabelbold="0" showtooltip="0" decimals="0" usedataplotcolorforlabels="1" theme="fint"></chart>',
+                            });
+                            revenueChart.render();
+                        });
+                    </script>
+                </div>
+                <div class="chart_item">
+                    <div id="education_box" style="margin:20px 0 0;"></div>
+                    <script type="text/javascript">
+                        FusionCharts.ready(function(){
+                            var revenueChart = new FusionCharts({
+                                "type": "doughnut2d",
+                                "renderAt": "education_box",
+                                "width":"450px",
+                                "dataFormat": "xml",
+                                "showLegend":"1",
+                                "dataSource": '<chart showborder="0" enablesmartlabels="0" showlabels="0" showpercentvalues="1" showlegend="1" defaultcenterlabel="学历 （人）" centerlabel="$label: $value人" centerlabelbold="0" showtooltip="0" decimals="0" usedataplotcolorforlabels="1" theme="fint"></chart>',
+                            });
+                            revenueChart.render();
+                        });
+                    </script>
+                </div>
+                <div class="chart_item">
+                    <div id="age_box" style="margin:20px 0 0;"></div>
+                    <script type="text/javascript">
+                        FusionCharts.ready(function(){
+                            var revenueChart = new FusionCharts({
+                                "type": "doughnut2d",
+                                "renderAt": "age_box",
+                                "width":"450px",
+                                "dataFormat": "xml",
+                                "showLegend":"1",
+                                "dataSource": '<chart showborder="0" enablesmartlabels="0" showlabels="0" showpercentvalues="1" showlegend="1" defaultcenterlabel="年龄 （人）" centerlabel="$label: $value人" centerlabelbold="0" showtooltip="0" decimals="0" usedataplotcolorforlabels="1" theme="fint"></chart>',
+                            });
+                            revenueChart.render();
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="list_wrap data_wrap" style="display:none;">
+                <div class="list_th">
+                    <div class="th1">姓名</div>
+                    <div class="th2">基本信息</div>
+                    <div class="th3">意向职位</div>
+                    <div class="th4">来源</div>
+                    <div class="th5">浏览时间</div>
+                    <div class="clear"></div>
+                </div>
+                <div id="ajax_list">
+                    <div class="res_empty">
+                        没有找到相应的信息！
+                    </div>						</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="user_foot font_gray9" id="footer">Copyright © 2016 74cms.com All Right Reserved </div>
+<div class="floatmenu">
+    <div class="item ask">
+        <a class="blk" target="_blank" href="../upload/index.php?m=&c=suggest&a=index"></a>
+    </div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.disappear.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.dropdown.js"></script>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/PIE.js"></script>
+<script type="text/javascript">
+    (function($){
+        $.pie = function(name, v){
+            // 如果没有加载 PIE 则直接终止
+            if (! PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version*1 <= version*1) {
+                    obj.each(function(){
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+        $.pie('.pie_about');
+    };
+</script>
+<![endif]-->
+<script type="text/javascript">
+    var global = {
+        h:$(window).height(),
+        st: $(window).scrollTop(),
+        backTop:function(){
+            global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+        }
+    }
+    $('#backtop').on('click',function(){
+        $("html,body").animate({"scrollTop":0},500);
+    });
+    global.backTop();
+    $(window).scroll(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    });
+    $(window).resize(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".tab_select").click(function(){
+            var tag = $(this).attr('data');
+            $(this).siblings().removeClass('checked');
+            $(this).addClass('checked');
+            $(".data_wrap").hide();
+            $("."+tag+"_wrap").show();
+        });
+        //分页ajax
+        $(".qspage a").live('click',function(){
+            url = $(this).attr('href');
+            if(url){
+                $.getJSON(url,function(result){
+                    $("#ajax_list").html(result.data);
+                });
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

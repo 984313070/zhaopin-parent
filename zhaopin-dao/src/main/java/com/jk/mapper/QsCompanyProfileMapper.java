@@ -4,6 +4,7 @@ import com.jk.pojo.QsCompanyProfile;
 import com.jk.pojo.QsCompanyProfileExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 public interface QsCompanyProfileMapper {
     int countByExample(QsCompanyProfileExample example);
@@ -33,6 +34,6 @@ public interface QsCompanyProfileMapper {
     int updateByPrimaryKeyWithBLOBs(QsCompanyProfile record);
 
     int updateByPrimaryKey(QsCompanyProfile record);
-
-    void QsCompanyProfileExample(Object o);
+    @Update("update  qs_company_profile set audit=#{audit} where id=#{id}")
+    void updateCompany(QsCompanyProfile qsCompanyProfile);
 }

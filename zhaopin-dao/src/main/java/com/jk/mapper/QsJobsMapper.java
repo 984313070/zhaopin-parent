@@ -5,6 +5,7 @@ import com.jk.pojo.QsJobsExample;
 import com.jk.pojo.QsJobsWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 public interface QsJobsMapper {
     int countByExample(QsJobsExample example);
@@ -34,4 +35,8 @@ public interface QsJobsMapper {
     int updateByPrimaryKeyWithBLOBs(QsJobsWithBLOBs record);
 
     int updateByPrimaryKey(QsJobs record);
+
+    @Update("update  qs_jobs set audit=#{audit} where id=#{id}")
+    void updateJobs(QsJobs qsJobs);
+
 }

@@ -2,6 +2,9 @@ package com.jk.service;
 
 import com.jk.pojo.QsCompanyProfile;
 import entity.PageResult;
+import entity.Result;
+
+import java.util.List;
 
 public interface CompanyService {
 
@@ -13,7 +16,12 @@ public interface CompanyService {
 
     public  QsCompanyProfile findById(Integer id);
 
-    public  void updCompany(QsCompanyProfile qsCompanyProfile);
+    public  void updCompany(Integer audit, Integer[] ids);
 
     public void deleteCompany(Integer id);
+
+    public List<QsCompanyProfile> findAll();
+
+    public  Result importXLS(String filePath);
+
 }

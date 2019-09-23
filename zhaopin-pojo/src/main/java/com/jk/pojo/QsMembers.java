@@ -1,35 +1,38 @@
 package com.jk.pojo;
 
-public class QsMembers {
+import java.io.Serializable;
+import java.util.Date;
+
+public class QsMembers implements Serializable {
     private Integer uid;
 
-    private Boolean utype;
+    private Integer utype;
 
     private String username;
 
     private String email;
 
-    private Boolean emailAudit;
+    private Integer emailAudit;
 
     private String mobile;
 
-    private Boolean mobileAudit;
+    private Integer mobileAudit;
 
     private String password;
 
     private String pwdHash;
 
-    private Integer regTime;
+    private Date regTime;
 
     private String regIp;
 
     private String regAddress;
 
-    private Integer lastLoginTime;
+    private Date lastLoginTime;
 
     private String lastLoginIp;
 
-    private Byte status;
+    private Integer status;
 
     private String avatars;
 
@@ -65,11 +68,11 @@ public class QsMembers {
         this.uid = uid;
     }
 
-    public Boolean getUtype() {
+    public Integer getUtype() {
         return utype;
     }
 
-    public void setUtype(Boolean utype) {
+    public void setUtype(Integer utype) {
         this.utype = utype;
     }
 
@@ -89,11 +92,11 @@ public class QsMembers {
         this.email = email == null ? null : email.trim();
     }
 
-    public Boolean getEmailAudit() {
+    public Integer getEmailAudit() {
         return emailAudit;
     }
 
-    public void setEmailAudit(Boolean emailAudit) {
+    public void setEmailAudit(Integer emailAudit) {
         this.emailAudit = emailAudit;
     }
 
@@ -105,11 +108,11 @@ public class QsMembers {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public Boolean getMobileAudit() {
+    public Integer getMobileAudit() {
         return mobileAudit;
     }
 
-    public void setMobileAudit(Boolean mobileAudit) {
+    public void setMobileAudit(Integer mobileAudit) {
         this.mobileAudit = mobileAudit;
     }
 
@@ -129,11 +132,11 @@ public class QsMembers {
         this.pwdHash = pwdHash == null ? null : pwdHash.trim();
     }
 
-    public Integer getRegTime() {
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(Integer regTime) {
+    public void setRegTime(Date regTime) {
         this.regTime = regTime;
     }
 
@@ -153,11 +156,11 @@ public class QsMembers {
         this.regAddress = regAddress == null ? null : regAddress.trim();
     }
 
-    public Integer getLastLoginTime() {
+    public Date getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Integer lastLoginTime) {
+    public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
@@ -169,11 +172,11 @@ public class QsMembers {
         this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

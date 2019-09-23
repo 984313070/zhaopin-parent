@@ -1,6 +1,7 @@
 package com.jk.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QsMembersExample {
@@ -174,52 +175,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andUtypeEqualTo(Boolean value) {
+        public Criteria andUtypeEqualTo(Integer value) {
             addCriterion("utype =", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeNotEqualTo(Boolean value) {
+        public Criteria andUtypeNotEqualTo(Integer value) {
             addCriterion("utype <>", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeGreaterThan(Boolean value) {
+        public Criteria andUtypeGreaterThan(Integer value) {
             addCriterion("utype >", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andUtypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("utype >=", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeLessThan(Boolean value) {
+        public Criteria andUtypeLessThan(Integer value) {
             addCriterion("utype <", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andUtypeLessThanOrEqualTo(Integer value) {
             addCriterion("utype <=", value, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeIn(List<Boolean> values) {
+        public Criteria andUtypeIn(List<Integer> values) {
             addCriterion("utype in", values, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeNotIn(List<Boolean> values) {
+        public Criteria andUtypeNotIn(List<Integer> values) {
             addCriterion("utype not in", values, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andUtypeBetween(Integer value1, Integer value2) {
             addCriterion("utype between", value1, value2, "utype");
             return (Criteria) this;
         }
 
-        public Criteria andUtypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andUtypeNotBetween(Integer value1, Integer value2) {
             addCriterion("utype not between", value1, value2, "utype");
             return (Criteria) this;
         }
@@ -374,52 +375,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditEqualTo(Boolean value) {
+        public Criteria andEmailAuditEqualTo(Integer value) {
             addCriterion("email_audit =", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditNotEqualTo(Boolean value) {
+        public Criteria andEmailAuditNotEqualTo(Integer value) {
             addCriterion("email_audit <>", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditGreaterThan(Boolean value) {
+        public Criteria andEmailAuditGreaterThan(Integer value) {
             addCriterion("email_audit >", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andEmailAuditGreaterThanOrEqualTo(Integer value) {
             addCriterion("email_audit >=", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditLessThan(Boolean value) {
+        public Criteria andEmailAuditLessThan(Integer value) {
             addCriterion("email_audit <", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditLessThanOrEqualTo(Boolean value) {
+        public Criteria andEmailAuditLessThanOrEqualTo(Integer value) {
             addCriterion("email_audit <=", value, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditIn(List<Boolean> values) {
+        public Criteria andEmailAuditIn(List<Integer> values) {
             addCriterion("email_audit in", values, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditNotIn(List<Boolean> values) {
+        public Criteria andEmailAuditNotIn(List<Integer> values) {
             addCriterion("email_audit not in", values, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmailAuditBetween(Integer value1, Integer value2) {
             addCriterion("email_audit between", value1, value2, "emailAudit");
             return (Criteria) this;
         }
 
-        public Criteria andEmailAuditNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andEmailAuditNotBetween(Integer value1, Integer value2) {
             addCriterion("email_audit not between", value1, value2, "emailAudit");
             return (Criteria) this;
         }
@@ -504,52 +505,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditEqualTo(Boolean value) {
+        public Criteria andMobileAuditEqualTo(Integer value) {
             addCriterion("mobile_audit =", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditNotEqualTo(Boolean value) {
+        public Criteria andMobileAuditNotEqualTo(Integer value) {
             addCriterion("mobile_audit <>", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditGreaterThan(Boolean value) {
+        public Criteria andMobileAuditGreaterThan(Integer value) {
             addCriterion("mobile_audit >", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andMobileAuditGreaterThanOrEqualTo(Integer value) {
             addCriterion("mobile_audit >=", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditLessThan(Boolean value) {
+        public Criteria andMobileAuditLessThan(Integer value) {
             addCriterion("mobile_audit <", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditLessThanOrEqualTo(Boolean value) {
+        public Criteria andMobileAuditLessThanOrEqualTo(Integer value) {
             addCriterion("mobile_audit <=", value, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditIn(List<Boolean> values) {
+        public Criteria andMobileAuditIn(List<Integer> values) {
             addCriterion("mobile_audit in", values, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditNotIn(List<Boolean> values) {
+        public Criteria andMobileAuditNotIn(List<Integer> values) {
             addCriterion("mobile_audit not in", values, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditBetween(Boolean value1, Boolean value2) {
+        public Criteria andMobileAuditBetween(Integer value1, Integer value2) {
             addCriterion("mobile_audit between", value1, value2, "mobileAudit");
             return (Criteria) this;
         }
 
-        public Criteria andMobileAuditNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andMobileAuditNotBetween(Integer value1, Integer value2) {
             addCriterion("mobile_audit not between", value1, value2, "mobileAudit");
             return (Criteria) this;
         }
@@ -704,52 +705,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeEqualTo(Integer value) {
+        public Criteria andRegTimeEqualTo(Date value) {
             addCriterion("reg_time =", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotEqualTo(Integer value) {
+        public Criteria andRegTimeNotEqualTo(Date value) {
             addCriterion("reg_time <>", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeGreaterThan(Integer value) {
+        public Criteria andRegTimeGreaterThan(Date value) {
             addCriterion("reg_time >", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRegTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("reg_time >=", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeLessThan(Integer value) {
+        public Criteria andRegTimeLessThan(Date value) {
             addCriterion("reg_time <", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeLessThanOrEqualTo(Integer value) {
+        public Criteria andRegTimeLessThanOrEqualTo(Date value) {
             addCriterion("reg_time <=", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeIn(List<Integer> values) {
+        public Criteria andRegTimeIn(List<Date> values) {
             addCriterion("reg_time in", values, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotIn(List<Integer> values) {
+        public Criteria andRegTimeNotIn(List<Date> values) {
             addCriterion("reg_time not in", values, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeBetween(Integer value1, Integer value2) {
+        public Criteria andRegTimeBetween(Date value1, Date value2) {
             addCriterion("reg_time between", value1, value2, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotBetween(Integer value1, Integer value2) {
+        public Criteria andRegTimeNotBetween(Date value1, Date value2) {
             addCriterion("reg_time not between", value1, value2, "regTime");
             return (Criteria) this;
         }
@@ -904,52 +905,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeEqualTo(Integer value) {
+        public Criteria andLastLoginTimeEqualTo(Date value) {
             addCriterion("last_login_time =", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotEqualTo(Integer value) {
+        public Criteria andLastLoginTimeNotEqualTo(Date value) {
             addCriterion("last_login_time <>", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThan(Integer value) {
+        public Criteria andLastLoginTimeGreaterThan(Date value) {
             addCriterion("last_login_time >", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andLastLoginTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("last_login_time >=", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThan(Integer value) {
+        public Criteria andLastLoginTimeLessThan(Date value) {
             addCriterion("last_login_time <", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThanOrEqualTo(Integer value) {
+        public Criteria andLastLoginTimeLessThanOrEqualTo(Date value) {
             addCriterion("last_login_time <=", value, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeIn(List<Integer> values) {
+        public Criteria andLastLoginTimeIn(List<Date> values) {
             addCriterion("last_login_time in", values, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotIn(List<Integer> values) {
+        public Criteria andLastLoginTimeNotIn(List<Date> values) {
             addCriterion("last_login_time not in", values, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeBetween(Integer value1, Integer value2) {
+        public Criteria andLastLoginTimeBetween(Date value1, Date value2) {
             addCriterion("last_login_time between", value1, value2, "lastLoginTime");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotBetween(Integer value1, Integer value2) {
+        public Criteria andLastLoginTimeNotBetween(Date value1, Date value2) {
             addCriterion("last_login_time not between", value1, value2, "lastLoginTime");
             return (Criteria) this;
         }
@@ -1034,52 +1035,52 @@ public class QsMembersExample {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Byte value) {
+        public Criteria andStatusEqualTo(Integer value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Byte value) {
+        public Criteria andStatusNotEqualTo(Integer value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Byte value) {
+        public Criteria andStatusGreaterThan(Integer value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Byte value) {
+        public Criteria andStatusLessThan(Integer value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Byte value) {
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Byte> values) {
+        public Criteria andStatusIn(List<Integer> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Byte> values) {
+        public Criteria andStatusNotIn(List<Integer> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Byte value1, Byte value2) {
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }

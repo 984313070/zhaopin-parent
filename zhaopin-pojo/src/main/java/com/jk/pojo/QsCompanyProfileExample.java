@@ -1865,52 +1865,52 @@ public class QsCompanyProfileExample {
             return (Criteria) this;
         }
 
-        public Criteria andAuditEqualTo(Byte value) {
+        public Criteria andAuditEqualTo(Integer value) {
             addCriterion("audit =", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotEqualTo(Byte value) {
+        public Criteria andAuditNotEqualTo(Integer value) {
             addCriterion("audit <>", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditGreaterThan(Byte value) {
+        public Criteria andAuditGreaterThan(Integer value) {
             addCriterion("audit >", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditGreaterThanOrEqualTo(Byte value) {
+        public Criteria andAuditGreaterThanOrEqualTo(Integer value) {
             addCriterion("audit >=", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditLessThan(Byte value) {
+        public Criteria andAuditLessThan(Integer value) {
             addCriterion("audit <", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditLessThanOrEqualTo(Byte value) {
+        public Criteria andAuditLessThanOrEqualTo(Integer value) {
             addCriterion("audit <=", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditIn(List<Byte> values) {
+        public Criteria andAuditIn(List<Integer> values) {
             addCriterion("audit in", values, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotIn(List<Byte> values) {
+        public Criteria andAuditNotIn(List<Integer> values) {
             addCriterion("audit not in", values, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditBetween(Byte value1, Byte value2) {
+        public Criteria andAuditBetween(Integer value1, Integer value2) {
             addCriterion("audit between", value1, value2, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotBetween(Byte value1, Byte value2) {
+        public Criteria andAuditNotBetween(Integer value1, Integer value2) {
             addCriterion("audit not between", value1, value2, "audit");
             return (Criteria) this;
         }

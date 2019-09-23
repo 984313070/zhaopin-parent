@@ -1,15 +1,19 @@
 package com.jk.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jk.mapper.QsCompanyProfileMapper;
 import com.jk.pojo.QsCompanyProfile;
-import com.jk.pojo.QsCompanyProfileExample;
 import com.jk.service.CompanyService;
 import entity.PageResult;
+import entity.Result;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,14 +76,77 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void updCompany(QsCompanyProfile qsCompanyProfile) {
-        qsCompanyProfileMapper.updateByPrimaryKey(qsCompanyProfile);
+    public void updCompany(Integer audit, Integer[] ids) {
+        for (Integer id : ids) {
+            QsCompanyProfile qsCompanyProfile = new QsCompanyProfile();
+            qsCompanyProfile.setId(id);
+            qsCompanyProfile.setAudit(audit);
+            qsCompanyProfileMapper.updateCompany(qsCompanyProfile);
+        }
+
     }
 
     @Override
     public void deleteCompany(Integer id) {
         qsCompanyProfileMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<QsCompanyProfile> findAll() {
+        return qsCompanyProfileMapper.selectByExample(null);
+    }
+
+    @Override
+    public Result importXLS(String filePath) {
+
+        try {
+            InputStream inputStream = new FileInputStream(filePath);
+
+            //2、获取Excel工作簿对象
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+
+            //3、得到Excel工作表对象
+            HSSFSheet sheetAt = workbook.getSheetAt(0);
+
+            //4、循环读取表格数据
+            List<QsCompanyProfile> qsCompanyProfiles = new ArrayList<>();
+
+            for (Row row : sheetAt) {
+
+                //首行（即表头）不读取
+                if (row.getRowNum() == 0 || row.getRowNum() == 1 || row.getRowNum() == 2) {
+                    continue;
+                }
+                QsCompanyProfile qsCompanyProfile = new QsCompanyProfile();
+                //读取当前行中单元格数据，索引从0开始
+
+
+                String id = row.getCell(0).getStringCellValue();
+                String companyname = row.getCell(1).getStringCellValue();
+                String audit = row.getCell(2).getStringCellValue();
+                String addtime = row.getCell(3).getStringCellValue();
+                String refreshtime = row.getCell(4).getStringCellValue();
+                String setmealName = row.getCell(5).getStringCellValue();
+                String jobs = row.getCell(6).getStringCellValue();
+
+                qsCompanyProfile.setId(Integer.parseInt(id));
+                qsCompanyProfile.setCompanyname(companyname);
+                qsCompanyProfile.setAudit(Integer.parseInt(audit));
+                qsCompanyProfile.setAddtime(Integer.parseInt(addtime));
+                qsCompanyProfile.setRefreshtime(Integer.parseInt(refreshtime));
+                qsCompanyProfile.setSetmealName(setmealName);
+
+                qsCompanyProfileMapper.insert(qsCompanyProfile);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,"导入失败");
+        }
+
+        return new Result(true,"导入成功");
+    }
+
 
 
 }

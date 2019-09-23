@@ -56,7 +56,7 @@ public class QsCompanyProfile implements Serializable {
 
     private String setmealName;
 
-    private Byte audit;
+    private Integer audit;
 
     private Byte mapOpen;
 
@@ -314,11 +314,11 @@ public class QsCompanyProfile implements Serializable {
         this.setmealName = setmealName == null ? null : setmealName.trim();
     }
 
-    public Byte getAudit() {
+    public Integer getAudit() {
         return audit;
     }
 
-    public void setAudit(Byte audit) {
+    public void setAudit(Integer audit) {
         this.audit = audit;
     }
 

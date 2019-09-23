@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class QsJobs implements Serializable {
-
     private Integer id;
 
     private Integer uid;
@@ -87,7 +86,7 @@ public class QsJobs implements Serializable {
 
     private String setmealName;
 
-    private Boolean audit;
+    private Integer audit;
 
     private Boolean display;
 
@@ -111,72 +110,12 @@ public class QsJobs implements Serializable {
 
     private Boolean famous;
 
-    @Override
-    public String toString() {
-        return "QsJobs{" +
-                "id=" + id +
-                ", uid=" + uid +
-                ", jobsName='" + jobsName + '\'' +
-                ", companyname='" + companyname + '\'' +
-                ", companyId=" + companyId +
-                ", companyAddtime=" + companyAddtime +
-                ", companyAudit=" + companyAudit +
-                ", emergency=" + emergency +
-                ", stick=" + stick +
-                ", nature=" + nature +
-                ", natureCn='" + natureCn + '\'' +
-                ", sex=" + sex +
-                ", sexCn='" + sexCn + '\'' +
-                ", age='" + age + '\'' +
-                ", amount=" + amount +
-                ", topclass=" + topclass +
-                ", category=" + category +
-                ", subclass=" + subclass +
-                ", categoryCn='" + categoryCn + '\'' +
-                ", trade=" + trade +
-                ", tradeCn='" + tradeCn + '\'' +
-                ", scale=" + scale +
-                ", scaleCn='" + scaleCn + '\'' +
-                ", district='" + district + '\'' +
-                ", districtCn='" + districtCn + '\'' +
-                ", tag='" + tag + '\'' +
-                ", tagCn='" + tagCn + '\'' +
-                ", education=" + education +
-                ", educationCn='" + educationCn + '\'' +
-                ", experience=" + experience +
-                ", experienceCn='" + experienceCn + '\'' +
-                ", minwage=" + minwage +
-                ", maxwage=" + maxwage +
-                ", negotiable=" + negotiable +
-                ", addtime=" + addtime +
-                ", deadline=" + deadline +
-                ", refreshtime=" + refreshtime +
-                ", stime=" + stime +
-                ", setmealDeadline=" + setmealDeadline +
-                ", setmealId=" + setmealId +
-                ", setmealName='" + setmealName + '\'' +
-                ", audit=" + audit +
-                ", display=" + display +
-                ", click=" + click +
-                ", userStatus=" + userStatus +
-                ", robot=" + robot +
-                ", tpl='" + tpl + '\'' +
-                ", mapX=" + mapX +
-                ", mapY=" + mapY +
-                ", mapZoom=" + mapZoom +
-                ", addMode=" + addMode +
-                ", department='" + department + '\'' +
-                ", famous=" + famous +
-                '}';
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-
     }
 
     public Integer getUid() {
@@ -499,11 +438,11 @@ public class QsJobs implements Serializable {
         this.setmealName = setmealName == null ? null : setmealName.trim();
     }
 
-    public Boolean getAudit() {
+    public Integer getAudit() {
         return audit;
     }
 
-    public void setAudit(Boolean audit) {
+    public void setAudit(Integer audit) {
         this.audit = audit;
     }
 

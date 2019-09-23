@@ -28,7 +28,7 @@
     <result column="logo" property="logo" jdbcType="VARCHAR" />
     <result column="setmeal_id" property="setmealId" jdbcType="SMALLINT" />
     <result column="setmeal_name" property="setmealName" jdbcType="VARCHAR" />
-    <result column="audit" property="audit" jdbcType="TINYINT" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
     <result column="map_open" property="mapOpen" jdbcType="TINYINT" />
     <result column="map_x" property="mapX" jdbcType="DECIMAL" />
     <result column="map_y" property="mapY" jdbcType="DECIMAL" />
@@ -199,7 +199,7 @@
       #{currency,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=VARCHAR}, #{landlineTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{website,jdbcType=VARCHAR}, #{certificateImg,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{setmealId,jdbcType=SMALLINT}, #{setmealName,jdbcType=VARCHAR}, #{audit,jdbcType=TINYINT}, 
+      #{setmealId,jdbcType=SMALLINT}, #{setmealName,jdbcType=VARCHAR}, #{audit,jdbcType=INTEGER}, 
       #{mapOpen,jdbcType=TINYINT}, #{mapX,jdbcType=DECIMAL}, #{mapY,jdbcType=DECIMAL}, 
       #{mapZoom,jdbcType=TINYINT}, #{addtime,jdbcType=INTEGER}, #{refreshtime,jdbcType=INTEGER}, 
       #{click,jdbcType=INTEGER}, #{userStatus,jdbcType=TINYINT}, #{contactShow,jdbcType=BIT}, 
@@ -446,7 +446,7 @@
         #{setmealName,jdbcType=VARCHAR},
       </if>
       <if test="audit != null" >
-        #{audit,jdbcType=TINYINT},
+        #{audit,jdbcType=INTEGER},
       </if>
       <if test="mapOpen != null" >
         #{mapOpen,jdbcType=TINYINT},
@@ -610,7 +610,7 @@
         setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
       </if>
       <if test="record.audit != null" >
-        audit = #{record.audit,jdbcType=TINYINT},
+        audit = #{record.audit,jdbcType=INTEGER},
       </if>
       <if test="record.mapOpen != null" >
         map_open = #{record.mapOpen,jdbcType=TINYINT},
@@ -717,7 +717,7 @@
       logo = #{record.logo,jdbcType=VARCHAR},
       setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
       setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
-      audit = #{record.audit,jdbcType=TINYINT},
+      audit = #{record.audit,jdbcType=INTEGER},
       map_open = #{record.mapOpen,jdbcType=TINYINT},
       map_x = #{record.mapX,jdbcType=DECIMAL},
       map_y = #{record.mapY,jdbcType=DECIMAL},
@@ -774,7 +774,7 @@
       logo = #{record.logo,jdbcType=VARCHAR},
       setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
       setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
-      audit = #{record.audit,jdbcType=TINYINT},
+      audit = #{record.audit,jdbcType=INTEGER},
       map_open = #{record.mapOpen,jdbcType=TINYINT},
       map_x = #{record.mapX,jdbcType=DECIMAL},
       map_y = #{record.mapY,jdbcType=DECIMAL},
@@ -881,7 +881,7 @@
         setmeal_name = #{setmealName,jdbcType=VARCHAR},
       </if>
       <if test="audit != null" >
-        audit = #{audit,jdbcType=TINYINT},
+        audit = #{audit,jdbcType=INTEGER},
       </if>
       <if test="mapOpen != null" >
         map_open = #{mapOpen,jdbcType=TINYINT},
@@ -985,7 +985,7 @@
       logo = #{logo,jdbcType=VARCHAR},
       setmeal_id = #{setmealId,jdbcType=SMALLINT},
       setmeal_name = #{setmealName,jdbcType=VARCHAR},
-      audit = #{audit,jdbcType=TINYINT},
+      audit = #{audit,jdbcType=INTEGER},
       map_open = #{mapOpen,jdbcType=TINYINT},
       map_x = #{mapX,jdbcType=DECIMAL},
       map_y = #{mapY,jdbcType=DECIMAL},
@@ -1039,7 +1039,7 @@
       logo = #{logo,jdbcType=VARCHAR},
       setmeal_id = #{setmealId,jdbcType=SMALLINT},
       setmeal_name = #{setmealName,jdbcType=VARCHAR},
-      audit = #{audit,jdbcType=TINYINT},
+      audit = #{audit,jdbcType=INTEGER},
       map_open = #{mapOpen,jdbcType=TINYINT},
       map_x = #{mapX,jdbcType=DECIMAL},
       map_y = #{mapY,jdbcType=DECIMAL},

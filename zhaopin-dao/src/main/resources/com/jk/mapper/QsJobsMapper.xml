@@ -43,7 +43,7 @@
     <result column="setmeal_deadline" property="setmealDeadline" jdbcType="INTEGER" />
     <result column="setmeal_id" property="setmealId" jdbcType="SMALLINT" />
     <result column="setmeal_name" property="setmealName" jdbcType="VARCHAR" />
-    <result column="audit" property="audit" jdbcType="BIT" />
+    <result column="audit" property="audit" jdbcType="INTEGER" />
     <result column="display" property="display" jdbcType="BIT" />
     <result column="click" property="click" jdbcType="INTEGER" />
     <result column="user_status" property="userStatus" jdbcType="BIT" />
@@ -212,7 +212,7 @@
       #{experienceCn,jdbcType=VARCHAR}, #{minwage,jdbcType=INTEGER}, #{maxwage,jdbcType=INTEGER}, 
       #{negotiable,jdbcType=BIT}, #{addtime,jdbcType=INTEGER}, #{deadline,jdbcType=INTEGER}, 
       #{refreshtime,jdbcType=INTEGER}, #{stime,jdbcType=INTEGER}, #{setmealDeadline,jdbcType=INTEGER}, 
-      #{setmealId,jdbcType=SMALLINT}, #{setmealName,jdbcType=VARCHAR}, #{audit,jdbcType=BIT}, 
+      #{setmealId,jdbcType=SMALLINT}, #{setmealName,jdbcType=VARCHAR}, #{audit,jdbcType=INTEGER}, 
       #{display,jdbcType=BIT}, #{click,jdbcType=INTEGER}, #{userStatus,jdbcType=BIT}, 
       #{robot,jdbcType=BIT}, #{tpl,jdbcType=VARCHAR}, #{mapX,jdbcType=DECIMAL}, #{mapY,jdbcType=DECIMAL}, 
       #{mapZoom,jdbcType=TINYINT}, #{addMode,jdbcType=BIT}, #{department,jdbcType=VARCHAR}, 
@@ -516,7 +516,7 @@
         #{setmealName,jdbcType=VARCHAR},
       </if>
       <if test="audit != null" >
-        #{audit,jdbcType=BIT},
+        #{audit,jdbcType=INTEGER},
       </if>
       <if test="display != null" >
         #{display,jdbcType=BIT},
@@ -695,7 +695,7 @@
         setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
       </if>
       <if test="record.audit != null" >
-        audit = #{record.audit,jdbcType=BIT},
+        audit = #{record.audit,jdbcType=INTEGER},
       </if>
       <if test="record.display != null" >
         display = #{record.display,jdbcType=BIT},
@@ -787,7 +787,7 @@
       setmeal_deadline = #{record.setmealDeadline,jdbcType=INTEGER},
       setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
       setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
-      audit = #{record.audit,jdbcType=BIT},
+      audit = #{record.audit,jdbcType=INTEGER},
       display = #{record.display,jdbcType=BIT},
       click = #{record.click,jdbcType=INTEGER},
       user_status = #{record.userStatus,jdbcType=BIT},
@@ -849,7 +849,7 @@
       setmeal_deadline = #{record.setmealDeadline,jdbcType=INTEGER},
       setmeal_id = #{record.setmealId,jdbcType=SMALLINT},
       setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
-      audit = #{record.audit,jdbcType=BIT},
+      audit = #{record.audit,jdbcType=INTEGER},
       display = #{record.display,jdbcType=BIT},
       click = #{record.click,jdbcType=INTEGER},
       user_status = #{record.userStatus,jdbcType=BIT},
@@ -989,7 +989,7 @@
         setmeal_name = #{setmealName,jdbcType=VARCHAR},
       </if>
       <if test="audit != null" >
-        audit = #{audit,jdbcType=BIT},
+        audit = #{audit,jdbcType=INTEGER},
       </if>
       <if test="display != null" >
         display = #{display,jdbcType=BIT},
@@ -1078,7 +1078,7 @@
       setmeal_deadline = #{setmealDeadline,jdbcType=INTEGER},
       setmeal_id = #{setmealId,jdbcType=SMALLINT},
       setmeal_name = #{setmealName,jdbcType=VARCHAR},
-      audit = #{audit,jdbcType=BIT},
+      audit = #{audit,jdbcType=INTEGER},
       display = #{display,jdbcType=BIT},
       click = #{click,jdbcType=INTEGER},
       user_status = #{userStatus,jdbcType=BIT},
@@ -1137,7 +1137,7 @@
       setmeal_deadline = #{setmealDeadline,jdbcType=INTEGER},
       setmeal_id = #{setmealId,jdbcType=SMALLINT},
       setmeal_name = #{setmealName,jdbcType=VARCHAR},
-      audit = #{audit,jdbcType=BIT},
+      audit = #{audit,jdbcType=INTEGER},
       display = #{display,jdbcType=BIT},
       click = #{click,jdbcType=INTEGER},
       user_status = #{userStatus,jdbcType=BIT},
