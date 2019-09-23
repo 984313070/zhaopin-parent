@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <link rel="shortcut icon" href="upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <title>网站后台管理中心- Powered by 74CMS</title>
+    <script src="upload/Application/Home/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="upload/Application/Admin/View/default/public/js/vue.min.js"></script>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/bootstrap.js"></script>
+    <script src="../upload/Application/Home/View/default/public/bootstrap-bootbox/bootbox.all.min.js"></script>
+    <link href="upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body style="background-color:#FFFFFF">
+<div class="login_top">
+    <div class="logo"><img src="upload/Application/Admin/View/default/public/images/login_logo.gif"/></div>
+</div>
+<form id="form1" name="form1" method="post" >
+    <div class="login_main">
+        <div class="ce">
+            <div class="imgbg"></div>
+            <input name="username" type="text" maxlength="16" id="username" class="linput" placeholder="请输入用户名"  v-model="qsAdmin.username"/>
+        </div>
+        <div class="ce">
+            <div class="imgbg pwd"></div>
+            <input name="password" type="password" id="admin_pwd" value="" class="linput pwd" placeholder="请输入密码" v-model="qsAdmin.password"/>
+        </div>
+        <div class="ce">
+            <input class="btn" type="button"   value="登录" onclick="doLogin1()"/>
+            <input type="button" id="btnCheck" style="display:none;">
+        </div>
+    </div>
+    <div id="popup-captcha"></div>
+    <input type="hidden" name="geetest_challenge" class="J_gee_cha" value="">
+    <input type="hidden" name="geetest_validate" class="J_gee_val" value="">
+    <input type="hidden" name="geetest_seccode" class="J_gee_sec" value="">
+</form>
+
+<div class="login_foot link_blue">
+    74cms是一个采用 PHP 和 MySQL 构建的高效人才系统解决方案 <a href="http://ask.74cms.com/" target="_blank">技术论坛</a><br/>
+    Powered by <a href="http://www.74cms.com/" target="_blank"><em>74cms v 4.2.111 </em></a> Copyright &copy;2019</div>
+
+
+</body>
+<script language="javascript">
+    var vm =  new Vue({
+        el: '#form1',
+        data: {
+            qsAdmin:{
+                username:'',
+                password:''
+       }
+        }
+    })
+    function init() {
+        var ctrl = document.getElementById("username");
+        ctrl.focus();
+    }
+    init();
+    $(document).ready(function () {
+        $('#admin_pwd').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                $("#J_dologin").click();
+            }
+        });
+    })
+
+    function doLogin1() {
+        // 提交表单
+        // $("#form1").submit();
+      var qsAdmin=vm.qsAdmin;
+        $.post('../login/login.do',{username:qsAdmin.username,password:qsAdmin.password},function(data){
+          if(data.message=="登录成功"){
+              location.href="index.html";
+          }
+            }
+        )
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>简历列表-骑士人才系统</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Home/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/bootstrap.js"></script>
+    <script src="../upload/Application/Home/View/default/public/bootstrap-bootbox/bootbox.all.min.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/htmlspecialchars.js"></script>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    <script type="text/javascript">
+        function login(){
+            bootbox.dialog({
+                title:'登录',
+                message: createAddContent('../tologin.html'),
+                closeButton: true,
+                buttons : {
+                    "success" : {
+                        "label" : "<i class='icon-ok'></i>登录",
+                        "className" : "btn btn-primary btn-sm",
+                        "callback" : function() {
+                            $.ajax({
+                                url:'../memberLogin/tologin.do',
+                                type:'post',
+                                data:$("#loginForm").serialize(),
+                                success:function(data){
+                                    bootbox.alert({
+                                        message: data.message,
+                                        callback: function () {
+
+                                        }
+                                    })
+                                    dialog.close();
+                                }
+                            });
+                        }
+                    },
+                    "cancel" : {
+                        "label" : "<i class='icon-info'></i> 取消",
+                        "className" : "btn-sm btn-danger",
+                        "callback" : function() {
+
+                        }
+                    }
+                }
+
+            });
+
+        }
+
+        var res;
+        function createAddContent(url){
+            $.ajax({
+                url:url,
+                async:false,
+                success:function(data){
+                    res = data;
+                }
+            });
+            return res;
+        }
+
+        function  register() {
+            bootbox.dialog({
+                title:'注册',
+                message: createAddContent('../register.html'),
+                closeButton: true,
+                buttons : {
+                    "success" : {
+                        "label" : "<i class='icon-ok'></i>注册",
+                        "className" : "btn btn-primary btn-sm",
+                        "callback" : function() {
+                            $.ajax({
+                                url:'../memberLogin/register.do',
+                                type:'post',
+                                data:$("#registerFrom").serialize(),
+                                success:function(data){
+                                    bootbox.alert({
+                                        message: data.message,
+                                        callback: function () {
+
+                                        }
+                                    })
+                                    dialog.close();
+                                }
+                            });
+                        }
+                    },
+                    "cancel" : {
+                        "label" : "<i class='icon-info'></i> 取消",
+                        "className" : "btn-sm btn-danger",
+                        "callback" : function() {
+
+                        }
+                    }
+                }
+
+            });
+
+        }
+        var app_spell = "1";
+        var qscms = {
+            base : "",
+            keyUrlencode:"0",
+            domain : "http://localhost",
+            root : "../upload/index.php",
+            companyRepeat:"1",
+            regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+            is_subsite : 0,
+            subsite_level : "3",
+            smsTatus: "0",
+            captcha_open:"1",
+            varify_mobile:"1",
+            varify_suggest:"1",
+            varify_user_login:"0",
+            is_login:"0",
+            default_district : "1.35",
+            default_district_spell : "beijing.beijingshi"
+        };
+        $(function(){
+            $.getJSON("../upload/index.php?m=home&c=ajax_common&a=get_header_min",function(result){
+                if(result.status == 1){
+                    $('#J_header').html(result.data.html);
+                }
+            });
+        })
+    </script>
+    <link href="../upload/Application/Home/View/default/public/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/resume.css" rel="stylesheet" type="text/css" />
+    <script src="../upload/Application/Home/View/default/public/js/jquery.common.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" src="../upload/data/static/6f557ceaff36b5f87598d5441e0a6ba3.js?"></script>			</head>
+<body>
+<div class="header_min" id="header">
+    <div class="header_min_top">
+        <div id="J_header" class="itopl font_gray6 link_gray6">
+            <span class="link_yellow">欢迎登录骑士人才系统！请 <a id="J_site_login" href="javascript:login()">登录</a> 或 <a id="J_site_reg" href="javascript:register()">免费注册</a></span>
+        </div>
+        <div class="itopr font_gray9 link_gray6 substring"> <a href="home.html" class="home">网站首页</a>|<a href="../upload/index.php?m=&c=m&a=index" class="m">手机访问</a>|<a href="../upload/index.php?m=&c=help&a=index" class="help">帮助中心</a>|<a href="../upload/index.php?m=home&c=index&a=shortcut" class="last">保存到桌面</a> </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="other_top_nav">
+    <div class="ot_nav_box">
+        <div class="ot_nav_logo"><a href="../upload"><img src="../upload/Application/Home/View/default/public/images/logo.gif" border="0"/></a></div>
+        <div class="ot_nav_sub">
+        </div>
+        <div class="ot_nav_link ">
+            <ul class="link_gray6 nowrap">
+                <li class="on_li J_hoverbut "><a href="home.html" target="_self">首  页</a></li><li class="on_li J_hoverbut "><a href="jobs.html" target="_self">找工作</a></li><li class="on_li J_hoverbut select"><a href="findtalents.html" target="_self">招人才</a></li><li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=hrtools&a=index" target="_self">HR工具箱</a></li><li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=news&a=index" target="_self">职场资讯</a></li><li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=members&a=login" target="_self">会员中心</a></li><li class="on_li J_hoverbut "><a href="http://yun.51lianzhi.cn" target="_blank">云端职位</a></li>            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<div class="new-search-box" style="background-image: url(../upload/Application/Home/View/default/public/images/sebanner4.jpg);">
+    <div class="ns-main">
+        <div class="main-sty">
+            <div class="sty-cell J_sli select" data-type="precise">精准<div class="sty-aow"></div></div>
+            <div class="sty-cell J_sli " data-type="full">全文<div class="sty-aow"></div></div>
+            <div class="clear"></div>
+        </div>
+        <div class="main-sip">
+            <div class="ip-group">
+                <form id="ajax_search_location" action="../upload/index.php?m=&c=ajax_common&a=ajax_search_location&type=QS_resumelist" method="get">
+                    <div class="ip-box"><input name="key" id="autoKeyInput" type="text" data-original="" value="" placeholder="请输入关键字" /></div>
+                    <div class="for-border"></div>
+                    <div class="ip-city" data-toggle="funCityModal" data-title="请选择地区" data-multiple="false" data-maximum="0" data-width="630">选择地区</div>
+                    <input type="hidden" name="search_type" value="" />
+                    <input id="searchCityModalCode" type="hidden" name="citycategory" value="" />
+                    <input id="recoverSearchCityModalCode" type="hidden" name="" value="" />
+                    <input class="J_forclear" type="hidden" name="jobcategory" value="" />
+                    <input class="J_forclear" type="hidden" name="resumetag" value="" />
+                    <input class="J_forclear" type="hidden" name="experience" value="" />
+                    <input class="J_forclear" type="hidden" name="sex" value="" />
+                    <input class="J_forclear" type="hidden" name="age" value="" />
+                    <input class="J_forclear" type="hidden" name="trade" value="" />
+                    <input class="J_forclear" type="hidden" name="major" value="" />
+                    <input class="J_forclear" type="hidden" name="education" value="" />
+                    <input class="J_forclear" type="hidden" name="nature" value="" />
+                    <input class="J_forclear" type="hidden" name="wage" value="" />
+                    <input class="J_forclear" type="hidden" name="settr" value="" />
+                    <div class="ip-btn"><input type="submit" class="sobut J_hoverbut" value="招人才" /></div>
+                </form>
+            </div>
+            <div class="ip-txt link_white J_sub_s"><a href="../upload/index.php?m=&c=resume&a=index">分类搜索</a></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--搜索 -->
+<div class="so_condition J_so_condition">
+    <div class="lefttit">地标地段</div>
+    <div class="rs">
+        <div onclick="javascript:location.href='../upload/index.php'" class="li ">全北京市</div>
+        <div onclick="javascript:location.href='../upload/index.php'" class="li ">东城区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">西城区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">崇文区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">宣武区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">朝阳区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">丰台区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">石景山区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">海淀区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">门头沟区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">房山区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">通州区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">顺义区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">昌平区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">大兴区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">怀柔区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">平谷区</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">密云县</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">延庆县</div>			<div class="clear"></div>
+    </div>
+    <div class="clear"></div>	<div class="lefttit">工作经验</div>
+    <div class="rs">
+        <div onclick="javascript:location.href='../upload/index.php'" class="li select">不限</div>
+        <div onclick="javascript:location.href='../upload/index.php'" class="li ">无经验</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">1年以下</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">1-3年</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">3-5年</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">5-10年</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">10年以上</div>		<div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="lefttit">简历标签</div>
+    <div class="rs">
+        <div onclick="javascript:location.href='../upload/index.php'" class="li select">不限</div>
+        <div onclick="javascript:location.href='../upload/index.php'" class="li ">形象好</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">气质佳</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">能出差</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">很幽默</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">技术精悍</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">有亲和力</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">高学历</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">经验丰富</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">能加班</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">海归</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">会开车</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">口才好</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">声音甜美</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">会应酬</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">诚实守信</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">外语好</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">性格开朗</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">有上进心</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">人脉广</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">知识丰富</div><div onclick="javascript:location.href='../upload/index.php'" class="li ">才艺多</div>		<div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="lefttit">更多筛选</div>
+    <div class="rs">
+        <div class="bli J_dropdown">
+            <span class="txt">性别</span>
+            <div class="dropdowbox_noa J_dropdown_menu">
+                <div class="dropdow_inner_noa">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="1">男</li>
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="2">女</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="bli J_dropdown">
+            <span>年龄</span>
+            <div class="dropdowbox_noa J_dropdown_menu">
+                <div class="dropdow_inner_noa">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="">全部</li>
+                        <li onclick="javascript:location.href='../upload/index.php'" class="">16-20岁</li><li onclick="javascript:location.href='../upload/index.php'" class="">21-30岁</li><li onclick="javascript:location.href='../upload/index.php'" class="">31-40岁</li><li onclick="javascript:location.href='../upload/index.php'" class="">41-50岁</li><li onclick="javascript:location.href='../upload/index.php'" class="">50岁以上</li>	                </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span class="txt" title="行业类别">行业类别</span>
+            <div class="dropdowbox_searchtrade J_dropdown_menu">
+                <div class="dropdow_inner_searchtrade">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="1" title="计算机软件/硬件">计算机软件/硬件</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="2" title="计算机系统/维修">计算机系统/维修</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="3" title="通信(设备/运营/服务)">通信(设备/运营/服务)</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="4" title="互联网/电子商务">互联网/电子商务</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="5" title="网络游戏">网络游戏</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="6" title="电子/半导体/集成电路">电子/半导体/集成电路</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="7" title="仪器仪表/工业自动化">仪器仪表/工业自动化</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="8" title="会计/审计">会计/审计</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="9" title="金融(投资/证券">金融(投资/证券</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="10" title="金融(银行/保险)">金融(银行/保险)</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="11" title="贸易/进出口">贸易/进出口</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="12" title="批发/零售">批发/零售</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="13" title="消费品(食/饮/烟酒)">消费品(食/饮/烟酒)</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="14" title="服装/纺织/皮革">服装/纺织/皮革</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="15" title="家具/家电/工艺品/玩具">家具/家电/工艺品/玩具</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="16" title="办公用品及设备">办公用品及设备</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="17" title="机械/设备/重工">机械/设备/重工</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="18" title="汽车/摩托车/零配件">汽车/摩托车/零配件</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="19" title="制药/生物工程">制药/生物工程</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="20" title="医疗/美容/保健/卫生">医疗/美容/保健/卫生</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="21" title="医疗设备/器械">医疗设备/器械</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="22" title="广告/市场推广">广告/市场推广</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="23" title="会展/博览">会展/博览</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="24" title="影视/媒体/艺术/出版">影视/媒体/艺术/出版</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="25" title="印刷/包装/造纸">印刷/包装/造纸</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="26" title="房地产开发">房地产开发</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="27" title="建筑与工程">建筑与工程</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="28" title="家居/室内设计/装潢">家居/室内设计/装潢</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="29" title="物业管理/商业中心">物业管理/商业中心</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="30" title="中介服务/家政服务">中介服务/家政服务</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="31" title="专业服务/财会/法律">专业服务/财会/法律</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="32" title="检测/认证">检测/认证</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="33" title="教育/培训">教育/培训</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="34" title="学术/科研">学术/科研</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="35" title="餐饮/娱乐/休闲">餐饮/娱乐/休闲</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="36" title="酒店/旅游">酒店/旅游</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="37" title="交通/运输/物流">交通/运输/物流</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="38" title="航天/航空">航天/航空</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="39" title="能源(石油/化工/矿产)">能源(石油/化工/矿产)</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="40" title="能源(采掘/冶炼/原材料)">能源(采掘/冶炼/原材料)</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="41" title="电力/水利/新能源">电力/水利/新能源</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="42" title="政府部门/事业单位">政府部门/事业单位</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="43" title="非盈利机构/行业协会">非盈利机构/行业协会</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="44" title="农业/渔业/林业/牧业">农业/渔业/林业/牧业</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="45" title="其他行业">其他行业</li>						<div class="clear"></div>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span class="txt" title="所学专业">所学专业</span>
+            <div class="dropdowbox_searchmajor J_dropdown_menu">
+                <div class="dropdow_inner_searchmajor">
+                    <ul class="nav_box">
+                        <div class="tabnav">
+                            <div class="tab_list ">文学类</div><div class="tab_list ">工科类</div><div class="tab_list ">理科类</div><div class="tab_list ">农学类</div><div class="tab_list ">医学类</div><div class="tab_list ">管理学</div><div class="tab_list ">法学类</div><div class="tab_list ">其他类</div>                            <div class="clear"></div>
+                        </div>
+                        <div class="tab_content" data-code="7">
+                            <div class="content_list">
+                                <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="72">中国语言文学类</li>
+                            </div><div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="73">外国语言文学类</li>
+                        </div><div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="74">新闻传播学类</li>
+                        </div><div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="75">艺术类</li>
+                        </div>	                            <div class="clear"></div>
+                        </div><div class="tab_content" data-code="1">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="9">电气信息类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="10">电气信息类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="11">地矿类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="12">材料类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="13">机械类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="14">仪器仪表类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="15">能源动力类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="16">土建类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="17">水利类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="18">测绘类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="19">环境与安全类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="20">化工与制药类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="21">交通运输类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="22">海洋工程类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="23">轻工纺织食品类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="24">航空航天类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="25">武器类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="26">工程力学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="27">生物工程类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="28">农业工程类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="29">林业工程类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="30">公安技术类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="2">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="31">数学类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="32">物理学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="33">化学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="34">生物科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="35">天文学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="36">地质学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="37">地理科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="38">地球物理学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="39">大气科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="40">海洋科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="41">力学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="42">电子信息科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="43">材料科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="44">环境科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="45">心理学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="46">统计学类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="3">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="47">植物生产类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="48">草业科学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="49">森林资源类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="50">环境生态类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="51">动物生产类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="52">动物医学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="53">水产类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="4">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="54">基础医学类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="55">预防医学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="56">临床医学与医学技术类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="57">口腔医学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="58">中医学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="59">法医学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="60">护理学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="61">药学类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="5">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="62">管理科学与工程类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="63">工商管理类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="64">公共管理类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="65">农业经济管理类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="66">图书档案学类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="6">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="67">法学类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="68">马克思主义理论类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="69">社会学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="70">政治学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="71">公安学类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div><div class="tab_content" data-code="8">
+                        <div class="content_list">
+                            <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="76">哲学类</li>
+                        </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="77">经济学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="78">教育学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="79">体育学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="80">历史学类</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="81">未划分专业</li>
+                    </div><div class="content_list">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="82">其他类</li>
+                    </div>	                            <div class="clear"></div>
+                    </div>	                </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span>学历要求</span>
+            <div class="dropdowbox_noa J_dropdown_menu">
+                <div class="dropdow_inner_noa">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="65">初中</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="66">高中</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="67">中技</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="68">中专</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="69">大专</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="70">本科</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="71">硕士</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="72">博士</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="73">博后</li>	                </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span>工作性质</span>
+            <div class="dropdowbox_noa J_dropdown_menu">
+                <div class="dropdow_inner_noa">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="62">全职</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="63">兼职</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="64">实习</li>	                </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span class="txt">期望薪资</span>
+            <div class="dropdowbox_searchwage J_dropdown_menu">
+                <div class="dropdow_inner_searchwage">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="56">1K~1.5K/月</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="57">1.5K~2K/月</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="58">2K~3K/月</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="59">3K~5K/月</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="60">5K~10K/月</li><li onclick="javascript:location.href='../upload/index.php'" class="" data-code="61">10K以上/月</li>	                </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bli J_dropdown">
+            <span>更新时间</span>
+            <div class="dropdowbox_noa J_dropdown_menu">
+                <div class="dropdow_inner_noa">
+                    <ul class="nav_box">
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="3">3天内</li>
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="7">7天内</li>
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="15">15天内</li>
+                        <li onclick="javascript:location.href='../upload/index.php'" class="" data-code="30">30天内</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+
+    <!--已选条件，当没有条件的时候不显示下面的DIV -->
+</div>
+<div class="plist">
+    <div class="pl">
+        <div class="toptitle">
+            <div class="ltype">
+                <div class="typeli select" onclick="window.location='../upload/index.php';">综合排序</div>
+                <div class="typeli " onclick="window.location='../upload/index.php';">更新时间</div>
+                <div class="clear"></div>
+            </div>
+            <div class="ts">
+                <div class="l1 width830"></div>
+                <div class="l2 " onclick="window.location='../upload/index.php';">
+                    <div class="radiobox"></div>
+                    <div class="radiotxt">有照片</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="l2 " onclick="window.location='../upload/index.php';">
+                    <div class="radiobox"></div>
+                    <div class="radiotxt">手机已认证</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="J_detailList l3 select" title="切换到详细列表"></div>
+                <div class="J_detailList l4 " title="切换到简易列表" show_type="1"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="listb J_allListBox">
+            <div class="resumelist-login-layer">
+                <div class="tip-block">
+                    <div class="tip-block-title">
+                        <p class="middle"><span class="font_red">免费注册</span>成为企业会员，海量简历任你选！</p>
+                        <p class="small">登录或注册会员后可以查看更多数据，各种免费权限爽不停！</p>
+                    </div>
+                    <a href="javascript:;" class="btn_red J_hoverbut btn_inline" id="J_login">已有账号登录</a>
+                    <a href="../upload/index.php?m=home&c=members&a=register&utype=1" class="btn_lightblue J_hoverbut btn_inline">免费注册会员</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="new-footer">
+    <div class="footer-txt-group nl">
+        <div class="ftg-main">
+            <div class="ftg-left">
+                <div class="ftg-a-group">
+                    <a href="../upload/index.php?m=&c=explain&a=explain_show&id=8" target="_blank" class="fag-link-cell">招贤纳士</a><span class="hl">|</span><a href="../upload/index.php?m=&c=explain&a=explain_show&id=7" target="_blank" class="fag-link-cell">联系我们</a><span class="hl">|</span><a href="../upload/index.php?m=&c=explain&a=explain_show&id=6" target="_blank" class="fag-link-cell">推广合作</a><span class="hl">|</span><a href="../upload/index.php?m=&c=explain&a=explain_show&id=5" target="_blank" class="fag-link-cell">法律申明</a><span class="hl">|</span>                    <span class="tel">联系电话：000-00000000</span>
+                </div>
+                <p class="copyright">联系地址：00省00市00路00号0大厦00楼 &nbsp;&nbsp;网站备案：icp000000000</p>
+                <p class="copyright">Copyright © 2016 74cms.com All Right Reserved  &nbsp;&nbsp;Powered by <a href="http://www.74cms.com">74cms</a> v4.2.111 </p>
+            </div>
+            <div class="ftg-right">
+                <div class="qr-box">
+                    <div class="img"><img src="../upload/data/upload/resource/weixin_img.jpg"></div>
+                    <div class="qr-txt">公众号</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="floatmenu">
+    <div class="item ask"><a class="blk" target="_blank" href="../upload/index.php?m=&c=suggest&a=index"></a></div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/PIE.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        $.pie = function (name, v) {
+            // 如果没有加载 PIE 则直接终止
+            if (!PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version * 1 <= version * 1) {
+                    obj.each(function () {
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+        $.pie('.pie_about');
+    }
+</script>
+<![endif]-->
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.disappear.tooltip.js"></script>
+<script type="text/javascript">
+    var global = {
+        h: $(window).height(),
+        st: $(window).scrollTop(),
+        backTop: function () {
+            global.st > (global.h * 0.5) ? $("#backtop").show() : $("#backtop").hide();
+        }
+    }
+    $('#backtop').on('click', function () {
+        $("html,body").animate({"scrollTop": 0}, 500);
+    });
+    global.backTop();
+    $(window).scroll(function () {
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    });
+    $(window).resize(function () {
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    });
+    // 客服QQ
+    var app_qq = "";
+    var qq_open = "";
+    if(app_qq != '' && qq_open == 1){
+        var QQFloatUrl = "../upload/index.php?m=qqfloat&c=index&a=index";
+        $.getJSON(QQFloatUrl, function (result) {
+            if (result.status == 1) {
+                //$(".qq-float").html(result.data);
+                $("body").append(result.data);
+            }
+        });
+    }
+</script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.resumelist.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.search.city.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.search.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.highlight-3.js"></script>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.autocomplete.js"></script>
+<script type="text/javascript">
+    var city_select = {"spell":"beijingshi","id":"35","parentid":"1","categoryname":"\u5317\u4eac\u5e02","citycategory":"beijingshi"};
+    var city_parent = {"spell":"beijingshi","id":"35","parentid":"1","categoryname":"\u5317\u4eac\u5e02","citycategory":"beijingshi"};
+
+    if (city_parent) {
+        if (app_spell) {
+            $('#showSearchModal').text(city_parent['categoryname']);
+            $('#recoverSearchCityModalCode').val(city_parent['spell']);
+        } else {
+            $('#showSearchModal').text(city_parent['categoryname']);
+            $('#recoverSearchCityModalCode').val(city_parent['citycategory']);
+        }
+    } else if(city_select) {
+        if (app_spell) {
+            $('#showSearchModal').text(city_select['categoryname']);
+            $('#recoverSearchCityModalCode').val(city_select['spell']);
+        } else {
+            $('#showSearchModal').text(city_select['categoryname']);
+            $('#recoverSearchCityModalCode').val(city_select['citycategory']);
+        }
+    }
+
+
+    if ($('.J_selected .slist').length) {
+        $('.J_selected').show();
+    }
+
+    $('.J_jobConditions .wli').each(function(index, el) {
+        if (index > 6) {
+            $(this).addClass('for_up');
+        };
+    });
+
+    // 关键字高亮
+    var keyWords = $('input[name="key"]').val();
+    if (keyWords.length) {
+        $('.J_resumeList').highlight(keyWords);
+    }
+    // 关键字联想
+    var hotKey = $('#autoKeyInput').autocomplete({
+        serviceUrl:"../upload/index.php?m=&c=ajax_common&a=hotword",
+        minChars:1,
+        maxHeight:400,
+        width:276,
+        zIndex: 1,
+        deferRequestBy: 0
+    });
+    $('#J_login').click(function(){
+        if(qscms.smsTatus==1){
+            var qsDialog = $(this).dialog({
+                loading: true,
+                footer: false,
+                header: false,
+                border: false,
+                backdrop: false
+            });
+            var loginUrl = qscms.root+"?m=Home&c=AjaxCommon&a=get_login_dig";
+            $.getJSON(loginUrl, function(result){
+                if(result.status==1){
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        title: '会员登录',
+                        content: result.data.html,
+                        footer: false,
+                        border: false
+                    });
+                    qsDialogSon.setInnerPadding(false);
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+        }else{
+
+        }
+    });
+    // ajax加载简历列表操作状态
+    function refresh_list(){
+        var rids = $('.J_resumeList').map(function(){
+            return $(this).data('rid');
+        }).get();
+        //alert(rids);
+        $.post("../upload/index.php?m=&c=ajax_company&a=refresh_resume_list",{rids:rids},function(result){
+            if(result.status == 1 && result.data){
+                $('.J_resumeList').each(function(){
+                    var rid = result.data[$(this).data('rid')];
+                    if(rid && rid['had_down']){
+                        var html_down = "<div class=\"had-deliver\" onclick=\"javascript:location.href='" + rid['url'] + "'\">简历已下载</div>";
+                        $(this).find('.rbtn').find('.deliver').replaceWith(html_down);
+                    }
+                    if(rid && rid['had_fav']){
+                        var html_fav = "<div class=\"had-fav\">已收藏</div>";
+                        $(this).find('.rbtn').find('.favorites').replaceWith(html_fav);
+                    }
+                });
+            }
+        },'json');
+    }
+    var utype = "";
+    var has_resume = $('.listb').has('.J_resumeList');
+    if(utype == 1 && has_resume){
+        refresh_list();
+    }
+    // 批量查看简历
+    $('.J_batch_resume').click(function () {
+        if (!$('.J_allListBox .J_allList.select').length) {
+            disapperTooltip('remind','您还没有选择简历！');
+            return false;
+        }
+        var resumeCheckedArr = $('.J_allListBox .J_allList.select');
+        var resumeIdArr = new Array();
+        var id = resumeCheckedArr.first().closest('.J_resumeList').data('rid'),
+            ids = resumeCheckedArr.map(function(){
+                return $(this).closest('.J_resumeList').data('rid');
+            }).get().join(',');
+        if(ids){
+            var url = "../upload/index.php?m=&c=resume&a=resume_show&id=_id&ids=_ids";
+            url = url.replace('_id',id);
+            url = url.replace('_ids',ids);
+            location.href=url;
+        }
+    });
+
+</script>
+</body>
+</html>

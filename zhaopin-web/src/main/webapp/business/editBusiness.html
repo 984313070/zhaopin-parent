@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>企业资料管理-企业会员中心-骑士人才系统</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Home/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/htmlspecialchars.js"></script>
+    <link href="../upload/Application/Home/View/default/public/css/company/common.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_user.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />
+    <script src="../upload/Application/Home/View/default/public/js/company/jquery.common.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<div class="other_top_nav">
+    <div class="ot_nav_box">
+        <div class="ot_nav_logo"><a href="../upload/"><img src="../upload/Application/Home/View/default/public/images/logo.gif" border="0"/></a></div>
+        <div class="ot_nav_sub">
+        </div>
+        <div class="ot_nav_link ">
+            <ul class="link_gray6 nowrap">
+                <li class="on_li J_hoverbut "><a href="business.html">企业中心</a></li>
+                <li class="on_li J_hoverbut "><a href="fabuzhiwei.html">职位管理</a></li>
+                <li class="on_li J_hoverbut "><a href="guanli.html">简历管理</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company_service&a=index">会员服务</a></li>
+                <li class="on_li J_hoverbut select"><a href="../upload/index.php?m=&c=company&a=com_info">账号管理</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<div class="user_main">
+    <div class="mleft">
+        <div class="left_jobs">
+            <div class="li link_gray6 J_hoverbut t18 select" onclick="window.location='../upload/index.php?m=&c=company&a=com_info'"><a href="../upload/index.php?m=&c=company&a=com_info">企业资料</a></div>
+            <div class="li link_gray6 J_hoverbut t19 " onclick="window.location='../upload/index.php?m=&c=company&a=com_img'"><a href="../upload/index.php?m=&c=company&a=com_img">企业风采</a></div>
+            <div class="li link_gray6 J_hoverbut t20 " onclick="window.location='../upload/index.php?m=&c=company&a=com_auth'"><a href="../upload/index.php?m=&c=company&a=com_auth">企业认证</a></div>
+            <div class="li link_gray6 J_hoverbut t21 " onclick="window.location='../upload/index.php?m=&c=company&a=user_security'"><a href="../upload/index.php?m=&c=company&a=user_security">账号安全</a></div>
+            <div class="li link_gray6 J_hoverbut t22 " onclick="window.location='../upload/index.php?m=&c=company&a=pms_sys'"><a href="../upload/index.php?m=&c=company&a=pms_sys">我的消息</a></div>
+            <link href="../upload/Application/Home/View/default/public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+        </div>
+    </div>
+    <div class="mright">
+        <div class="user_pagetitle">
+            <div class="pat_l">基本资料</div>
+            <div class="clear"></div>
+        </div>
+        <div class="profile_wrap">
+            <div class="profile_title">基本信息</div>
+            <div class="dashed_line"></div>
+            <div class="clear"></div>
+            <div class="basic_form J_focus pos_rel">
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>企业名称：</div>
+                    <div class="item_val">
+                        <div class="line_substring" title="山西原谅帽集团运城分公司">山西原谅帽集团运城分公司</div><span class="sm_tip">（修改企业名称请联系客服人员，服务热线：<span class="num">000-00000000</span>）</span>
+                        <input type="hidden" name="companyname" value="山西原谅帽集团运城分公司">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">企业简称：</div>
+                    <div class="item_val">
+                        <div class="line_substring" title="运城分公司">运城分公司</div>
+                        <input type="hidden" name="short_name" value="运城分公司">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>企业性质：</div>
+                    <div class="item_val select_input select_205_34 J_hoverinput J_dropdown J_listitme_parent">
+                        <span class="J_listitme_text">上市公司</span>
+                        <div class="dropdowbox8 J_dropdown_menu">
+                            <div class="dropdow_inner8">
+                                <ul class="nav_box">
+                                    <li><a class="J_listitme" href="javascript:;" data-code="46" >国企</a></li><li><a class="J_listitme" href="javascript:;" data-code="47" >民营</a></li><li><a class="J_listitme" href="javascript:;" data-code="48" >合资</a></li><li><a class="J_listitme" href="javascript:;" data-code="49" >外商独资</a></li><li><a class="J_listitme" href="javascript:;" data-code="50" >股份制企业</a></li><li><a class="J_listitme" href="javascript:;" data-code="51" >上市公司</a></li><li><a class="J_listitme" href="javascript:;" data-code="52" >国家机关</a></li><li><a class="J_listitme" href="javascript:;" data-code="53" >事业单位</a></li><li><a class="J_listitme" href="javascript:;" data-code="54" >其它</a></li>						                </ul>
+                            </div>
+                        </div>
+                        <input class="J_listitme_code" name="nature" type="hidden" value="51" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>企业规模：</div>
+                    <div class="item_val select_input select_205_34 J_hoverinput J_dropdown J_listitme_parent">
+                        <span class="J_listitme_text">10000人以上</span>
+                        <div class="dropdowbox8 J_dropdown_menu">
+                            <div class="dropdow_inner8">
+                                <ul class="nav_box">
+                                    <li><a class="J_listitme" href="javascript:;" data-code="80" >20人以下</a></li><li><a class="J_listitme" href="javascript:;" data-code="81" >20-99人</a></li><li><a class="J_listitme" href="javascript:;" data-code="82" >100-499人</a></li><li><a class="J_listitme" href="javascript:;" data-code="83" >500-999人</a></li><li><a class="J_listitme" href="javascript:;" data-code="84" >1000-9999人</a></li><li><a class="J_listitme" href="javascript:;" data-code="85" >10000人以上</a></li>										</ul>
+                            </div>
+                        </div>
+                        <input class="J_listitme_code" name="scale" type="hidden" value="85" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>所在地区：</div>
+                    <div class="item_val select_input_multi select_205_34 J_hoverinput" data-toggle="funCityModal" data-title="请选择工作地区" data-multiple="false" data-maximum="0" data-width="760">
+                        <span title="" class="result J_resuletitle_city">山西/运城/万荣县</span>
+                        <input class="J_resultcode_city" name="district" id="district" type="hidden" value="4.55.673" keep="4.55.673" />
+                        <div class="clear"></div>
+                    </div>
+                    <div class="item_label"><span class="asterisk"></span>所属行业：</div>
+                    <div class="item_val select_input select_205_34 J_hoverinput" id="J_showmodal_trade" data-title="请选择所属行业" data-multiple="false" data-maxnum="0" data-width="682">
+                        <span title="" class="result J_resuletitle_trade">计算机软件/硬件</span>
+                        <input class="J_resultcode_trade" type="hidden" name="trade" id="trade" value="1">
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="logo_wrap pos_rel">
+                    <div class="logo">
+                        <img id="logo_res" width="120" height="120" src="http://localhost../upload/data/upload/company_logo/1909/20/c81e728d9d4c2f636f067f89cc14862c.jpg?1568977329">
+                    </div>
+                    <div class="logo_upload" id="hidden_file" name="company_logo">
+                        <div class="upimg"><div class="up">上传logo</div><div class="uptip">要求：请用JPG,GIF 尺寸：120*120</div></div>
+                    </div>
+                </div>
+                <div class="clear_logo" style="display:block;">清除</div>
+
+                <div class="item">
+                    <div class="item_label">注册资金：</div>
+                    <div class="item_val">
+                        <div class="select_input_write">
+                            <input type="text" class="inputst" dir="no_focus" name="registered" value="20000" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))">
+                            <div class="righttxt for_tooltip J_tooltip J_listitme_parent">
+                                <span class="J_listitme_text">万人民币</span>
+                                <div class="dropdowbox14 J_tooltip_menu">
+                                    <div class="dropdow_inner14">
+                                        <ul class="nav_box">
+                                            <li><a class="J_listitme" href="javascript:;" data-code="万人民币">万人民币</a></li>
+                                            <li><a class="J_listitme" href="javascript:;" data-code="万美元">万美元</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <input class="J_listitme_code" name="currency" type="hidden" value="万人民币"/>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="item_label">企业网址：</div>
+                    <div class="item_val"><input type="text" value="" placeholder="http://" class="input_205_34" name="website"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">企业福利：</div>
+                    <div class="item_val select_input_multi select_245_34 w518 J_hoverinput" id="J_showmodal_jobtag" data-title="请选择企业福利" data-multiple="true" data-maxnum="6" data-width="582">
+                        <span title="" class="result J_resuletitle_jobtag">环境好,年终奖,双休,朝九晚五,有提成,全勤奖</span>
+                        <input class="J_resultcode_jobtag" type="hidden" name="tag" id="tag" value="145,146,147,150,155,156">
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">企业简介：</div>
+                    <div class="item_val">
+                        <input type="text" value="" class="input_205_34 w518" name="short_desc" placeholder="请用一句话描述企业的主营业务及行业地位">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>企业介绍：</div>
+                    <div class="item_val">
+                        <textarea class="textarea_438_34 w518" rows="" cols="" name="contents">本公司创立于1998年，多年经营原谅帽，一切绿色产品等！</textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile_wrap">
+            <div class="profile_title contact">联系方式</div>
+            <div class="dashed_line"></div>
+            <div class="clear"></div>
+            <div class="basic_form J_focus">
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>联系人：</div>
+                    <div class="item_val">
+                        <input type="text" value="孙双翼" class="input_245_34 fl" name="contact">
+                        <label class="item_chk fl"><input type="checkbox" name="contact_show" checked="checked" value="0"> 不公开</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>联系电话：</div>
+                    <div class="item_val">
+                        <input type="text" value="15035061093" class="input_245_34 fl" name="telephone">								<label class="item_chk fl"><input type="checkbox" name="telephone_show" checked="checked" value="0"> 不公开</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">&nbsp;</div>
+                    <div class="item_val">
+                        <input type="text" value="0359" class="input_110_34 w60 mr4 fl" name="landline_tel_first" placeholder="区号">
+                        <input type="text" value="4526155" class="input_110_34 w89 mr4 fl" name="landline_tel_next" placeholder="固定电话">
+                        <input type="text" value="" class="input_110_34 w52 fl" name="landline_tel_last" placeholder="分机号">
+                        <label class="item_chk fl"><input type="checkbox" name="landline_tel_show" checked="checked" value="0"> 不公开</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>联系邮箱：</div>
+                    <div class="item_val">
+                        <div class="reg-form-content fl">
+                            <input type="text" value="sunshuangyui@qq.com" class="input_245_34 inputElem" name="email">
+                        </div>
+                        <label class="item_chk fl"><input type="checkbox" name="email_show" checked="checked" value="0"> 不公开</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">QQ：</div>
+                    <div class="item_val">
+                        <input type="text" value="" class="input_245_34 fl" name="qq">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label"><span class="asterisk"></span>联系地址：</div>
+                    <div class="item_val fl">
+                        <input type="text" value="山西省运城市万荣县" id="suggestId" class="input_245_34 w415" name="address">
+                    </div>
+                    <div class="search fl btn_blue J_hoverbut btn_100_32 btn_inline" id="search">精确查找</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">&nbsp;</div>
+                    <div class="item_val">
+                        <div class="map" id="container" style="height: 300px;border:1px solid #dddddd"></div>
+                        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                        <input type="hidden" name="map_x" id="map_x">
+                        <input type="hidden" name="map_y" id="map_y">
+                        <input type="hidden" name="map_zoom" id="map_zoom">
+                        <label class="synchro_chk"><input type="checkbox" name="sync" value="1"> 修改联系方式同步到职位</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="item">
+                    <div class="item_label">&nbsp;</div>
+                    <div class="item_val">
+                        <div class="btn_blue J_hoverbut btn_115_38" id="save_info">保存</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+</body>
+<div class="clear"></div>
+<div class="user_foot font_gray9" id="footer">Copyright © 2016 74cms.com All Right Reserved </div>
+<div class="floatmenu">
+    <div class="item ask">
+        <a class="blk" target="_blank" href="../upload/index.php?m=&c=suggest&a=index"></a>
+    </div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.disappear.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.dropdown.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/PIE.js"></script>
+<script type="text/javascript">
+    $(function () {
+        findusername();
+    })
+    var resu =new Vue({
+        el: '#app',
+        data: {
+            result:{
+                companyname: '',
+                natureCn:'',
+                tradeCn:'',
+                districtCn:'',
+                scaleCn:'',
+                tag:''
+            }
+        }
+    })
+
+    function  findusername() {
+        $.post('../memberLogin/getUserName.do',{},function (data) {
+            $.post('../memberLogin/finfcompare.do',{uid:data.uid},function (result) {
+                resu.result=result;
+            })
+        })
+    }
+
+    (function($){
+        $.pie = function(name, v){
+            // 如果没有加载 PIE 则直接终止
+            if (! PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version*1 <= version*1) {
+                    obj.each(function(){
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+        $.pie('.pie_about');
+    };
+</script>
+<![endif]-->
+<script type="text/javascript">
+    var global = {
+        h:$(window).height(),
+        st: $(window).scrollTop(),
+        backTop:function(){
+            global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+        }
+    }
+    $('#backtop').on('click',function(){
+        $("html,body").animate({"scrollTop":0},500);
+    });
+    global.backTop();
+    $(window).scroll(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    });
+    $(window).resize(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    })
+</script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.userselectlayer.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.user.city.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/emailAutoComplete.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YpHFdZwwQ6fZefPqXRUw9gBh"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<script src="../upload/Application/Home/View/default/public/js/ajaxfileupload.js" type="text/javascript" language="javascript"></script>
+<script src="../upload/Application/Home/View/default/public/js/qscms.js" type="text/javascript" language="javascript"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/company/jquery.baidumap.js"></script>
+<script type="text/javascript">
+    var comid = "2";
+    $.upload("#hidden_file",{company_id:comid,type:'company_logo'},function(result){
+        $("#logo_res").attr("src",result.data.path);
+        if(result.data.points){
+            disapperTooltip("goldremind", '上传logo增加'+result.data.points+'积分<span class="point">+'+result.data.points+'</span>');
+        }else{
+            disapperTooltip('success',result.msg);
+        }
+        $('.clear_logo').show();
+    });
+    $(document).ready(function(){
+        $('.clear_logo').die().live('click',function(){
+            var qsDialog = $(this).dialog({
+                title: '系统提示',
+                content: '企业logo代表了企业的品牌形象，确定要清除企业logo吗？',
+                yes: function() {
+                    $.getJSON("../upload/index.php?m=&c=company&a=clear_logo",function(result){
+                        if(result.status==1){
+                            $("#logo_res").attr("src","http://localhost../upload/data/upload/resource/no_logo.png");
+                            $('.clear_logo').hide();
+                        }
+                    });
+                }
+            });
+        });
+        /* 保存企业基本资料 */
+        var regularMobile = qscms.regularMobile; // 验证手机号
+        var regularEmail = /^[_\.0-9a-zA-Z-]+[_0-9a-zA-Z-]@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,3}$/; // 验证邮箱
+        var regularTelFirst = /^[0-9]{3}[0-9]?$/; // 验证区号
+        var regularTelNext = /^[0-9]{6,11}$/; // 验证电话号码
+        var regularTelLast = /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/; // 验证分机号码
+        var regularWebsite = /^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(:\d+)?(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/; // 验证企业网址
+        var regularQQ = /^[1-9][0-9]{4,}$/; // 验证QQ
+        $("#save_info").die().live('click',function(){
+            var companyname = $.trim($("input[name=companyname]").val());
+            var short_name = $.trim($("input[name=short_name]").val());
+            var nature = $.trim($("input[name=nature]").val());
+            var trade = $.trim($("input[name=trade]").val());
+            var scale = $.trim($("input[name=scale]").val());
+            var district = $.trim($("input[name=district]").val());
+            var registered = $.trim($("input[name=registered]").val());
+            var currency = $.trim($("input[name=currency]").val());
+            var website = $.trim($("input[name=website]").val());
+            var tag = $.trim($("input[name=tag]").val());
+            var short_desc = $.trim($("input[name=short_desc]").val());
+            var contents = $.trim($("textarea[name=contents]").val());
+            var contact = $.trim($("input[name=contact]").val());
+            var telephone = $.trim($("input[name=telephone]").val());
+            var landline_tel_first = $.trim($("input[name=landline_tel_first]").val());
+            var landline_tel_next = $.trim($("input[name=landline_tel_next]").val());
+            var landline_tel_last = $.trim($("input[name=landline_tel_last]").val());
+            var email = $.trim($("input[name=email]").val());
+            var address = $.trim($("input[name=address]").val());
+            var qq = $.trim($("input[name=qq]").val());
+            var map_x = $.trim($("input[name=map_x]").val());
+            var map_y = $.trim($("input[name=map_y]").val());
+            var map_zoom = $.trim($("input[name=map_zoom]").val());
+            var sync = $("input[name=sync]").is(":checked")?1:0;
+            var contact_show = $("input[name=contact_show]").is(":checked")?0:1;
+            var telephone_show = $("input[name=telephone_show]").is(":checked")?0:1;
+            var landline_tel_show = $("input[name=landline_tel_show]").is(":checked")?0:1;
+            var email_show = $("input[name=email_show]").is(":checked")?0:1;
+            var id = "2";
+            if (companyname == "") {
+                disapperTooltip("remind", "请填写企业名称");
+                return false;
+            }
+            if (nature == "0") {
+                disapperTooltip("remind", "请选择企业性质");
+                return false;
+            }
+            if (trade == "0") {
+                disapperTooltip("remind", "请选择所属行业");
+                return false;
+            }
+            if (scale == "0") {
+                disapperTooltip("remind", "请选择企业规模");
+                return false;
+            }
+            if (district == "0") {
+                disapperTooltip("remind", "请选择所在地区");
+                return false;
+            }
+            if (registered != "" && !regularTelLast.test(registered)) {
+                disapperTooltip("remind", "注册资金应为数字");
+                return false;
+            }
+            if (registered != "" && !regularTelLast.test(registered) || registered.length > 5) {
+                disapperTooltip("remind", "注册资金不能超出5位数");
+                return false;
+            }
+            if (website != "" && !regularWebsite.test(website)) {
+                disapperTooltip("remind", "企业网址格式不正确");
+                return false;
+            }
+            if (contents == "") {
+                disapperTooltip("remind", "请填写企业介绍");
+                return false;
+            }
+            if (contact == "") {
+                disapperTooltip("remind", "请填写联系人");
+                return false;
+            }
+            if (contact != "" && contact.length > 10) {
+                disapperTooltip("remind", "联系人1-10个字");
+                return false;
+            }
+            if(landline_tel_next=="" && telephone=="") {
+                disapperTooltip("remind", "请填写联系手机或座机");
+                return false;
+            } else {
+                if (telephone != "" && !regularMobile.test(telephone)) {
+                    disapperTooltip("remind", "手机号格式不正确");
+                    return false;
+                }
+                if (landline_tel_first != "" && !regularTelFirst.test(landline_tel_first)) {
+                    disapperTooltip("remind", "请填写正确的区号");
+                    return false;
+                }
+                if (landline_tel_next != "" && !regularTelNext.test(landline_tel_next)) {
+                    disapperTooltip("remind", "电话号码为6-11位数字");
+                    return false;
+                }
+                if (landline_tel_last != "" && !regularTelLast.test(landline_tel_last)) {
+                    disapperTooltip("remind", "分机号码为数字");
+                    return false;
+                }
+                if (landline_tel_last != "" && !regularTelLast.test(landline_tel_last) || landline_tel_last.length > 4) {
+                    disapperTooltip("remind", "分机号码不能超出4位");
+                    return false;
+                }
+            }
+            if (email == "") {
+                disapperTooltip("remind", "联系邮箱不能为空");
+                return false;
+            }
+            if (email != "" && !regularEmail.test(email) || email.split("@")[0].length > 20) {
+                disapperTooltip("remind", "邮箱格式不正确");
+                return false;
+            }
+            if (qq != "" && !regularQQ.test(qq)) {
+                disapperTooltip("remind", "请填写正确格式的QQ");
+                return false;
+            }
+            if (address == "") {
+                disapperTooltip("remind", "联系地址不能为空");
+                return false;
+            }
+            if (address != "" && address.length > 30) {
+                disapperTooltip("remind", "联系地址不能大于30个字");
+                return false;
+            }
+            $(this).html('正在保存...');
+            $(this).addClass('btn_gray9');
+            $(this).removeClass('btn_blue');
+            $.post("../upload/index.php?m=&c=company&a=com_info",{id:id,companyname:companyname,short_name:short_name,nature:nature,trade:trade,scale:scale,registered:registered,currency:currency,district:district,website:website,tag:tag,short_desc:short_desc,contents:contents,contact:contact,telephone:telephone,landline_tel_first:landline_tel_first,landline_tel_next:landline_tel_next,landline_tel_last:landline_tel_last,email:email,address:address,map_x:map_x,map_y:map_y,map_zoom:map_zoom,sync:sync,contact_show:contact_show,telephone_show:telephone_show,landline_tel_show:landline_tel_show,email_show:email_show,qq:qq},function(r){
+                if(r.status==1){
+                    var jump_auth = parseInt("0");
+                    if(jump_auth){
+                        if(r.data.points){
+                            disapperTooltip("goldremind", '完善企业资料增加'+r.data.points+'积分<span class="point">+'+r.data.points+'</span>');
+                        }else{
+                            disapperTooltip('success',r.msg);
+                        }
+                        setTimeout(function () {
+                            location.href="../upload/index.php?m=&c=company&a=com_auth";
+                        }, 2000);
+                    }else{
+                        var qsDialogTip = $(this).dialog({
+                            title: '企业资料',
+                            footer: false,
+                            loading: true
+                        });
+                        qsDialogTip.setContent(r.data.html);
+                    }
+                }else{
+                    disapperTooltip('remind',r.msg);
+                }
+                $("#save_info").html('保存');
+                $("#save_info").addClass('btn_blue');
+                $("#save_info").removeClass('btn_gray9');
+            },'json');
+        });
+
+        // 修改手机
+        $('#J_auth_mobile').click(function(){
+            var f = $(this);
+            var qsDialog = $(this).dialog({
+                loading: true,
+                footer: false,
+                header: false,
+                border: false,
+                backdrop: false
+            });
+            $.getJSON("../upload/index.php?m=&c=members&a=user_mobile",function(result){
+                if(result.status == 1){
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        title: '修改已认证手机',
+                        content: result.data,
+                        yes: function() {
+                            var verifycode  = $.trim($('#J_mobileWrap input[name="verifycode"]').val());
+                            if(!verifycode){
+                                $('#J_mobileWrap .J_errbox').text('请填写验证码！').show();
+                                return false;
+                            }
+                            $.post("../upload/index.php?m=&c=members&a=verify_mobile_code",{verifycode:verifycode},function(result){
+                                if(result.status == 1){
+                                    f.prev().val(result.data.mobile);
+                                    qsDialogSon.hide();
+                                    if(result.data.points){
+                                        disapperTooltip("goldremind", '验证手机号增加'+result.data.points+'积分<span class="point">+'+result.data.points+'</span>');
+                                    }else{
+                                        disapperTooltip('success',result.msg);
+                                    }
+                                }else{
+                                    $('#J_mobileWrap .J_errbox').text(result.msg).show();
+                                }
+                            },'json');
+                        }
+                    });
+                    qsDialogSon.setCloseDialog(false);
+                } else {
+                    qsDialog.hide();
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+        });
+
+        // 修改联系邮箱
+        $('#J_auth_email').click(function(){
+            var f = $(this);
+            var qsDialog = $(this).dialog({
+                loading: true,
+                footer: false,
+                header: false,
+                border: false,
+                backdrop: false
+            });
+            $.getJSON("../upload/index.php?m=&c=members&a=user_email",function(result){
+                if(result.status == 1){
+                    qsDialog.hide();
+                    var qsDialogSon = $(this).dialog({
+                        title: '修改已认证邮箱',
+                        content: result.data
+                    });
+                }else{
+                    qsDialog.hide();
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+        });
+
+        // 百度地图
+        baidumap("山西原谅帽集团运城分公司","山西省运城市万荣县","110.846292","35.428456","17","112.570966","37.84836","14");
+    });
+</script>
+</html>

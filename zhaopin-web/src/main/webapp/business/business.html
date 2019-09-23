@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>企业会员中心-骑士人才系统</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content="骑士CMS"/>
+    <meta name="copyright" content="74cms.com"/>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Home/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="../upload/Application/Home/View/default/public/js/htmlspecialchars.js"></script>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    <script type="text/javascript">
+        var app_spell = "1";
+        var qscms = {
+            base : "",
+            keyUrlencode:"0",
+            domain : "http://localhost",
+            root : "../upload/index.php",
+            companyRepeat:"1",
+            regularMobile: /^13[0-9]{9}$|14[0-9]{9}$|15[0-9]{9}$|18[0-9]{9}$|17[0-9]{9}$|16[0-9]{9}$|19[0-9]{9}$/,
+            is_subsite : 0,
+            subsite_level : "3",
+            smsTatus: "0",
+            captcha_open:"1",
+            varify_mobile:"1",
+            varify_suggest:"1",
+            varify_user_login:"",
+            is_login:"1",
+            default_district : "1.35",
+            default_district_spell : "beijing.beijingshi"
+        };
+        $(function(){
+            $.getJSON("../upload/index.php?m=home&c=ajax_common&a=get_header_min",function(result){
+                if(result.status == 1){
+                    $('#J_header').html(result.data.html);
+                }
+            });
+        })
+    </script>
+    <link href="../upload/Application/Home/View/default/public/css/company/common.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_index.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/common_ajax_dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../upload/Application/Home/View/default/public/css/company/company_ajax_dialog.css" rel="stylesheet" type="text/css" />
+    <script src="../upload/Application/Home/View/default/public/js/company/jquery.common.js" type="text/javascript" language="javascript"></script>
+</head>
+<body>
+<div class="header_min" id="header">
+    <div class="header_min_top">
+        <div id="J_header" class="itopl font_gray6 link_gray6">
+            <span class="link_yellow">欢迎<a id="J_site_login" href="javascript:;"><span id="findusername"></span></a> 登录骑士人才系统！</span>
+        </div>
+        <div class="itopr font_gray9 link_gray6 substring"> <a href="../upload/" class="home">网站首页</a>|<a href="../upload/index.php?m=&c=m&a=index" class="m">手机访问</a>|<a href="../upload/index.php?m=&c=help&a=index" class="help">帮助中心</a>|<a href="../upload/index.php?m=home&c=index&a=shortcut" class="last">保存到桌面</a> </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="other_top_nav">
+    <div class="ot_nav_box">
+        <div class="ot_nav_logo"><a href="../upload/"><img src="../upload/Application/Home/View/default/public/images/logo.gif" border="0"/></a></div>
+        <div class="ot_nav_sub">
+        </div>
+        <div class="ot_nav_link ">
+            <ul class="link_gray6 nowrap">
+                <li class="on_li J_hoverbut select"><a href="business.html">企业中心</a></li>
+                <li class="on_li J_hoverbut "><a href="fabuzhiwei.html">职位管理</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company&a=jobs_apply">简历管理</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company_service&a=index">会员服务</a></li>
+                <li class="on_li J_hoverbut "><a href="../upload/index.php?m=&c=company&a=com_info">账号管理</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<div class="index_main">
+    <div class="ileft">
+        <div class="hellow">
+            <div class="tit"><span>下午好，亲爱的HR</span><br />今天是2019年09月20日&nbsp;&nbsp;&nbsp;星期五</div>
+            <div class="td1">
+                <div class="mygold link_yellow">积分：&nbsp;<a href="../upload/index.php?m=&c=company_service&a=points"><span class="my_points_num">121155</span></a></div>
+                <div class="link_blue"><a href="../upload/index.php?m=&c=company_service&a=points">做任务赚积分</a></div>
+            </div>
+            <div class="td2">
+                <div id="J_sign_in" class="J_hoverbut btn_lightgray">已签到</div>
+            </div>
+            <div class="clear"></div>
+            <div class="btnbox link_gray6">
+                <a href="fabuzhiwei.html" class="btn1">发布职位</a>
+                <a href="javascript:;" class="btn2" id="refresh_jobs_all">刷新职位</a>
+                <a target="_blank" href="../upload/index.php?m=&c=resume&a=resume_list" class="btn3">搜索简历</a>
+            </div>
+        </div>
+        <div class="vip">
+            <div class="tit link_gray6">
+                我的服务：<a href="../upload/index.php?m=&c=company_service&a=index">年度会员</a><br/>
+                <span>
+							(2019-09-20 至 2020-09-19)
+                </span>
+                <div class="btnbox">
+                    <div class="viewbtn J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=jobs_list'">可发布职位：<strong title="20">20</strong></div>
+                    <div class="viewbtn btn2 J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=resume_down'">可下载简历：<strong title="1000">1000</strong></div>
+                </div>
+            </div>			</div>		<!-- 客服-->
+    </div>
+    <div class="iright">
+        <div class="i_main">
+            <div class="comlogo">
+                <div class="log link_blue">
+                    上次登录：2019-09-20 14:26&nbsp;&nbsp;&nbsp;<a href="../upload/index.php?m=&c=company&a=user_loginlog">[查看登录日志]</a>
+                </div>
+                <div class="td1">
+                    <div class="logobox">
+                        <a href="../upload/index.php?m=&c=company&a=com_info"><img src="{{result.logo}}" width="120" height="120" border="0" /></a>
+                    </div>
+                </div>
+                 <div id="app">
+                <div class="td2">
+                    <div class="comname link_blue substring">
+                         {{result.companyname}}
+
+                        <a href="editBusiness.html">编辑</a>
+
+                    </div>
+                    <div class="txt_line mt8 link_blue">{{result.natureCn}} | {{result.tradeCn}} | {{result.scaleCn}} | {{result.districtCn}}</div>
+                    <div class="tag_group mt14">
+                        <div class="group_cell"><div class="tag_cell">{{result.tag}}</div></div>	  	<div class="clear"></div>
+                    </div>
+                    <div class="checkbox mt15 link_blue">
+                        <!--已经认证的叠加css  ok -->
+                        <a href="../upload/index.php?m=&c=company&a=com_auth" class="btns btn1 ok">企业已认证</a>
+                        |<a href="../upload/index.php?m=&c=company&a=user_security" class="btns btn2">手机未认证</a><!--
+						|<a href="../upload/index.php?m=&c=company&a=user_security" class="btns btn3">邮箱未认证</a> -->
+                    </div>
+                </div>
+                 </div>
+                <div class="clear"></div>
+            </div>
+            <div class="counts">
+                <div class="cli">
+                    <div class="item J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=jobs_list'">
+                        <div class="n">0</div>
+                        <div class="t">招聘中的职位</div>
+                    </div>
+                </div>
+                <div class="cli">
+                    <div class="item J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=jobs_apply'">
+                        <div class="n">0</div>
+                        <div class="t">待处理简历</div>
+                    </div>
+                </div>
+                <div class="cli">
+                    <div class="item J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=jobs_interview'">
+                        <div class="n">0</div>
+                        <div class="t">面试邀请</div>
+                    </div>
+                </div>
+                <div class="cli">
+                    <div class="item J_hoverbut" onclick="window.location='../upload/index.php?m=&c=company&a=jobs_viewlog'">
+                        <div class="n">0</div>
+                        <div class="t">谁在关注我</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="data">
+                <div class="titbg">
+                    <div class="btns">
+                        <div class="select_input input_140_30_div J_hoverinput J_dropdown J_listitme_parent">
+							<span class="J_listitme_text">
+								访客统计
+							</span>
+                            <div class="dropdowbox12 J_dropdown_menu">
+                                <div class="dropdow_inner12">
+                                    <ul class="nav_box">
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="type" data_val="visitor">访客统计</a></li>
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="type" data_val="viewjobs">职位浏览</a></li>
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="type" data_val="apply">应聘统计</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input class="J_listitme_code statistics_type" name="" type="hidden" value="visitor" />
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="btns1">
+                        <div class="select_input input_140_30_div J_hoverinput J_dropdown J_listitme_parent">
+							<span class="J_listitme_text">
+								最近7天
+							</span>
+                            <div class="dropdowbox12 J_dropdown_menu">
+                                <div class="dropdow_inner12">
+                                    <ul class="nav_box">
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="settr" data_val="7">最近7天</a></li>
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="settr" data_val="15">最近15天</a></li>
+                                        <li><a class="J_listitme statistics_select" href="javascript:;" data_k="settr" data_val="30">最近30天</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input class="J_listitme_code statistics_settr" name="" type="hidden" value="7" />
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="more link_blue"><a href="../upload/index.php?m=&c=company&a=statistics_visitor">查看详细>></a></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="info statistics_wrap">暂无数据...</div>
+            </div>
+            <div class="resumetit">
+                <div class="lt">推荐简历</div>
+                <div class="rt link_blue"><a href="javascript:;" class="more J_refresh" data-ajaxtype="recommend_jobs" ajaxpage="2">换一批</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="resumelist">
+                <div class="res_empty link_blue">
+                    抱歉，没有找到相关简历，请<a href="fabuzhiwei.html">发布职位</a>让求职者主动投递简历。
+                </div>				<div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<div class="user_foot font_gray9" id="footer">Copyright © 2016 74cms.com All Right Reserved </div>
+<div class="floatmenu">
+    <div class="item ask">
+        <a class="blk" target="_blank" href="../upload/index.php?m=&c=suggest&a=index"></a>
+    </div>
+    <div id="backtop" class="item backtop" style="display: none;"><a class="blk"></a></div>
+</div>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.modal.dialog.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.disappear.tooltip.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.listitem.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/jquery.dropdown.js"></script>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script src="../upload/Application/Admin/View/default/public/js/vue.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/PIE.js"></script>
+<script type="text/javascript">
+    (function($){
+        $.pie = function(name, v){
+            // 如果没有加载 PIE 则直接终止
+            if (! PIE) return false;
+            // 是否 jQuery 对象或者选择器名称
+            var obj = typeof name == 'object' ? name : $(name);
+            // 指定运行插件的 IE 浏览器版本
+            var version = 9;
+            // 未指定则默认使用 ie10 以下全兼容模式
+            if (typeof v != 'number' && v < 9) {
+                version = v;
+            }
+            // 可对指定的多个 jQuery 对象进行样式兼容
+            if ($.browser.msie && obj.size() > 0) {
+                if ($.browser.version*1 <= version*1) {
+                    obj.each(function(){
+                        PIE.attach(this);
+                    });
+                }
+            }
+        }
+    })(jQuery);
+    if ($.browser.msie) {
+        $.pie('.pie_about');
+    };
+</script>
+<![endif]-->
+<script type="text/javascript">
+    $(function () {
+    findusername();
+    })
+    var resu =new Vue({
+        el: '#app',
+        data: {
+            result:{
+                companyname: '',
+                natureCn:'',
+                tradeCn:'',
+                districtCn:'',
+                scaleCn:'',
+                tag:''
+            }
+        }
+    })
+    function  findusername() {
+        $.post('../memberLogin/getUserName.do',{},function (data) {
+           $("#findusername").html(data.username);
+           $.post('../memberLogin/finfcompare.do',{uid:data.uid},function (result) {
+               resu.result=result;
+
+           })
+        })
+    }
+    var global = {
+        h:$(window).height(),
+        st: $(window).scrollTop(),
+        backTop:function(){
+            global.st > (global.h*0.5) ? $("#backtop").show() : $("#backtop").hide();
+        }
+    }
+    $('#backtop').on('click',function(){
+        $("html,body").animate({"scrollTop":0},500);
+    });
+    global.backTop();
+    $(window).scroll(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    });
+    $(window).resize(function(){
+        global.h = $(window).height();
+        global.st = $(window).scrollTop();
+        global.backTop();
+    })
+</script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/company/fusioncharts/fusioncharts.js"></script>
+<script type="text/javascript" src="../upload/Application/Home/View/default/public/js/company/fusioncharts/fusioncharts.theme.fint.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".J_bind_wx").click(function(){
+            $('#J_popWeixin').show();
+        });
+        // 关闭微信绑定提示
+        $('#J_popWeixin .close').on('click', function(){
+            $('#J_popWeixin').hide();
+        });
+        $('.J_companyinfo').click(function(){
+            $(this).closest('.cominfotip').remove();
+        });
+        $('#J_sign_in').click(function(){
+            var f = $(this);
+            $.getJSON("../upload/index.php?m=&c=members&a=sign_in",function(result){
+                if(result.status == 1){
+                    disapperTooltip("goldremind", '每天签到增加'+result.data+'积分<span class="point">+'+result.data+'</span>');
+                    f.addClass('btn_gray9').text('已签到');
+                    $(".my_points_num").html(parseInt($(".my_points_num").html())+parseInt(result.data));
+                }else{
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+        });
+        get_statistics_data();
+        $(".statistics_select").click(function(){
+            var data_k = $(this).attr('data_k');
+            var data_val = $(this).attr('data_val');
+            $(".statistics_"+data_k).val(data_val);
+            get_statistics_data();
+        });
+        function get_statistics_data(){
+            var type = $(".statistics_type").val();
+            var settr = $(".statistics_settr").val();
+            $.getJSON("../upload/index.php?m=&c=company&a=ajax_get_statistics",{type:type,settr:settr},function(result){
+                $(".statistics_wrap").html(result.data);
+            });
+        }
+        var isDone = true; // 防止重复点击
+        // 换一批
+        $('.J_refresh').on('click', function(event) {
+            var obj = $(this);
+            var ajaxtype = obj.data('ajaxtype');
+            var ajaxpage = parseInt(obj.attr('ajaxpage')); // 记录页数
+            if (isDone) {
+                isDone = false;
+                $.getJSON("../upload/index.php?m=&c=company&a=ajax_get_interest_resume", {type: ajaxtype, p: ajaxpage}, function(data) {
+                    $('.resumelist').html(data.data.html);
+                    if(data.data.page==ajaxpage){
+                        obj.attr('ajaxpage', 1);
+                    }else{
+                        obj.attr('ajaxpage', ajaxpage+1);
+                    }
+                    isDone = true;
+                });
+            };
+        });
+        $("#refresh_jobs_all").click(function(){
+            $.getJSON("../upload/index.php?m=&c=company_service&a=jobs_refresh_all",function(result){
+                if(result.status==1){
+                    disapperTooltip('success',result.msg);
+                }
+                else if(result.status==2)
+                {
+                    var qsDialog = $(this).dialog({
+                        title: '批量刷新职位',
+                        loading: true,
+                        border: false,
+                        yes: function () {
+                            window.location.href=result.data;
+                        }
+                    });
+                    qsDialog.setBtns(['单条刷新', '取消']);
+                    qsDialog.setContent('<div class="refresh_jobs_all_confirm">' + result.msg + '</div>');
+                }
+                else
+                {
+                    disapperTooltip('remind',result.msg);
+                }
+            });
+        });
+        $(".btn_complaint").click(function(){
+            var url = "../upload/index.php?m=&c=company&a=complaint_consultant";
+            var qsDialog = $(this).dialog({
+                title: '投诉客服',
+                loading: true,
+                border: false,
+                yes: function () {
+                    var notes = $("#notes").val();
+                    $.post(url, {notes:notes},function (result) {
+                        if (result.status == 1) {
+                            disapperTooltip('success', result.msg);
+                            qsDialog.setCloseDialog(true);
+                        } else {
+                            disapperTooltip('remind', result.msg);
+                            qsDialog.setCloseDialog(false);
+                        }
+                    },'json');
+                }
+            });
+            $.getJSON(url, function (result) {
+                if (result.status == 1) {
+                    qsDialog.setContent(result.data);
+                } else {
+                    disapperTooltip('remind', result.msg);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
