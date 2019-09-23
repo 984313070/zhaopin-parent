@@ -11,7 +11,7 @@ public interface JobsService {
 
     public void updJobs(QsJobs qsJobs);
 
-    public  void delJobs(Integer[] ids);
+    public  void delJobs(String ids);
 
-    public  void deleteJobs(Integer id);
+
 }

@@ -26,18 +26,18 @@ public class JobsController {
     @Reference(timeout = 1200000)
     private JobsService jobsService;
 
-    @RequestMapping("findJobsList")
+    @RequestMapping("/findJobsList")
     public PageResult findJobsList(QsJobs qsJobs, Integer rows, Integer page){
-     return    jobsService.findJobsList(qsJobs,rows,page);
+     return   jobsService.findJobsList(qsJobs,rows,page);
     }
 
-    @RequestMapping("findById")
+    @RequestMapping("/findById")
     public QsJobs findById(Integer id){
         return  jobsService.findById(id);
     }
 
     @RequestMapping("/delJobs")
-    public Result delJobs(Integer[] ids){
+    public Result delJobs(String ids){
         try {
             jobsService.delJobs(ids);
             return new Result(true, "删除成功！");
@@ -47,9 +47,6 @@ public class JobsController {
         return new Result(false, "删除失败！");
     }
 
-    @RequestMapping("deleteJobs")
-    public void deleteJobs(Integer id){
-        jobsService.deleteJobs(id);
-    }
+
 
 }
