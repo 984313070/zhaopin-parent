@@ -13,6 +13,7 @@
     <module>zhaopin-pojo</module>
     <module>zhaopin-service</module>
     <module>zhaopin-web</module>
+      <module>zhaopin-common</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -261,6 +262,30 @@
         <groupId>xml-apis</groupId>
         <artifactId>xml-apis</artifactId>
         <version>1.4.01</version>
+      </dependency>
+
+      <!-- 加入POI核心依赖 -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>3.10-beta2</version>
+      </dependency>
+      <!-- 为POI支持Office Open XML -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>3.10-beta2</version>
+      </dependency>
+      <!-- 支持Word文档的操作 -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-scratchpad</artifactId>
+        <version>3.10-beta2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.16.8</version>
       </dependency>
     </dependencies>
 

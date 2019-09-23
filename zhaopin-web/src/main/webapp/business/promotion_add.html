@@ -1,0 +1,209 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.highlight-3.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.vtip-min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.modal.dialog.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/common.js"></script>
+    <script>
+        var URL = '../upload/index.php/admin/personal',
+            SELF = '../upload/index.php?m=admin&amp;c=personal&amp;a=promotion_add&amp;',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">个人<strong>/</strong>业务管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="../business/order.html" class="">订单管理</a><a href="../business/personal.html" class="select">个人推广</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>系统将自动取消到期的简历推广。</p>
+    </div>
+    <div class="toptit">新增简历推广</div>
+    <form  method="post" name="FormData">
+        <input name="_k_v" type="hidden" value="">
+        <div style="padding: 0 20px;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="380" valign="top">
+                        <table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#F5F7F8" class="link_lan"
+                               style="border-bottom:1px #DFDFDF solid;border-top:1px #DFDFDF solid;border-left:1px #DFDFDF solid;">
+                            <tr>
+                                <td height="32" align="right" >请输入简历ID：</td>
+                                <td width="215">
+                                    <input type="text" name="resumeid" class="input_text_default small" onblur="selectByResumeid()" id="get_resumeid" maxlength="25"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">或真实姓名：</td>
+                                <td>
+                                    <input type="text" name="fullname" class="input_text_default small" onblur="selectByFullname()" id="get_fullname" maxlength="25"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="32" align="right">或会员ID：</td>
+                                <td>
+                                    <input type="text" name="uid" class="input_text_default small" onblur="selectByUid()" id="get_uid" maxlength="25"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                            <tr>
+                                <td height="35" align="right">推广期限(天)：</td>
+                                <td>
+                                    <input name="days" id="days"  type="text" class="input_text_default small" maxlength="3"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="35" align="right">推广方案：</td>
+                                <td width="215">
+                                    <select name="type" id="J_type">
+                                        <option value="-1">请选择推广方案</option>
+                                        <option value="stick">简历置顶</option>
+                                        <option value="tag">醒目标签</option>
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr id="J_tag" style="display:none">
+                                <td height="35" align="right">标签名称：</td>
+                                <td width="215">
+                                    <div class="select_input_new w200 J_hoverinput J_dropdown J_listitme_parent">
+                                        <span class="J_listitme_text">请选择标签</span>
+                                        <div class="dropdowbox_sn J_dropdown_menu">
+                                            <div class="dropdow_inner_sn">
+                                                <ul class="nav_box">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <input class="J_listitme_code" name="tag_id" id="tag_id" type="hidden" value="" />
+                                    </div>
+                                     <select name="tag_id">
+                                        <option value="0" selected="selected">请选择标签</option>
+                                                                        </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="35" align="right">&nbsp;</td>
+                                <td height="60">
+                                    <input type="button" class="admin_submit" id="BtnAdd" value="确定"/>
+                                    <input type="button" class="admin_submit" value="返回" onclick="Javascript:window.history.go(-1)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="35" align="right">&nbsp;</td>
+                                <td height="60">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td valign="top">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td style="border:1px #DFDFDF solid; height:192px;" id="showtd" bgcolor="#FFFFFF" valign="top">
+                                    <div style="padding:20px; color: #0066CC">
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+</body>
+<script type="text/javascript">
+     var vm;
+    function selectByResumeid() {
+        var resumeid=$("[name='resumeid']").val()
+       // alert(resumeid)
+        $.ajax({
+            type: "post",
+            url: "../resume/findResumeById.do",
+            data: {id:id},
+            dataType: "",
+            success:function (data) {
+                vm = new Vue({
+                    el: '#entrust_grid',
+                    data: {
+                        resumeList: data.rows,
+                    }
+                })
+            },
+            error:function () {
+
+            }
+        })
+    }
+    function selectByFullname() {
+        var fullname=$("[name='fullname']").val()
+       // alert(fullname)
+    }
+    function selectByUid() {
+        var uid=$("[name='uid']").val()
+       // alert(uid)
+    }
+</script>
+</html>

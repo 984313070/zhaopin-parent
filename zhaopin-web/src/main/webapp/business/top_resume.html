@@ -1,0 +1,455 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Admin/View/default/public/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/vue/vue.min.js"></script>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/jquery-1.9.1.min.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script>
+        var URL = '../upload/index.php/admin/personal',
+            SELF = '../upload/index.php?m=admin&amp;c=personal&amp;a=top_resume',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+    <style type="text/css">
+        .popWindow{
+            background-color:#ffffff;
+            border-radius:3px;
+            border:2px solid #075E8B;
+            position:absolute;
+            display:block;
+            width:800px;
+            height:800px;
+            left:30%;
+            top:30%;
+            box-shadow:5px 5px 5px #322E2F;
+            z-index:999;
+        }
+    </style>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">个人<strong>/</strong>高级人才</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            高级人才                        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>可见简历是指：审核通过、审核中等能正常显示的简历。</p>
+        <p>不可见简历指：审核未通过等网站前台不显示的简历。</p>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">工作经验</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=&experience_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=74&experience_cn=%E6%97%A0%E7%BB%8F%E9%AA%8C">无经验</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=75&experience_cn=1%E5%B9%B4%E4%BB%A5%E4%B8%8B">1年以下</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=76&experience_cn=1-3%E5%B9%B4">1-3年</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=77&experience_cn=3-5%E5%B9%B4">3-5年</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=78&experience_cn=5-10%E5%B9%B4">5-10年</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&experience=79&experience_cn=10%E5%B9%B4%E4%BB%A5%E4%B8%8A">10年以上</li>    </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">学历</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=&education_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=65&education_cn=%E5%88%9D%E4%B8%AD">初中</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=66&education_cn=%E9%AB%98%E4%B8%AD">高中</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=67&education_cn=%E4%B8%AD%E6%8A%80">中技</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=68&education_cn=%E4%B8%AD%E4%B8%93">中专</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=69&education_cn=%E5%A4%A7%E4%B8%93">大专</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=70&education_cn=%E6%9C%AC%E7%A7%91">本科</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=71&education_cn=%E7%A1%95%E5%A3%AB">硕士</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=72&education_cn=%E5%8D%9A%E5%A3%AB">博士</li><li url="../upload/index.php?m=admin&c=personal&a=top_resume&education=73&education_cn=%E5%8D%9A%E5%90%8E">博后</li>    </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">创建时间</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&addtimesettr=&addtimesettr_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&addtimesettr=3&addtimesettr_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&addtimesettr=7&addtimesettr_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="../upload/index.php?m=admin&c=personal&a=top_resume&addtimesettr=30&addtimesettr_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div id="top_grid">
+    <form id="form1" name="form1" method="post" >
+        <div class="list_th">
+            <div class="td" style=" width:20%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" @click="checkAll" v-model="checked">
+                    <span>全选/姓名</span>
+                </label>
+            </div>
+            <div class="td" style=" width:20%;">基本信息</div>
+            <div class="td center" style=" width:15%;">简历来源</div>
+            <div class="td center" style=" width:15%;">创建时间</div>
+            <div class="td center" style=" width:30%;">操作</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+
+    <div class="list_tr link_black" v-for="top in topList">
+        <div class="td" style=" width:20%;">
+            <div class="left_padding striking">
+                <input type="checkbox" v-model="checkModel" :value="top.id">
+                {{top.fullname}}
+            </div>
+        </div>
+        <div class="td" style=" width:20%;">
+            {{top.birthdate}}                 / {{top.sexCn}}               / {{top.educationCn}}                / {{top.experienceCn}}            </div>
+        <div class="td center" style=" width:15%;">
+            后台添加
+        </div>
+        <div class="td center" style=" width:15%;">{{new Date(top.addtime*1000).toLocaleString()}}</div>
+        <div class="td center edit" style=" width:30%;">
+            <a href="#;" @click="toPromotion(top.id)" class="business">编辑</a>
+            <a href="#;" class="blue resume_log" @click="queryLog()" parameter="resumeid=1">日志</a>
+            <a href="#;" class="comment "  @click="beizhu(top.id)"  parameter="id=1">备注</a>
+            <a href="javascript:;" @click="sendMessage()" class="J_message" parameter="uid=">发消息</a>
+
+            <a href="javascript:void(0)" @Click="deleteTop(top.id)" class="gray">删除</a>
+        </div>
+        <div class="clear"></div>
+    </div></form>
+    </div>
+    <div>
+
+    </div>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit" id="ButAdd" value="新增" onclick="window.location.href='adv_resume_add.html'"/>
+            <input type="button" class="admin_submit" onclick="deleteTops()" id="ButDel" value="删除"/>
+            <!--  -->
+            <!--    -->
+        </div>
+
+
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="Personal">
+                    <input type="hidden" name="a" value="top_resume">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="姓名"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">姓名</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="姓名">姓名</li>
+                            <li id="2" title="简历ID">简历ID</li>
+                            <li id="3" title="会员ID">会员ID</li>
+                            <li id="4" title="电话">电话</li>
+                            <!--<li id="5" title="QQ">QQ</li>-->
+                            <li id="6" title="地址">地址</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="pages">
+        <a class='unable'>上一页</a>
+        <span class='current'>1</span>
+        <a class='unable'>下一页</a>
+    </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+<div id="logdialogId"  >
+    <div class="popWindow" v-show="ok">
+        <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+            <tr style="background-color:#075E8B;">
+                <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">简历日志</td>
+                <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                    <img onclick="closeDialog()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                </td>
+            </tr>
+        </table>
+        <div class="form_main" id="edu_list">
+            <div class="detail_wrap" >
+                <div class="list-th">
+                    <div class="th1">操作用户</div>
+                    <div class="th2 center">操作时间</div>
+                    <div class="th3 center" style="width: 130px;">操作地点</div>
+                    <div class="th4 center" style="width: 130px;">详情</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="list-data" v-for="log in logList">
+                    <div class="list-td">
+                        <div class="td1">{{log.operater}}</div>
+                        <div class="td2 center">
+                            {{new Date(log.logAddtime*1000).toLocaleString()}}
+                        </div>
+                        <div class="td3 center" style="width: 130px;">{{log.logAddress}}</div>
+                        <div class="td4 center" style="width: 130px;">{{log.logUrl}}</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div id="beizhuId"  >
+    <div class="popWindow" v-show="ok">
+        <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+            <tr style="background-color:#075E8B;">
+                <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">人才点评</td>
+                <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                    <img onclick="closeDialog1()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                </td>
+            </tr>
+        </table>
+        <form>
+            <table>
+                <tr>
+                    <td>人才点评</td>
+                    <td>
+                        <textarea name=""></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>人才等级</td>
+                    <td>
+                        <input type="radio" name="" value="1" checked>普通
+                        <input type="radio" name="" value="2">等级
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div id="messageId"  >
+    <div class="popWindow" v-show="ok">
+        <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+            <tr style="background-color:#075E8B;">
+                <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">发消息</td>
+                <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                    <img onclick="closeDialog2()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+var vm;
+    $(function(){
+        //alert(1)
+        $.ajax({
+            type: "post",
+            url: "../resume/findTop.do",
+            data: '',
+            dataType: "",
+            success: function (result) {
+                //alert(result.rows);
+                vm = new Vue({
+                    el: '#top_grid',
+                    data: {
+                        topList: result.rows,
+                        checked:false, //是否全选
+                        checkModel:[] //双向数据绑定的数组，我是用的id
+                    },
+                    watch:{
+                        checkModel(){
+                            if(this.checkModel.length==this.topList.length){
+                                this.checked=true;
+                            }else{
+                                this.checked=false;
+                            }
+                        }
+                    },
+                    methods:{
+                        checkAll(){
+                            if(this.checked){
+                                this.topList.forEach((item)=>{
+                                    if(this.checkModel.indexOf(item.id)==-1){
+                                        this.checkModel.push(item.id)
+                                    }
+                                })
+
+                            }else{
+                                this.checkModel=[];
+                            }
+                        }
+                    }
+                })
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    })
+
+    function toPromotion(id) {
+        //alert(id)
+        window.location.href="adv_resume_add1.html?id="+id;
+    }
+    function deleteTop(id) {
+        if(confirm("确定要删除吗？")){
+            $.post('../resume/deleteTopById.do',{id:id},function (data){
+                if(data.success){
+                    alert(data.message);
+                    window.location.reload();
+                }else{
+                    alert(data.message);
+                }
+            })
+        }
+    }
+    function deleteTops() {
+        var arr = vm.checkModel;
+        var ids = "";
+        for (var i = 0; i < arr.length; i++) {
+
+            ids += ids == "" ? arr[i] : ","+arr[i];
+        }
+
+        if(ids == "" && ids==null){
+            alert("请选择要删除的数据");
+            return "";
+        }else{
+        if(confirm("确定要删除吗？")){
+            $.post('../resume/deleteTops.do',{ids:ids},function (data){
+                if(data.success){
+                    alert(data.message);
+                    window.location.reload();
+                }else{
+                    alert(data.message);
+                }
+            })
+        }
+    }
+    }
+var dialog = new Vue({
+    el: '#logdialogId',
+    data: {
+        ok: false,
+        logList:''
+    }
+})
+
+var dialog1 = new Vue({
+    el: '#beizhuId',
+    data: {
+        ok: false,
+    }
+})
+
+var dialog2 = new Vue({
+    el: '#messageId',
+    data: {
+        ok: false,
+    }
+})
+
+
+function closeDialog() {
+    dialog.ok=false;
+}
+
+function closeDialog1() {
+    dialog1.ok=false;
+}
+
+function closeDialog2() {
+    dialog2.ok=false;
+}
+
+//=================================================================================================
+
+function openDialog(){
+    dialog.ok=true;
+}
+
+function openDialog1(){
+    dialog1.ok=true;
+}
+
+function openDialog2(){
+    dialog2.ok=true;
+}
+    function queryLog() {
+        openDialog();
+        $.ajax({
+            type: "post",
+            url: "../resume/queryLogs.do",
+            data: {},
+            dataType: "",
+            success: function (data) {
+                //alert(data)
+                dialog.logList = data.rows;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+
+    
+    function beizhu(id) {
+        //alert(id)
+        openDialog1();
+    }
+    function sendMessage(){
+        openDialog2();
+    }
+</script>
+</body>
+</html>

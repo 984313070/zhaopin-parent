@@ -24,8 +24,7 @@
 	</mvc:annotation-driven>
 
 	<!-- 引用dubbo 服务 -->
-	<dubbo:application name="pinyougou-manager-web" />
+	<dubbo:application name="zhaopin-web" />
 	<dubbo:registry address="zookeeper://localhost:2181"/>
 	<dubbo:annotation package="com.jk.controller" />
-
 </beans>

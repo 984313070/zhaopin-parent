@@ -1,0 +1,158 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Admin/View/default/public/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/vue/vue.min.js"></script>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/jquery-1.9.1.min.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script>
+        var URL = '../upload/index.php/admin/personal',
+            SELF = '../upload/index.php?m=admin&amp;c=personal&amp;a=promotion_stick_edit&amp;id=2',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">个人<strong>/</strong>业务管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="order.html" class="">订单管理</a><a href="promotion_stick_edit.html" class="select">个人推广</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+    <div class="toptip" >
+        <div class="toptit">提示：</div>
+        <p>系统将自动取消到期的简历推广。</p>
+    </div>
+    <div id="personId">
+    <div class="toptit" >修改简历置顶推广</div>
+    <div class="form_main width120 link_blue"  v-for=" person in personList">
+        <form  method="post" name="FormData" id="FormData">
+            <div class="fl">推广简历:</div>
+            <div class="fr txt">
+                <a href="../upload/index.php?m=home&c=resume&a=resume_show&id=2" target="_blank">{{person.resume.title}}</a>
+            </div>
+            <div class="fl">姓名:</div>
+            <div class="fr txt">
+                <a href="../upload/index.php?m=home&c=resume&a=resume_show&id=2" target="_blank">{{person.resume.fullname}}</a>
+            </div>
+            <div class="fl">会员ID:</div>
+            <div class="fr txt">{{person.resume.uid}}</div>
+            <div class="fl">推广方案:</div>
+            <div class="fr txt">
+                <span style="color:#FF0000">置顶</span>
+            </div>
+            <div class="fl">推广期限:</div>
+            <div class="fr txt">
+                {{new Date(person.personalServiceStickLog.addtime*1000).toLocaleString()}}~ {{new Date(person.personalServiceStickLog.endtime*1000).toLocaleString()}}
+                       </div>
+            <div class="fl">延长推广时间:</div>
+            <div class="fr">
+                <input name="days" type="text" class="input_text_default small" maxlength="3"/> 天
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input name="id" type="hidden" value="2" />
+                <input type="button" onclick="updatePersonPromotion()" class="admin_submit" value="修改"/>
+                <input type="button" class="admin_submit" value="返回" onClick="window.location.href='personal.html'"/>
+            </div>
+            <div class="clear"></div>
+        </form>
+    </div>
+    </div>
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+    var loc = location.href;
+    var n1 = loc.length;//地址的总长度
+    var n2 = loc.indexOf("=");//取得=号的位置
+    var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容*/
+    //alert(id)
+    var vm;
+    $(function (){
+        //alert(1)
+        $.ajax({
+            type: "post",
+            url: "../resume/findPersonById.do",
+            data: {id:id},
+            dataType: "",
+            success: function (result) {
+                //alert(result.rows);
+                vm=  new Vue({
+                    el: '#personId',
+                    data: {
+                        personList: result.rows,
+                    }
+                })
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    })
+    function updatePersonPromotion(){
+        $.post('../resume/updatePersonPromotion.do',{},function (data){
+                 if(data.success){
+                     alert(data.message);
+                 }else{
+                     alert(data.message);
+                 }
+             }
+
+         )
+    }
+</script>
+</html>

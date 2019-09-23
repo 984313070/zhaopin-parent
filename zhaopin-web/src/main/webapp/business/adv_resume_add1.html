@@ -1,0 +1,1146 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Admin/View/default/public/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/vue/vue.min.js"></script>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        .popWindow{
+            background-color:#ffffff;
+            border-radius:3px;
+            border:2px solid #075E8B;
+            position:absolute;
+            display:block;
+            width:460px;
+            height:300px;
+            left:30%;
+            top:30%;
+            box-shadow:5px 5px 5px #322E2F;
+            z-index:999;
+        }
+    </style>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">个人<strong>/</strong>高级人才</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            高级人才                        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="jinbenziliao">
+    <form  method="post" name="FormData"  >
+        <div class="toptit link_blue">基本资料</div>
+        <div class="form_main width120">
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 姓名:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="fullname" type="text" class="input_205_34_div" maxlength="50" v-model="fullname"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 性别:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="imgradio J_job_sex">
+                    <input name="sex" type="hidden" value="1">
+                    <input name="sex_cn"  id="sex_cn" type="hidden" v-model="sexCn"/>
+                    <div class="radio select" data="1" title="男">男</div>
+                    <div class="radio " data="2" title="女">女</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 出生年份:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text">{{birthdate}}</span>
+                    <div class="dropdowbox9 J_dropdown_menu">
+                        <div class="dropdow_inner9">
+                            <ul class="nav_box J_birthdy">
+                                <div class="J_birthday_box active"></div>
+                                <div class="J_birthday_box"></div>
+                                <div class="J_birthday_box"></div>
+                            </ul>
+                            <a href="javascript:;" class="prev J_birthday_prev"></a>
+                            <a href="javascript:;" class="next J_birthday_next"></a>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="birthdate" id="birthdate" type="hidden" value="1998">
+                </div>
+            </div>
+            <div class="fl">现居住地:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="residence" type="text" class="input_205_34_div" maxlength="50" v-model="householdaddress"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 学历:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text for_education">{{educationCn}}</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme" href="javascript:;" data-code="65">初中</a></li><li><a class="J_listitme" href="javascript:;" data-code="66">高中</a></li><li><a class="J_listitme" href="javascript:;" data-code="67">中技</a></li><li><a class="J_listitme" href="javascript:;" data-code="68">中专</a></li><li><a class="J_listitme" href="javascript:;" data-code="69">大专</a></li><li><a class="J_listitme" href="javascript:;" data-code="70">本科</a></li><li><a class="J_listitme" href="javascript:;" data-code="71">硕士</a></li><li><a class="J_listitme" href="javascript:;" data-code="72">博士</a></li><li><a class="J_listitme" href="javascript:;" data-code="73">博后</a></li>                            </ul>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="education" id="education" type="hidden" value="69" />
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 工作经验:</div>
+            <div class="fr" style="width: 250px;">
+                <div class=" input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text">{{experienceCn}}</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme " href="javascript:;" data-code="74">无经验</a></li><li><a class="J_listitme " href="javascript:;" data-code="75">1年以下</a></li><li><a class="J_listitme list_sel" href="javascript:;" data-code="76">1-3年</a></li><li><a class="J_listitme " href="javascript:;" data-code="77">3-5年</a></li><li><a class="J_listitme " href="javascript:;" data-code="78">5-10年</a></li><li><a class="J_listitme " href="javascript:;" data-code="79">10年以上</a></li>                        </ul>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="experience" id="experience" type="hidden" value="76" />
+                </div>
+            </div>
+            <div class="fl"> 所学专业:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div1 J_hoverinput" id="J_showmodal_major" data-title="请选择所学专业" data-multiple="false" data-maxnum="3" data-width="520">
+                    <span title="" class="for_major result J_resuletitle_major">{{majorCn}}</span>
+                    <input class="J_resultcode_major" name="major" id="major" type="hidden" value="9" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl">身高:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="height" type="text" class="input_205_34_div" maxlength="50" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))" v-model="height"/>&nbsp;&nbsp;CM
+            </div>
+            <div class="fl">籍贯:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="householdaddress" type="text" class="input_205_34_div" maxlength="50" v-model="residence"/>
+            </div>
+            <div class="fl"> 婚姻状况：</div>
+            <div class="fr" style="width: 250px;">
+                <div class="imgradio J_job_sex">
+                    <input name="marriage" type="hidden" value="3">
+                    <input name="marriage_cn"  id="marriage_cn" type="hidden" value="保密"/>
+                    <div class="radio " data="1" title="未婚">未婚</div>
+                    <div class="radio " data="2" title="已婚">已婚</div>
+                    <div class="radio select" data="3" title="保密">保密</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"> QQ:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="qq" type="text" class="input_205_34_div" maxlength="50" v-model="qq"/>
+            </div>
+            <div class="fl"> 微信号:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="weixin" type="text" class="input_205_34_div" maxlength="50" v-model="weixin"/>
+            </div>
+            <div class="fl"> 邮箱:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="email" type="text" class="input_205_34_div" maxlength="50" v-model="email"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 手机号码:</div>
+            <div class="fr" style="width: 250px;">
+                <input name="telephone" type="text" v-model="telephone" class="input_205_34_div" maxlength="11" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39) value=value.replace(/\D/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))" value="15036572051"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form_main width120">
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="pid" value="1" />
+                <input type="button" class="admin_submit" onclick="updateAdv()" value="保存修改"/>
+                <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+    <div class="toptit link_blue">求职意向</div>
+    <form  method="post" name="FormData" id="FormData" >
+        <div class="form_main width120">
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 目前状态:</div>
+            <div class="fr" style="width: 250px;">
+                <div class=" input_205_34_div1 J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text result">我目前已离职，可快速到岗</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme list_sel" href="javascript:;" data-code="241">我目前已离职，可快速到岗</a></li><li><a class="J_listitme " href="javascript:;" data-code="242">我目前在职，但考虑换个新环境</a></li><li><a class="J_listitme " href="javascript:;" data-code="243">观望有好的机会再考虑</a></li><li><a class="J_listitme " href="javascript:;" data-code="244">目前暂无跳槽打算</a></li><li><a class="J_listitme " href="javascript:;" data-code="245">应届毕业生</a></li>                        </ul>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="current" id="current" type="hidden" v-model="current" />
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 工作性质:</div>
+            <div class="fr" style="width: 250px;">
+                <div class=" input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text">全职</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme list_sel" href="javascript:;" data-code="62">全职</a></li><li><a class="J_listitme " href="javascript:;" data-code="63">兼职</a></li><li><a class="J_listitme " href="javascript:;" data-code="64">实习</a></li>                        </ul>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="nature" id="nature" type="hidden" value="62" />
+                </div>
+            </div>
+            <div class="fl"> 期望行业:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div1 J_hoverinput" id="J_showmodal_trade" data-title="请选择期望行业" data-multiple="true" data-maxnum="3" data-width="682">
+                    <span title="" class="for_trade result J_resuletitle_trade">互联网/电子商务</span>
+                    <input class="J_resultcode_trade" name="trade" id="trade" type="hidden" value="4" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 期望职位:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div1 J_hoverinput" id="J_showmodal_jobs" data-title="请选择期望职位" data-multiple="true" data-maxnum="5" data-width="667" data-category="3">
+                    <span title="" class="for_intention_jobs result J_resuletitle_jobs">技术总监/经理</span>
+                    <input class="J_resultcode_jobs" name="intention_jobs_id" id="intention_jobs_id" type="hidden" value="6.36.330" />
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 工作地区:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div1 J_hoverinput" data-toggle="funCityModal" data-title="请选择工作地区" data-multiple="true" data-maximum="3" data-width="760">
+                    <span title="" class="for_district result J_resuletitle_city">东城区</span>
+                    <input class="J_resultcode_city" name="district" id="district" type="hidden" value="" keep="1.35.401" />
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 期望薪资:</div>
+            <div class="fr" style="width: 250px;">
+                <div class="input_205_34_div J_hoverinput J_dropdown J_listitme_parent">
+                    <span class="J_listitme_text for_wage">10K以上/月</span>
+                    <div class="dropdowbox10 J_dropdown_menu">
+                        <div class="dropdow_inner10">
+                            <ul class="nav_box">
+                                <li><a class="J_listitme" href="javascript:;" data-code="56" title="1K~1.5K/月">1K~1.5K/月</a></li><li><a class="J_listitme" href="javascript:;" data-code="57" title="1.5K~2K/月">1.5K~2K/月</a></li><li><a class="J_listitme" href="javascript:;" data-code="58" title="2K~3K/月">2K~3K/月</a></li><li><a class="J_listitme" href="javascript:;" data-code="59" title="3K~5K/月">3K~5K/月</a></li><li><a class="J_listitme" href="javascript:;" data-code="60" title="5K~10K/月">5K~10K/月</a></li><li><a class="J_listitme" href="javascript:;" data-code="61" title="10K以上/月">10K以上/月</a></li>                        </ul>
+                        </div>
+                    </div>
+                    <input class="J_listitme_code" name="wage" id="wage" type="hidden" value="61">
+                </div>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="id"  value="1" />
+                <input type="button" onclick="updateAdv()" class="admin_submit" value="保存"/>
+                <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+    <div class="toptit">自我描述</div>
+    <form  method="post">
+        <div class="form_main width120">
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 自我描述:</div>
+            <div class="fr">
+                <textarea id="specialty" name="specialty" class="input_text_default" style="line-height:200%; height:150px;"  v-model="specialty"></textarea>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="id"  value="1" />
+                <input type="button" onclick="updateAdv()" class="admin_submit" value="保存"/>
+                <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+        <div class="toptit">特长标签</div>
+        <form  method="post">
+            <div class="form_main width120">
+                <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 特长标签:</div>
+                <div class="fr">
+                    <input name="tag_cn" id="tag_cn" type="text" class="input_text_default arrow J_resuletitle_jobtag" v-model="tagCn" readonly="readonly" data-title="请选择简历特长" data-multiple="true" data-maxnum="5" data-width="582"/>
+                    <input class="J_resultcode_jobtag" name="tag" id="tag" type="hidden" v-model="tag"/>
+                </div>
+                <div class="fl"></div>
+                <div class="fr">
+                    <input type="hidden" name="id"  value="1" />
+                    <input type="button" onclick="updateAdv()" class="admin_submit" value="保存"/>
+                    <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </form>
+    </div>
+
+    <!--======================================================================================================================================================================================-->
+   <div id="educationId">
+    <div class="toptit">教育经历</div>
+    <div class="form_main" id="edu_list">
+        <input name="id" style="display: none">
+        <div class="detail_wrap">
+            <div class="list-th">
+                <div class="th1">就读时间</div>
+                <div class="th2 center">学历</div>
+                <div class="th3 center" style="width: 130px;">学校</div>
+                <div class="th4 center" style="width: 130px;">专业</div>
+                <div class="th5 center" style="width: 120px;">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="list-data" v-for="edu in educationList">
+                <div class="list-td">
+                    <div class="td1" >{{edu.startyear}}-{{edu.startmonth}} 至{{edu.endyear}}-{{edu.endmonth}}</div>
+                    <div class="td2 center">
+                        {{edu.educationCn}}                             </div>
+                    <div class="td3 center" style="width: 130px;">{{edu.school}}</div>
+                    <div class="td4 center" style="width: 130px;">{{edu.speciality}}</div>
+                    <div class="td5 center edit" style="width: 120px;">
+                        <a class="edit_edu_btn edits" data-id="1" href="#" @click="findEdu(edu.id)">修改</a>&nbsp;
+                        &nbsp;&nbsp;
+                        <a href="#" class="gray" @Click="deleteEduca(edu.id)">删除</a></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="button" onclick="addEdu()" class="admin_submit" style="margin-top: 13px;margin-bottom: -8px;margin-left: 20px;" value="新增" id="add_edu_btn" />
+        </div>
+        <div class="clear"></div>
+    </div>
+   </div>
+
+    <div id="edudialogId">
+        <div class="popWindow" v-show="ok">
+            <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#075E8B;">
+                    <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                    <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                        <img onclick="closeDialog()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td>学校名称</td>
+                            <td>
+                                <input name="school" v-model="school">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>专业名称</td>
+                            <td>
+                                <input name="speciality" v-model="speciality">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>学历</td>
+                            <td>
+                                <input name="educationCn" v-model="educationCn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>就读时间</td>
+                            <td>
+                                <input size="4"  name="startyear" v-model="startyear">&nbsp;<input size="4" name="startmonth" v-model="startmonth">
+                                至
+                                <input size="4" name="endyear" v-model="endyear">&nbsp;<input size="4"  name="endmonth" v-model="endmonth">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <input type="button" onclick="updateEdu()" class="admin_submit"  value="确定"/>
+            <input type="button" onclick="closeDialog()" class="admin_submit"  value="取消"/>
+        </div>
+    </div>
+
+
+
+    <!--
+    ========================================================================================================================================================
+    -->
+    <div id="workId">
+    <div class="toptit">工作经历</div>
+    <div class="form_main" id="work_list">
+        <div class="detail_wrap">
+            <div class="list-th">
+                <div class="th1">工作时间</div>
+                <div class="th2 center">公司</div>
+                <div class="th3 center" style="width: 130px;">职位</div>
+                <div class="th4 center" style="width: 130px;">职责</div>
+                <div class="th5 center" style="width: 120px;">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="list-data" v-for="work in workList">
+                <div class="list-td">
+                    <div class="td1">{{work.startyear}}-{{work.startmonth}} 至{{work.endyear}}-{{work.endmonth}}</div>
+                    <div class="td2 center">
+                        {{work.companyname}}
+                    </div>
+                    <div class="td3 center" style="width: 130px;">
+                        {{work.jobs}}
+                    </div>
+                    <div class="td4 center" style="width: 130px;">
+                        {{work.achievements}}
+                    </div>
+                    <div class="td5 center" style="width: 120px;">
+                        <a class="edit_work_btn edits" data-id="1" href="#" @click="findWorkById(work.id)">修改</a>&nbsp;&nbsp;
+                        &nbsp;<a href="#" class="gray" @Click="deleteWork(work.id)">删除</a></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="button" class="admin_submit" style="margin-top: 13px;margin-bottom: -8px;margin-left: 20px;" value="新增" id="add_work_btn" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+
+    <div id="workdialogId">
+        <div class="popWindow" v-show="ok">
+            <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#075E8B;">
+                    <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                    <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                        <img onclick="closeDialog1()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td>公司名称</td>
+                            <td>
+                                <input name="companyname" v-model="companyname">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>职位名称</td>
+                            <td>
+                                <input name="jobs" v-model="jobs">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>任职时间</td>
+                            <td>
+                                <input size="4"  name="startyear" v-model="startyear">&nbsp;<input size="4" name="startmonth" v-model="startmonth">
+                                至
+                                <input size="4" name="endyear" v-model="endyear">&nbsp;<input size="4"  name="endmonth" v-model="endmonth">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>工作职责</td>
+                            <td>
+                                <textarea name="achievements" v-model="achievements"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <input type="button" onclick="updateWork()" class="admin_submit"  value="确定"/>
+            <input type="button" onclick="closeDialog1()" class="admin_submit"  value="取消"/>
+        </div>
+    </div>
+
+    <!--
+      ========================================================================================================================================================
+      -->
+    <div id="peixunjigouId">
+    <div class="toptit">培训经历</div>
+    <div class="form_main" id="tra_list">
+        <div class="detail_wrap">
+            <div class="list-th">
+                <div class="th1">培训时间</div>
+                <div class="th2 center">机构</div>
+                <div class="th3 center" style="width: 130px;">课程</div>
+                <div class="th4 center" style="width: 130px;">内容</div>
+                <div class="th5 center" style="width: 120px;">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="list-data" v-for="peixun in peixunjigou">
+                <div class="list-td">
+                    <div class="td1" >
+                        {{peixun.startyear}}-{{peixun.startmonth}} 至{{peixun.endyear}}-{{peixun.endmonth}}
+                    </div>
+                    <div class="td2 center">
+                        {{peixun.agency }}
+                    </div>
+                    <div class="td3 center" style="width: 130px;">{{peixun.course}}</div>
+                    <div class="td4 center" style="width: 130px;">{{peixun.description}}</div>
+                    <div class="td5 center" style="width: 120px;">
+                        <a class="edit_tra_btn edits" data-id="1" href="#" @click="findPeixuns(peixun.id)">修改</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="gray" @Click="deletePeixun(peixun.id)">删除</a></div>
+                    <div class="clear"></div>
+                </div>                </div>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="button" class="admin_submit" style="margin-top: 13px;margin-bottom: -8px;margin-left: 20px;" value="新增" id="add_tra_btn" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+
+    <div id="peixundialogId">
+        <div class="popWindow" v-show="ok">
+            <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#075E8B;">
+                    <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                    <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                        <img onclick="closeDialog2()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td>培训机构</td>
+                            <td>
+                                <input name="agency" v-model="agency">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>培训课程</td>
+                            <td>
+                                <input name="course" v-model="course">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>培训时间</td>
+                            <td>
+                                <input size="4"  name="startyear" v-model="startyear">&nbsp;<input size="4" name="startmonth" v-model="startmonth">
+                                至
+                                <input size="4" name="endyear" v-model="endyear">&nbsp;<input size="4"  name="endmonth" v-model="endmonth">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>培训内容</td>
+                            <td>
+                                <textarea name="description" v-model="description"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <input type="button" onclick="updatePx()" class="admin_submit"  value="确定"/>
+            <input type="button" onclick="closeDialog2()" class="admin_submit"  value="取消"/>
+        </div>
+    </div>
+
+    <!--
+  ========================================================================================================================================================
+  -->
+    <div id="zhengshuId">
+    <div class="toptit">获得证书</div>
+    <div class="form_main" id="cre_list">
+        <div class="detail_wrap">
+            <div class="list-th">
+                <div class="th1" style="width: 292px;">获得时间</div>
+                <div class="th2 center" style="width: 292px;">证书名称</div>
+                <div class="th3 center" style="width: 120px;">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="list-data" v-for="zhengshu in zhengshulist">
+            <div class="list-td">
+                <div class="td1" style="width: 292px;">{{zhengshu.year}}-{{zhengshu.month}} </div>
+                <div class="td2 center" style="width: 292px;">
+                    {{zhengshu.name}}
+                </div>
+                <div class="td3 center" style="width: 120px;">
+                    <a class="edit_cre_btn edits" data-id="1" href="#" @click="findzhengshuById(zhengshu.id)">修改</a>&nbsp;
+                    &nbsp;&nbsp;<a href="#" class="gray" @Click="deleteCre(zhengshu.id)">删除</a>
+                </div>
+                <div class="clear"></div>
+            </div>                </div>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="button" class="admin_submit" style="margin-top: 13px;margin-bottom: -8px;margin-left: 20px;" value="新增" id="add_cre_btn" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+
+    <div id="zhengshudialogId">
+        <div class="popWindow" v-show="ok">
+            <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#075E8B;">
+                    <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                    <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                        <img onclick="closeDialog3()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td>证书名称</td>
+                            <td>
+                                <input name="name" v-model="name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>获得时间</td>
+                            <td>
+                                <input size="4"  name="year" v-model="year">&nbsp;<input size="4" name="month" v-model="month">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <input type="button" onclick="updateCre()" class="admin_submit"  value="确定"/>
+            <input type="button" onclick="closeDialog3()" class="admin_submit"  value="取消"/>
+        </div>
+    </div>
+    <!--
+  ========================================================================================================================================================
+  -->
+    <div id="languageId">
+    <div class="toptit">语言能力</div>
+    <div class="form_main" id="lan_list">
+        <div class="detail_wrap">
+            <div class="list-th">
+                <div class="th1" style="width: 292px;">语言名称</div>
+                <div class="th2 center" style="width: 292px;">熟练程度</div>
+                <div class="th3 center" style="width: 120px;">操作</div>
+                <div class="clear"></div>
+            </div>
+            <div class="list-data" v-for="language in languageList">
+                <div class="list-td">
+                    <div class="td1" style="width: 292px;">{{language.languageCn}}</div>
+                    <div class="td2 center" style="width: 292px;">
+                        {{language.levelCn}}
+                    </div>
+                    <div class="td3 center" style="width: 120px;">
+                        <a class="edit_lan_btn edits" data-id="1" href="#" @click="findlanguageById(language.id)">修改</a>&nbsp;&nbsp;
+                        &nbsp;<a href="#" class="gray" @Click="deleteLanguage(language.id)">删除</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fl"></div>
+        <div class="fr">
+            <input type="button" class="admin_submit" style="margin-top: 13px;margin-bottom: -8px;margin-left: 20px;" value="新增" id="add_lan_btn" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+
+    <div id="languagedialogId">
+        <div class="popWindow" v-show="ok">
+            <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+                <tr style="background-color:#075E8B;">
+                    <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                    <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                        <img onclick="closeDialog4()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <form>
+                    <table>
+                        <tr>
+                            <td>选择语种</td>
+                            <td>
+                                <input name="languageCn" v-model="languageCn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>熟练程度</td>
+                            <td>
+                                <input name="levelCn" v-model="levelCn">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <input type="button" onclick="updateLanguage()" class="admin_submit"  value="确定"/>
+            <input type="button" onclick="closeDialog4()" class="admin_submit"  value="取消"/>
+        </div>
+    </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+    var loc = location.href;
+    var n1 = loc.length;//地址的总长度
+    var n2 = loc.indexOf("=");//取得=号的位置
+    var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容*/
+    var vm;
+    $(function () {
+        $.ajax({
+            type: "post",
+            url: "../resume/findTopById.do?id="+id,
+            success: function (result) {
+                vm=  new Vue({
+                    el: '#jinbenziliao',
+                    data: {
+                        title: result.title,
+                        fullname: result.fullname,
+                        birthdate:result.birthdate,
+                        householdaddress:result.householdaddress,
+                        sexCn:result.sexCn,
+                        height:result.height,
+                        majorCn:result.majorCn,
+                        educationCn:result.educationCn,
+                        experienceCn:result.experienceCn,
+                        telephone:result.telephone,
+                        email:result.email,
+                        intentionJobs:result.intentionJobs,
+                        tradeCn:result.tradeCn,
+                        current:result.current,
+                        currentCn:result.currentCn,
+                        districtCn:result.districtCn,
+                        wageCn:result.wageCn,
+                        tag:result.tag,
+                        tagCn:result.tagCn,
+                        specialty:result.specialty,
+                        qq:result.qq,
+                        weixin:result.weixin,
+                        email:result.email,
+                        residence:result.residence,
+                        creList:[],
+                        languageList:[]
+                    }
+                })
+
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+        findJIaoyu();
+        findWork();
+        peixunjigou();
+        zhengshu();
+        language();
+    })
+    var educationId =  new Vue({
+        el: '#educationId',
+        data: {
+            educationList:'',
+        }
+    })
+    function findJIaoyu(){
+        $.ajax({
+            type: "post",
+            url: "../resume/findEducation.do",
+            data: {},
+            dataType: "",
+            success: function (data) {
+                educationId.educationList=data.rows;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    var workId =  new Vue({
+        el: '#workId',
+        data: {
+            workList:'',
+        }
+    })
+    function findWork(){
+        $.ajax({
+            type: "post",
+            url: "../resume/findWork.do",
+            data: {},
+            dataType: "",
+            success: function (work) {
+                //alert(work)
+                workId.workList = work.rows
+                //alert(vm.workList)
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    var peixunjigouId =  new Vue({
+        el: '#peixunjigouId',
+        data: {
+            peixunjigou:'',
+        }
+    })
+    function peixunjigou(){
+        $.ajax({
+            type: "post",
+            url: "../resume/findPeixun.do",
+            data: {},
+            dataType: "",
+            success: function (peixun) {
+                //alert(peixun)
+                peixunjigouId.peixunjigou = peixun.rows
+                //alert(vm.peixunjigou)
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    var zhengshuId =  new Vue({
+        el: '#zhengshuId',
+        data: {
+            zhengshulist:'',
+        }
+    })
+    function zhengshu() {
+        $.ajax({
+            type: "post",
+            url: "../resume/findCre.do",
+            data: {},
+            dataType: "",
+            success: function (zhengshu) {
+                //alert(zhengshu)
+                zhengshuId.zhengshulist = zhengshu.rows
+                //alert(vm.creList)
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    var languageId =  new Vue({
+        el: '#languageId',
+        data: {
+            languageList:'',
+        }
+    })
+    function language(){
+        $.ajax({
+            type: "post",
+            url: "../resume/findLanguage.do",
+            data: {},
+            dataType: "",
+            success: function (language) {
+                //alert(language)
+                languageId.languageList = language.rows
+                // alert(vm.languageList)
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+
+    function updateAdv(){
+        $.post('../resume/updateAdv.do',{},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    //=================================================================================================
+    var dialog = new Vue({
+        el: '#edudialogId',
+        data: {
+            ok: false,
+            school:'',
+            speciality:'',
+            educationCn:'',
+            startyear:'',
+            startmonth:'',
+            endyear:'',
+            endmonth:'',
+            //educationList:''
+        }
+    })
+    function findEdu(id) {
+        //alert(id)
+        openDialog();
+        $.ajax({
+            type: "post",
+            url: "../resume/findEducationById.do",
+            data: {id:id},
+            dataType: "",
+            success: function (education) {
+                dialog.school=education.school;
+                dialog.speciality=education.speciality;
+                dialog.educationCn=education.educationCn;
+                dialog.startyear=education.startyear;
+                dialog.startmonth=education.startmonth;
+                dialog.endyear=education.endyear;
+                dialog.endmonth=education.endmonth;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    function updateEdu(){
+        $.post('../resume/updateEducation.do',{},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    function addEdu() {
+        openDialog();
+        /*$.post('../resume/updateEducation.do',{},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })*/
+    }
+    function deleteEduca(id) {
+        $.post('../resume/deleteEdu.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+
+    var dialog1= new Vue({
+        el: '#workdialogId',
+        data: {
+            ok: false,
+            companyname:'',
+            achievements:'',
+            jobs:'',
+            startyear:'',
+            startmonth:'',
+            endyear:'',
+            endmonth:'',
+        }
+    })
+    function findWorkById(id) {
+        openDialog1();
+        $.ajax({
+            type: "post",
+            url: "../resume/findWorkByIds.do",
+            data: {id:id},
+            dataType: "",
+            success: function (data) {
+                //alert(data)
+                dialog1.companyname=data.companyname;
+                dialog1.achievements=data.achievements;
+                dialog1.jobs=data.jobs;
+                dialog1.startyear=data.startyear;
+                dialog1.startmonth=data.startmonth;
+                dialog1.endyear=data.endyear;
+                dialog1.endmonth=data.endmonth;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    function updateWork() {
+        $.post('../resume/updateWork.do',{},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    function deleteWork(id) {
+        $.post('../resume/deleteWork.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+
+    var dialog2 = new Vue({
+        el: '#peixundialogId',
+        data: {
+            ok: false,
+            agency:'',
+            course:'',
+            startyear:'',
+            startmonth:'',
+            endyear:'',
+            endmonth:'',
+            description:'',
+        }
+    })
+    function findPeixuns(id) {
+        openDialog2();
+        $.ajax({
+            type: "post",
+            url: "../resume/findPeixunByIds.do",
+            data: {id:id},
+            dataType: "",
+            success: function (data) {
+                alert(data)
+                dialog2.agency=data.agency;
+                dialog2.course=data.course;
+                dialog2.description=data.description;
+                dialog2.startyear=data.startyear;
+                dialog2.startmonth=data.startmonth;
+                dialog2.endyear=data.endyear;
+                dialog2.endmonth=data.endmonth;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    function updatePx() {
+        $.post('../resume/updatePeixunById.do',{},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    function deletePeixun(id) {
+        $.post('../resume/deletePeixun.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+
+    var dialog3 = new Vue({
+        el: '#zhengshudialogId',
+        data: {
+            ok: false,
+            name:'',
+            year:'',
+            month:'',
+        }
+    })
+    function findzhengshuById(id) {
+        openDialog3();
+        $.ajax({
+            type: "post",
+            url: "../resume/findzhengshuByIds.do",
+            data: {id:id},
+            dataType: "",
+            success: function (data) {
+                dialog3.name=data.name;
+                dialog3.year=data.year;
+                dialog3.month=data.month;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    function updateCre() {
+        $.post('../resume/updateCreById.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    function deleteCre(id) {
+        $.post('../resume/deleteCreById.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    var dialog4= new Vue({
+        el: '#languagedialogId',
+        data: {
+            ok: false,
+            languageCn:'',
+            levelCn:'',
+        }
+    })
+    function findlanguageById(id) {
+        openDialog4();
+        $.ajax({
+            type: "post",
+            url: "../resume/findlanguageByIds.do",
+            data: {id:id},
+            dataType: "",
+            success: function (data) {
+                //alert(data)
+                dialog4.languageCn =data.languageCn;
+                dialog4.levelCn=data.levelCn;
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+    function updateLanguage() {
+        $.post('../resume/updateLanguageById.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+    function deleteLanguage(id) {
+        $.post('../resume/deleteLanguageById.do',{id:id},function (data){
+            if(data.success){
+                alert(data.message);
+            }else{
+                alert(data.message);
+            }
+        })
+    }
+//=================================================================================================
+    function closeDialog() {
+        dialog.ok=false;
+    }
+    function closeDialog1() {
+        dialog1.ok=false;
+    }
+    function closeDialog2() {
+        dialog2.ok=false;
+    }
+    function closeDialog3() {
+        dialog3.ok=false;
+    }
+
+    function closeDialog4() {
+        dialog4.ok=false;
+    }
+
+    //=================================================================================================
+
+    function openDialog(){
+        dialog.ok=true;
+    }
+    function openDialog1(){
+        dialog1.ok=true;
+    }
+    function openDialog2(){
+        dialog2.ok=true;
+    }
+    function openDialog3(){
+        dialog3.ok=true;
+    }
+    function openDialog4(){
+        dialog4.ok=true;
+    }
+
+</script>

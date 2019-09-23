@@ -1,0 +1,1387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.QsAdvResumeMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.QsAdvResume" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="display" property="display" jdbcType="TINYINT" />
+    <result column="display_name" property="displayName" jdbcType="TINYINT" />
+    <result column="audit" property="audit" jdbcType="TINYINT" />
+    <result column="stick" property="stick" jdbcType="BIT" />
+    <result column="strong_tag" property="strongTag" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="sex_cn" property="sexCn" jdbcType="VARCHAR" />
+    <result column="nature" property="nature" jdbcType="INTEGER" />
+    <result column="nature_cn" property="natureCn" jdbcType="VARCHAR" />
+    <result column="trade" property="trade" jdbcType="VARCHAR" />
+    <result column="trade_cn" property="tradeCn" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="SMALLINT" />
+    <result column="residence" property="residence" jdbcType="VARCHAR" />
+    <result column="height" property="height" jdbcType="VARCHAR" />
+    <result column="marriage" property="marriage" jdbcType="TINYINT" />
+    <result column="marriage_cn" property="marriageCn" jdbcType="VARCHAR" />
+    <result column="experience" property="experience" jdbcType="SMALLINT" />
+    <result column="experience_cn" property="experienceCn" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="district_cn" property="districtCn" jdbcType="VARCHAR" />
+    <result column="wage" property="wage" jdbcType="SMALLINT" />
+    <result column="wage_cn" property="wageCn" jdbcType="VARCHAR" />
+    <result column="householdaddress" property="householdaddress" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="SMALLINT" />
+    <result column="education_cn" property="educationCn" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="SMALLINT" />
+    <result column="major_cn" property="majorCn" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="tag_cn" property="tagCn" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="email_notify" property="emailNotify" jdbcType="BIT" />
+    <result column="intention_jobs_id" property="intentionJobsId" jdbcType="VARCHAR" />
+    <result column="intention_jobs" property="intentionJobs" jdbcType="VARCHAR" />
+    <result column="specialty" property="specialty" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="BIT" />
+    <result column="photo_img" property="photoImg" jdbcType="VARCHAR" />
+    <result column="photo_audit" property="photoAudit" jdbcType="BIT" />
+    <result column="photo_display" property="photoDisplay" jdbcType="BIT" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="INTEGER" />
+    <result column="refreshtime" property="refreshtime" jdbcType="INTEGER" />
+    <result column="stime" property="stime" jdbcType="INTEGER" />
+    <result column="entrust" property="entrust" jdbcType="TINYINT" />
+    <result column="level" property="level" jdbcType="BIT" />
+    <result column="complete_percent" property="completePercent" jdbcType="TINYINT" />
+    <result column="current" property="current" jdbcType="SMALLINT" />
+    <result column="current_cn" property="currentCn" jdbcType="VARCHAR" />
+    <result column="word_resume" property="wordResume" jdbcType="VARCHAR" />
+    <result column="word_resume_title" property="wordResumeTitle" jdbcType="VARCHAR" />
+    <result column="word_resume_addtime" property="wordResumeAddtime" jdbcType="INTEGER" />
+    <result column="click" property="click" jdbcType="INTEGER" />
+    <result column="tpl" property="tpl" jdbcType="VARCHAR" />
+    <result column="resume_from_pc" property="resumeFromPc" jdbcType="BIT" />
+    <result column="def" property="def" jdbcType="BIT" />
+    <result column="mobile_audit" property="mobileAudit" jdbcType="BIT" />
+    <result column="subsite_id" property="subsiteId" jdbcType="INTEGER" />
+    <result column="auto_refresh" property="autoRefresh" jdbcType="TINYINT" />
+    <result column="auto_apply" property="autoApply" jdbcType="TINYINT" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="talent" property="talent" jdbcType="BIT" />
+    <result column="is_quick" property="isQuick" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jk.pojo.QsAdvResumeWithBLOBs" extends="BaseResultMap" >
+    <result column="key_full" property="keyFull" jdbcType="LONGVARCHAR" />
+    <result column="key_precise" property="keyPrecise" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, uid, display, display_name, audit, stick, strong_tag, title, fullname, sex, sex_cn, 
+    nature, nature_cn, trade, trade_cn, birthdate, residence, height, marriage, marriage_cn, 
+    experience, experience_cn, district, district_cn, wage, wage_cn, householdaddress, 
+    education, education_cn, major, major_cn, tag, tag_cn, telephone, email, email_notify, 
+    intention_jobs_id, intention_jobs, specialty, photo, photo_img, photo_audit, photo_display, 
+    qq, weixin, addtime, refreshtime, stime, entrust, level, complete_percent, current, 
+    current_cn, word_resume, word_resume_title, word_resume_addtime, click, tpl, resume_from_pc, 
+    def, mobile_audit, subsite_id, auto_refresh, auto_apply, comment_content, talent, 
+    is_quick
+  </sql>
+  <sql id="Blob_Column_List" >
+    key_full, key_precise
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.jk.pojo.QsAdvResumeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qs_adv_resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jk.pojo.QsAdvResumeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from qs_adv_resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qs_adv_resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qs_adv_resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jk.pojo.QsAdvResumeExample" >
+    delete from qs_adv_resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.QsAdvResumeWithBLOBs" >
+    insert into qs_adv_resume (id, uid, display, 
+      display_name, audit, stick, 
+      strong_tag, title, fullname, 
+      sex, sex_cn, nature, 
+      nature_cn, trade, trade_cn, 
+      birthdate, residence, height, 
+      marriage, marriage_cn, experience, 
+      experience_cn, district, district_cn, 
+      wage, wage_cn, householdaddress, 
+      education, education_cn, major, 
+      major_cn, tag, tag_cn, 
+      telephone, email, email_notify, 
+      intention_jobs_id, intention_jobs, specialty, 
+      photo, photo_img, photo_audit, 
+      photo_display, qq, weixin, 
+      addtime, refreshtime, stime, 
+      entrust, level, complete_percent, 
+      current, current_cn, word_resume, 
+      word_resume_title, word_resume_addtime, click, 
+      tpl, resume_from_pc, def, mobile_audit, 
+      subsite_id, auto_refresh, auto_apply, 
+      comment_content, talent, is_quick, 
+      key_full, key_precise)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{display,jdbcType=TINYINT}, 
+      #{displayName,jdbcType=TINYINT}, #{audit,jdbcType=TINYINT}, #{stick,jdbcType=BIT}, 
+      #{strongTag,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=TINYINT}, #{sexCn,jdbcType=VARCHAR}, #{nature,jdbcType=INTEGER}, 
+      #{natureCn,jdbcType=VARCHAR}, #{trade,jdbcType=VARCHAR}, #{tradeCn,jdbcType=VARCHAR}, 
+      #{birthdate,jdbcType=SMALLINT}, #{residence,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, 
+      #{marriage,jdbcType=TINYINT}, #{marriageCn,jdbcType=VARCHAR}, #{experience,jdbcType=SMALLINT}, 
+      #{experienceCn,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{districtCn,jdbcType=VARCHAR}, 
+      #{wage,jdbcType=SMALLINT}, #{wageCn,jdbcType=VARCHAR}, #{householdaddress,jdbcType=VARCHAR}, 
+      #{education,jdbcType=SMALLINT}, #{educationCn,jdbcType=VARCHAR}, #{major,jdbcType=SMALLINT}, 
+      #{majorCn,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{tagCn,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{emailNotify,jdbcType=BIT}, 
+      #{intentionJobsId,jdbcType=VARCHAR}, #{intentionJobs,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=BIT}, #{photoImg,jdbcType=VARCHAR}, #{photoAudit,jdbcType=BIT}, 
+      #{photoDisplay,jdbcType=BIT}, #{qq,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{addtime,jdbcType=INTEGER}, #{refreshtime,jdbcType=INTEGER}, #{stime,jdbcType=INTEGER}, 
+      #{entrust,jdbcType=TINYINT}, #{level,jdbcType=BIT}, #{completePercent,jdbcType=TINYINT}, 
+      #{current,jdbcType=SMALLINT}, #{currentCn,jdbcType=VARCHAR}, #{wordResume,jdbcType=VARCHAR}, 
+      #{wordResumeTitle,jdbcType=VARCHAR}, #{wordResumeAddtime,jdbcType=INTEGER}, #{click,jdbcType=INTEGER}, 
+      #{tpl,jdbcType=VARCHAR}, #{resumeFromPc,jdbcType=BIT}, #{def,jdbcType=BIT}, #{mobileAudit,jdbcType=BIT}, 
+      #{subsiteId,jdbcType=INTEGER}, #{autoRefresh,jdbcType=TINYINT}, #{autoApply,jdbcType=TINYINT}, 
+      #{commentContent,jdbcType=VARCHAR}, #{talent,jdbcType=BIT}, #{isQuick,jdbcType=BIT}, 
+      #{keyFull,jdbcType=LONGVARCHAR}, #{keyPrecise,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.QsAdvResumeWithBLOBs" >
+    insert into qs_adv_resume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="display != null" >
+        display,
+      </if>
+      <if test="displayName != null" >
+        display_name,
+      </if>
+      <if test="audit != null" >
+        audit,
+      </if>
+      <if test="stick != null" >
+        stick,
+      </if>
+      <if test="strongTag != null" >
+        strong_tag,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="fullname != null" >
+        fullname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="sexCn != null" >
+        sex_cn,
+      </if>
+      <if test="nature != null" >
+        nature,
+      </if>
+      <if test="natureCn != null" >
+        nature_cn,
+      </if>
+      <if test="trade != null" >
+        trade,
+      </if>
+      <if test="tradeCn != null" >
+        trade_cn,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="residence != null" >
+        residence,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="marriage != null" >
+        marriage,
+      </if>
+      <if test="marriageCn != null" >
+        marriage_cn,
+      </if>
+      <if test="experience != null" >
+        experience,
+      </if>
+      <if test="experienceCn != null" >
+        experience_cn,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="districtCn != null" >
+        district_cn,
+      </if>
+      <if test="wage != null" >
+        wage,
+      </if>
+      <if test="wageCn != null" >
+        wage_cn,
+      </if>
+      <if test="householdaddress != null" >
+        householdaddress,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="educationCn != null" >
+        education_cn,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="majorCn != null" >
+        major_cn,
+      </if>
+      <if test="tag != null" >
+        tag,
+      </if>
+      <if test="tagCn != null" >
+        tag_cn,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="emailNotify != null" >
+        email_notify,
+      </if>
+      <if test="intentionJobsId != null" >
+        intention_jobs_id,
+      </if>
+      <if test="intentionJobs != null" >
+        intention_jobs,
+      </if>
+      <if test="specialty != null" >
+        specialty,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="photoImg != null" >
+        photo_img,
+      </if>
+      <if test="photoAudit != null" >
+        photo_audit,
+      </if>
+      <if test="photoDisplay != null" >
+        photo_display,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="refreshtime != null" >
+        refreshtime,
+      </if>
+      <if test="stime != null" >
+        stime,
+      </if>
+      <if test="entrust != null" >
+        entrust,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="completePercent != null" >
+        complete_percent,
+      </if>
+      <if test="current != null" >
+        current,
+      </if>
+      <if test="currentCn != null" >
+        current_cn,
+      </if>
+      <if test="wordResume != null" >
+        word_resume,
+      </if>
+      <if test="wordResumeTitle != null" >
+        word_resume_title,
+      </if>
+      <if test="wordResumeAddtime != null" >
+        word_resume_addtime,
+      </if>
+      <if test="click != null" >
+        click,
+      </if>
+      <if test="tpl != null" >
+        tpl,
+      </if>
+      <if test="resumeFromPc != null" >
+        resume_from_pc,
+      </if>
+      <if test="def != null" >
+        def,
+      </if>
+      <if test="mobileAudit != null" >
+        mobile_audit,
+      </if>
+      <if test="subsiteId != null" >
+        subsite_id,
+      </if>
+      <if test="autoRefresh != null" >
+        auto_refresh,
+      </if>
+      <if test="autoApply != null" >
+        auto_apply,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+      <if test="talent != null" >
+        talent,
+      </if>
+      <if test="isQuick != null" >
+        is_quick,
+      </if>
+      <if test="keyFull != null" >
+        key_full,
+      </if>
+      <if test="keyPrecise != null" >
+        key_precise,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=TINYINT},
+      </if>
+      <if test="displayName != null" >
+        #{displayName,jdbcType=TINYINT},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="stick != null" >
+        #{stick,jdbcType=BIT},
+      </if>
+      <if test="strongTag != null" >
+        #{strongTag,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null" >
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="sexCn != null" >
+        #{sexCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="natureCn != null" >
+        #{natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCn != null" >
+        #{tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=SMALLINT},
+      </if>
+      <if test="residence != null" >
+        #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=TINYINT},
+      </if>
+      <if test="marriageCn != null" >
+        #{marriageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null" >
+        #{experience,jdbcType=SMALLINT},
+      </if>
+      <if test="experienceCn != null" >
+        #{experienceCn,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCn != null" >
+        #{districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="wage != null" >
+        #{wage,jdbcType=SMALLINT},
+      </if>
+      <if test="wageCn != null" >
+        #{wageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="householdaddress != null" >
+        #{householdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=SMALLINT},
+      </if>
+      <if test="educationCn != null" >
+        #{educationCn,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=SMALLINT},
+      </if>
+      <if test="majorCn != null" >
+        #{majorCn,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="tagCn != null" >
+        #{tagCn,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailNotify != null" >
+        #{emailNotify,jdbcType=BIT},
+      </if>
+      <if test="intentionJobsId != null" >
+        #{intentionJobsId,jdbcType=VARCHAR},
+      </if>
+      <if test="intentionJobs != null" >
+        #{intentionJobs,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null" >
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=BIT},
+      </if>
+      <if test="photoImg != null" >
+        #{photoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="photoAudit != null" >
+        #{photoAudit,jdbcType=BIT},
+      </if>
+      <if test="photoDisplay != null" >
+        #{photoDisplay,jdbcType=BIT},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="refreshtime != null" >
+        #{refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="stime != null" >
+        #{stime,jdbcType=INTEGER},
+      </if>
+      <if test="entrust != null" >
+        #{entrust,jdbcType=TINYINT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=BIT},
+      </if>
+      <if test="completePercent != null" >
+        #{completePercent,jdbcType=TINYINT},
+      </if>
+      <if test="current != null" >
+        #{current,jdbcType=SMALLINT},
+      </if>
+      <if test="currentCn != null" >
+        #{currentCn,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResume != null" >
+        #{wordResume,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResumeTitle != null" >
+        #{wordResumeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResumeAddtime != null" >
+        #{wordResumeAddtime,jdbcType=INTEGER},
+      </if>
+      <if test="click != null" >
+        #{click,jdbcType=INTEGER},
+      </if>
+      <if test="tpl != null" >
+        #{tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFromPc != null" >
+        #{resumeFromPc,jdbcType=BIT},
+      </if>
+      <if test="def != null" >
+        #{def,jdbcType=BIT},
+      </if>
+      <if test="mobileAudit != null" >
+        #{mobileAudit,jdbcType=BIT},
+      </if>
+      <if test="subsiteId != null" >
+        #{subsiteId,jdbcType=INTEGER},
+      </if>
+      <if test="autoRefresh != null" >
+        #{autoRefresh,jdbcType=TINYINT},
+      </if>
+      <if test="autoApply != null" >
+        #{autoApply,jdbcType=TINYINT},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="talent != null" >
+        #{talent,jdbcType=BIT},
+      </if>
+      <if test="isQuick != null" >
+        #{isQuick,jdbcType=BIT},
+      </if>
+      <if test="keyFull != null" >
+        #{keyFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="keyPrecise != null" >
+        #{keyPrecise,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jk.pojo.QsAdvResumeExample" resultType="java.lang.Integer" >
+    select count(*) from qs_adv_resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update qs_adv_resume
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.display != null" >
+        display = #{record.display,jdbcType=TINYINT},
+      </if>
+      <if test="record.displayName != null" >
+        display_name = #{record.displayName,jdbcType=TINYINT},
+      </if>
+      <if test="record.audit != null" >
+        audit = #{record.audit,jdbcType=TINYINT},
+      </if>
+      <if test="record.stick != null" >
+        stick = #{record.stick,jdbcType=BIT},
+      </if>
+      <if test="record.strongTag != null" >
+        strong_tag = #{record.strongTag,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullname != null" >
+        fullname = #{record.fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=TINYINT},
+      </if>
+      <if test="record.sexCn != null" >
+        sex_cn = #{record.sexCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nature != null" >
+        nature = #{record.nature,jdbcType=INTEGER},
+      </if>
+      <if test="record.natureCn != null" >
+        nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trade != null" >
+        trade = #{record.trade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeCn != null" >
+        trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthdate != null" >
+        birthdate = #{record.birthdate,jdbcType=SMALLINT},
+      </if>
+      <if test="record.residence != null" >
+        residence = #{record.residence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null" >
+        height = #{record.height,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marriage != null" >
+        marriage = #{record.marriage,jdbcType=TINYINT},
+      </if>
+      <if test="record.marriageCn != null" >
+        marriage_cn = #{record.marriageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.experience != null" >
+        experience = #{record.experience,jdbcType=SMALLINT},
+      </if>
+      <if test="record.experienceCn != null" >
+        experience_cn = #{record.experienceCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.district != null" >
+        district = #{record.district,jdbcType=VARCHAR},
+      </if>
+      <if test="record.districtCn != null" >
+        district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wage != null" >
+        wage = #{record.wage,jdbcType=SMALLINT},
+      </if>
+      <if test="record.wageCn != null" >
+        wage_cn = #{record.wageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.householdaddress != null" >
+        householdaddress = #{record.householdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.education != null" >
+        education = #{record.education,jdbcType=SMALLINT},
+      </if>
+      <if test="record.educationCn != null" >
+        education_cn = #{record.educationCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.major != null" >
+        major = #{record.major,jdbcType=SMALLINT},
+      </if>
+      <if test="record.majorCn != null" >
+        major_cn = #{record.majorCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tag != null" >
+        tag = #{record.tag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tagCn != null" >
+        tag_cn = #{record.tagCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailNotify != null" >
+        email_notify = #{record.emailNotify,jdbcType=BIT},
+      </if>
+      <if test="record.intentionJobsId != null" >
+        intention_jobs_id = #{record.intentionJobsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intentionJobs != null" >
+        intention_jobs = #{record.intentionJobs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.specialty != null" >
+        specialty = #{record.specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null" >
+        photo = #{record.photo,jdbcType=BIT},
+      </if>
+      <if test="record.photoImg != null" >
+        photo_img = #{record.photoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photoAudit != null" >
+        photo_audit = #{record.photoAudit,jdbcType=BIT},
+      </if>
+      <if test="record.photoDisplay != null" >
+        photo_display = #{record.photoDisplay,jdbcType=BIT},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weixin != null" >
+        weixin = #{record.weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addtime != null" >
+        addtime = #{record.addtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.refreshtime != null" >
+        refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.stime != null" >
+        stime = #{record.stime,jdbcType=INTEGER},
+      </if>
+      <if test="record.entrust != null" >
+        entrust = #{record.entrust,jdbcType=TINYINT},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=BIT},
+      </if>
+      <if test="record.completePercent != null" >
+        complete_percent = #{record.completePercent,jdbcType=TINYINT},
+      </if>
+      <if test="record.current != null" >
+        current = #{record.current,jdbcType=SMALLINT},
+      </if>
+      <if test="record.currentCn != null" >
+        current_cn = #{record.currentCn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wordResume != null" >
+        word_resume = #{record.wordResume,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wordResumeTitle != null" >
+        word_resume_title = #{record.wordResumeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wordResumeAddtime != null" >
+        word_resume_addtime = #{record.wordResumeAddtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.click != null" >
+        click = #{record.click,jdbcType=INTEGER},
+      </if>
+      <if test="record.tpl != null" >
+        tpl = #{record.tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeFromPc != null" >
+        resume_from_pc = #{record.resumeFromPc,jdbcType=BIT},
+      </if>
+      <if test="record.def != null" >
+        def = #{record.def,jdbcType=BIT},
+      </if>
+      <if test="record.mobileAudit != null" >
+        mobile_audit = #{record.mobileAudit,jdbcType=BIT},
+      </if>
+      <if test="record.subsiteId != null" >
+        subsite_id = #{record.subsiteId,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoRefresh != null" >
+        auto_refresh = #{record.autoRefresh,jdbcType=TINYINT},
+      </if>
+      <if test="record.autoApply != null" >
+        auto_apply = #{record.autoApply,jdbcType=TINYINT},
+      </if>
+      <if test="record.commentContent != null" >
+        comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.talent != null" >
+        talent = #{record.talent,jdbcType=BIT},
+      </if>
+      <if test="record.isQuick != null" >
+        is_quick = #{record.isQuick,jdbcType=BIT},
+      </if>
+      <if test="record.keyFull != null" >
+        key_full = #{record.keyFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.keyPrecise != null" >
+        key_precise = #{record.keyPrecise,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update qs_adv_resume
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      display = #{record.display,jdbcType=TINYINT},
+      display_name = #{record.displayName,jdbcType=TINYINT},
+      audit = #{record.audit,jdbcType=TINYINT},
+      stick = #{record.stick,jdbcType=BIT},
+      strong_tag = #{record.strongTag,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      fullname = #{record.fullname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=TINYINT},
+      sex_cn = #{record.sexCn,jdbcType=VARCHAR},
+      nature = #{record.nature,jdbcType=INTEGER},
+      nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      trade = #{record.trade,jdbcType=VARCHAR},
+      trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      birthdate = #{record.birthdate,jdbcType=SMALLINT},
+      residence = #{record.residence,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=VARCHAR},
+      marriage = #{record.marriage,jdbcType=TINYINT},
+      marriage_cn = #{record.marriageCn,jdbcType=VARCHAR},
+      experience = #{record.experience,jdbcType=SMALLINT},
+      experience_cn = #{record.experienceCn,jdbcType=VARCHAR},
+      district = #{record.district,jdbcType=VARCHAR},
+      district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      wage = #{record.wage,jdbcType=SMALLINT},
+      wage_cn = #{record.wageCn,jdbcType=VARCHAR},
+      householdaddress = #{record.householdaddress,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=SMALLINT},
+      education_cn = #{record.educationCn,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=SMALLINT},
+      major_cn = #{record.majorCn,jdbcType=VARCHAR},
+      tag = #{record.tag,jdbcType=VARCHAR},
+      tag_cn = #{record.tagCn,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      email_notify = #{record.emailNotify,jdbcType=BIT},
+      intention_jobs_id = #{record.intentionJobsId,jdbcType=VARCHAR},
+      intention_jobs = #{record.intentionJobs,jdbcType=VARCHAR},
+      specialty = #{record.specialty,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=BIT},
+      photo_img = #{record.photoImg,jdbcType=VARCHAR},
+      photo_audit = #{record.photoAudit,jdbcType=BIT},
+      photo_display = #{record.photoDisplay,jdbcType=BIT},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      weixin = #{record.weixin,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      stime = #{record.stime,jdbcType=INTEGER},
+      entrust = #{record.entrust,jdbcType=TINYINT},
+      level = #{record.level,jdbcType=BIT},
+      complete_percent = #{record.completePercent,jdbcType=TINYINT},
+      current = #{record.current,jdbcType=SMALLINT},
+      current_cn = #{record.currentCn,jdbcType=VARCHAR},
+      word_resume = #{record.wordResume,jdbcType=VARCHAR},
+      word_resume_title = #{record.wordResumeTitle,jdbcType=VARCHAR},
+      word_resume_addtime = #{record.wordResumeAddtime,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER},
+      tpl = #{record.tpl,jdbcType=VARCHAR},
+      resume_from_pc = #{record.resumeFromPc,jdbcType=BIT},
+      def = #{record.def,jdbcType=BIT},
+      mobile_audit = #{record.mobileAudit,jdbcType=BIT},
+      subsite_id = #{record.subsiteId,jdbcType=INTEGER},
+      auto_refresh = #{record.autoRefresh,jdbcType=TINYINT},
+      auto_apply = #{record.autoApply,jdbcType=TINYINT},
+      comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      talent = #{record.talent,jdbcType=BIT},
+      is_quick = #{record.isQuick,jdbcType=BIT},
+      key_full = #{record.keyFull,jdbcType=LONGVARCHAR},
+      key_precise = #{record.keyPrecise,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update qs_adv_resume
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      display = #{record.display,jdbcType=TINYINT},
+      display_name = #{record.displayName,jdbcType=TINYINT},
+      audit = #{record.audit,jdbcType=TINYINT},
+      stick = #{record.stick,jdbcType=BIT},
+      strong_tag = #{record.strongTag,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      fullname = #{record.fullname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=TINYINT},
+      sex_cn = #{record.sexCn,jdbcType=VARCHAR},
+      nature = #{record.nature,jdbcType=INTEGER},
+      nature_cn = #{record.natureCn,jdbcType=VARCHAR},
+      trade = #{record.trade,jdbcType=VARCHAR},
+      trade_cn = #{record.tradeCn,jdbcType=VARCHAR},
+      birthdate = #{record.birthdate,jdbcType=SMALLINT},
+      residence = #{record.residence,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=VARCHAR},
+      marriage = #{record.marriage,jdbcType=TINYINT},
+      marriage_cn = #{record.marriageCn,jdbcType=VARCHAR},
+      experience = #{record.experience,jdbcType=SMALLINT},
+      experience_cn = #{record.experienceCn,jdbcType=VARCHAR},
+      district = #{record.district,jdbcType=VARCHAR},
+      district_cn = #{record.districtCn,jdbcType=VARCHAR},
+      wage = #{record.wage,jdbcType=SMALLINT},
+      wage_cn = #{record.wageCn,jdbcType=VARCHAR},
+      householdaddress = #{record.householdaddress,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=SMALLINT},
+      education_cn = #{record.educationCn,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=SMALLINT},
+      major_cn = #{record.majorCn,jdbcType=VARCHAR},
+      tag = #{record.tag,jdbcType=VARCHAR},
+      tag_cn = #{record.tagCn,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      email_notify = #{record.emailNotify,jdbcType=BIT},
+      intention_jobs_id = #{record.intentionJobsId,jdbcType=VARCHAR},
+      intention_jobs = #{record.intentionJobs,jdbcType=VARCHAR},
+      specialty = #{record.specialty,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=BIT},
+      photo_img = #{record.photoImg,jdbcType=VARCHAR},
+      photo_audit = #{record.photoAudit,jdbcType=BIT},
+      photo_display = #{record.photoDisplay,jdbcType=BIT},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      weixin = #{record.weixin,jdbcType=VARCHAR},
+      addtime = #{record.addtime,jdbcType=INTEGER},
+      refreshtime = #{record.refreshtime,jdbcType=INTEGER},
+      stime = #{record.stime,jdbcType=INTEGER},
+      entrust = #{record.entrust,jdbcType=TINYINT},
+      level = #{record.level,jdbcType=BIT},
+      complete_percent = #{record.completePercent,jdbcType=TINYINT},
+      current = #{record.current,jdbcType=SMALLINT},
+      current_cn = #{record.currentCn,jdbcType=VARCHAR},
+      word_resume = #{record.wordResume,jdbcType=VARCHAR},
+      word_resume_title = #{record.wordResumeTitle,jdbcType=VARCHAR},
+      word_resume_addtime = #{record.wordResumeAddtime,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER},
+      tpl = #{record.tpl,jdbcType=VARCHAR},
+      resume_from_pc = #{record.resumeFromPc,jdbcType=BIT},
+      def = #{record.def,jdbcType=BIT},
+      mobile_audit = #{record.mobileAudit,jdbcType=BIT},
+      subsite_id = #{record.subsiteId,jdbcType=INTEGER},
+      auto_refresh = #{record.autoRefresh,jdbcType=TINYINT},
+      auto_apply = #{record.autoApply,jdbcType=TINYINT},
+      comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      talent = #{record.talent,jdbcType=BIT},
+      is_quick = #{record.isQuick,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.QsAdvResumeWithBLOBs" >
+    update qs_adv_resume
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="display != null" >
+        display = #{display,jdbcType=TINYINT},
+      </if>
+      <if test="displayName != null" >
+        display_name = #{displayName,jdbcType=TINYINT},
+      </if>
+      <if test="audit != null" >
+        audit = #{audit,jdbcType=TINYINT},
+      </if>
+      <if test="stick != null" >
+        stick = #{stick,jdbcType=BIT},
+      </if>
+      <if test="strongTag != null" >
+        strong_tag = #{strongTag,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null" >
+        fullname = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="sexCn != null" >
+        sex_cn = #{sexCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        nature = #{nature,jdbcType=INTEGER},
+      </if>
+      <if test="natureCn != null" >
+        nature_cn = #{natureCn,jdbcType=VARCHAR},
+      </if>
+      <if test="trade != null" >
+        trade = #{trade,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeCn != null" >
+        trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=SMALLINT},
+      </if>
+      <if test="residence != null" >
+        residence = #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        marriage = #{marriage,jdbcType=TINYINT},
+      </if>
+      <if test="marriageCn != null" >
+        marriage_cn = #{marriageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null" >
+        experience = #{experience,jdbcType=SMALLINT},
+      </if>
+      <if test="experienceCn != null" >
+        experience_cn = #{experienceCn,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="districtCn != null" >
+        district_cn = #{districtCn,jdbcType=VARCHAR},
+      </if>
+      <if test="wage != null" >
+        wage = #{wage,jdbcType=SMALLINT},
+      </if>
+      <if test="wageCn != null" >
+        wage_cn = #{wageCn,jdbcType=VARCHAR},
+      </if>
+      <if test="householdaddress != null" >
+        householdaddress = #{householdaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=SMALLINT},
+      </if>
+      <if test="educationCn != null" >
+        education_cn = #{educationCn,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=SMALLINT},
+      </if>
+      <if test="majorCn != null" >
+        major_cn = #{majorCn,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="tagCn != null" >
+        tag_cn = #{tagCn,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailNotify != null" >
+        email_notify = #{emailNotify,jdbcType=BIT},
+      </if>
+      <if test="intentionJobsId != null" >
+        intention_jobs_id = #{intentionJobsId,jdbcType=VARCHAR},
+      </if>
+      <if test="intentionJobs != null" >
+        intention_jobs = #{intentionJobs,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null" >
+        specialty = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=BIT},
+      </if>
+      <if test="photoImg != null" >
+        photo_img = #{photoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="photoAudit != null" >
+        photo_audit = #{photoAudit,jdbcType=BIT},
+      </if>
+      <if test="photoDisplay != null" >
+        photo_display = #{photoDisplay,jdbcType=BIT},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=INTEGER},
+      </if>
+      <if test="refreshtime != null" >
+        refreshtime = #{refreshtime,jdbcType=INTEGER},
+      </if>
+      <if test="stime != null" >
+        stime = #{stime,jdbcType=INTEGER},
+      </if>
+      <if test="entrust != null" >
+        entrust = #{entrust,jdbcType=TINYINT},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=BIT},
+      </if>
+      <if test="completePercent != null" >
+        complete_percent = #{completePercent,jdbcType=TINYINT},
+      </if>
+      <if test="current != null" >
+        current = #{current,jdbcType=SMALLINT},
+      </if>
+      <if test="currentCn != null" >
+        current_cn = #{currentCn,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResume != null" >
+        word_resume = #{wordResume,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResumeTitle != null" >
+        word_resume_title = #{wordResumeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="wordResumeAddtime != null" >
+        word_resume_addtime = #{wordResumeAddtime,jdbcType=INTEGER},
+      </if>
+      <if test="click != null" >
+        click = #{click,jdbcType=INTEGER},
+      </if>
+      <if test="tpl != null" >
+        tpl = #{tpl,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFromPc != null" >
+        resume_from_pc = #{resumeFromPc,jdbcType=BIT},
+      </if>
+      <if test="def != null" >
+        def = #{def,jdbcType=BIT},
+      </if>
+      <if test="mobileAudit != null" >
+        mobile_audit = #{mobileAudit,jdbcType=BIT},
+      </if>
+      <if test="subsiteId != null" >
+        subsite_id = #{subsiteId,jdbcType=INTEGER},
+      </if>
+      <if test="autoRefresh != null" >
+        auto_refresh = #{autoRefresh,jdbcType=TINYINT},
+      </if>
+      <if test="autoApply != null" >
+        auto_apply = #{autoApply,jdbcType=TINYINT},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="talent != null" >
+        talent = #{talent,jdbcType=BIT},
+      </if>
+      <if test="isQuick != null" >
+        is_quick = #{isQuick,jdbcType=BIT},
+      </if>
+      <if test="keyFull != null" >
+        key_full = #{keyFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="keyPrecise != null" >
+        key_precise = #{keyPrecise,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jk.pojo.QsAdvResumeWithBLOBs" >
+    update qs_adv_resume
+    set uid = #{uid,jdbcType=INTEGER},
+      display = #{display,jdbcType=TINYINT},
+      display_name = #{displayName,jdbcType=TINYINT},
+      audit = #{audit,jdbcType=TINYINT},
+      stick = #{stick,jdbcType=BIT},
+      strong_tag = #{strongTag,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      sex_cn = #{sexCn,jdbcType=VARCHAR},
+      nature = #{nature,jdbcType=INTEGER},
+      nature_cn = #{natureCn,jdbcType=VARCHAR},
+      trade = #{trade,jdbcType=VARCHAR},
+      trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=SMALLINT},
+      residence = #{residence,jdbcType=VARCHAR},
+      height = #{height,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=TINYINT},
+      marriage_cn = #{marriageCn,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=SMALLINT},
+      experience_cn = #{experienceCn,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      district_cn = #{districtCn,jdbcType=VARCHAR},
+      wage = #{wage,jdbcType=SMALLINT},
+      wage_cn = #{wageCn,jdbcType=VARCHAR},
+      householdaddress = #{householdaddress,jdbcType=VARCHAR},
+      education = #{education,jdbcType=SMALLINT},
+      education_cn = #{educationCn,jdbcType=VARCHAR},
+      major = #{major,jdbcType=SMALLINT},
+      major_cn = #{majorCn,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      tag_cn = #{tagCn,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      email_notify = #{emailNotify,jdbcType=BIT},
+      intention_jobs_id = #{intentionJobsId,jdbcType=VARCHAR},
+      intention_jobs = #{intentionJobs,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=BIT},
+      photo_img = #{photoImg,jdbcType=VARCHAR},
+      photo_audit = #{photoAudit,jdbcType=BIT},
+      photo_display = #{photoDisplay,jdbcType=BIT},
+      qq = #{qq,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=INTEGER},
+      refreshtime = #{refreshtime,jdbcType=INTEGER},
+      stime = #{stime,jdbcType=INTEGER},
+      entrust = #{entrust,jdbcType=TINYINT},
+      level = #{level,jdbcType=BIT},
+      complete_percent = #{completePercent,jdbcType=TINYINT},
+      current = #{current,jdbcType=SMALLINT},
+      current_cn = #{currentCn,jdbcType=VARCHAR},
+      word_resume = #{wordResume,jdbcType=VARCHAR},
+      word_resume_title = #{wordResumeTitle,jdbcType=VARCHAR},
+      word_resume_addtime = #{wordResumeAddtime,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER},
+      tpl = #{tpl,jdbcType=VARCHAR},
+      resume_from_pc = #{resumeFromPc,jdbcType=BIT},
+      def = #{def,jdbcType=BIT},
+      mobile_audit = #{mobileAudit,jdbcType=BIT},
+      subsite_id = #{subsiteId,jdbcType=INTEGER},
+      auto_refresh = #{autoRefresh,jdbcType=TINYINT},
+      auto_apply = #{autoApply,jdbcType=TINYINT},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      talent = #{talent,jdbcType=BIT},
+      is_quick = #{isQuick,jdbcType=BIT},
+      key_full = #{keyFull,jdbcType=LONGVARCHAR},
+      key_precise = #{keyPrecise,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.QsAdvResume" >
+    update qs_adv_resume
+    set uid = #{uid,jdbcType=INTEGER},
+      display = #{display,jdbcType=TINYINT},
+      display_name = #{displayName,jdbcType=TINYINT},
+      audit = #{audit,jdbcType=TINYINT},
+      stick = #{stick,jdbcType=BIT},
+      strong_tag = #{strongTag,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      sex_cn = #{sexCn,jdbcType=VARCHAR},
+      nature = #{nature,jdbcType=INTEGER},
+      nature_cn = #{natureCn,jdbcType=VARCHAR},
+      trade = #{trade,jdbcType=VARCHAR},
+      trade_cn = #{tradeCn,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=SMALLINT},
+      residence = #{residence,jdbcType=VARCHAR},
+      height = #{height,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=TINYINT},
+      marriage_cn = #{marriageCn,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=SMALLINT},
+      experience_cn = #{experienceCn,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      district_cn = #{districtCn,jdbcType=VARCHAR},
+      wage = #{wage,jdbcType=SMALLINT},
+      wage_cn = #{wageCn,jdbcType=VARCHAR},
+      householdaddress = #{householdaddress,jdbcType=VARCHAR},
+      education = #{education,jdbcType=SMALLINT},
+      education_cn = #{educationCn,jdbcType=VARCHAR},
+      major = #{major,jdbcType=SMALLINT},
+      major_cn = #{majorCn,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      tag_cn = #{tagCn,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      email_notify = #{emailNotify,jdbcType=BIT},
+      intention_jobs_id = #{intentionJobsId,jdbcType=VARCHAR},
+      intention_jobs = #{intentionJobs,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=BIT},
+      photo_img = #{photoImg,jdbcType=VARCHAR},
+      photo_audit = #{photoAudit,jdbcType=BIT},
+      photo_display = #{photoDisplay,jdbcType=BIT},
+      qq = #{qq,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=INTEGER},
+      refreshtime = #{refreshtime,jdbcType=INTEGER},
+      stime = #{stime,jdbcType=INTEGER},
+      entrust = #{entrust,jdbcType=TINYINT},
+      level = #{level,jdbcType=BIT},
+      complete_percent = #{completePercent,jdbcType=TINYINT},
+      current = #{current,jdbcType=SMALLINT},
+      current_cn = #{currentCn,jdbcType=VARCHAR},
+      word_resume = #{wordResume,jdbcType=VARCHAR},
+      word_resume_title = #{wordResumeTitle,jdbcType=VARCHAR},
+      word_resume_addtime = #{wordResumeAddtime,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER},
+      tpl = #{tpl,jdbcType=VARCHAR},
+      resume_from_pc = #{resumeFromPc,jdbcType=BIT},
+      def = #{def,jdbcType=BIT},
+      mobile_audit = #{mobileAudit,jdbcType=BIT},
+      subsite_id = #{subsiteId,jdbcType=INTEGER},
+      auto_refresh = #{autoRefresh,jdbcType=TINYINT},
+      auto_apply = #{autoApply,jdbcType=TINYINT},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      talent = #{talent,jdbcType=BIT},
+      is_quick = #{isQuick,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
