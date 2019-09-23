@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class QsCompanyProfile implements Serializable {
+
+
     private Integer id;
 
     private Integer uid;

@@ -2725,52 +2725,52 @@ public class QsJobsExample {
             return (Criteria) this;
         }
 
-        public Criteria andAuditEqualTo(Boolean value) {
+        public Criteria andAuditEqualTo(Integer value) {
             addCriterion("audit =", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotEqualTo(Boolean value) {
+        public Criteria andAuditNotEqualTo(Integer value) {
             addCriterion("audit <>", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditGreaterThan(Boolean value) {
+        public Criteria andAuditGreaterThan(Integer value) {
             addCriterion("audit >", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andAuditGreaterThanOrEqualTo(Integer value) {
             addCriterion("audit >=", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditLessThan(Boolean value) {
+        public Criteria andAuditLessThan(Integer value) {
             addCriterion("audit <", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditLessThanOrEqualTo(Boolean value) {
+        public Criteria andAuditLessThanOrEqualTo(Integer value) {
             addCriterion("audit <=", value, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditIn(List<Boolean> values) {
+        public Criteria andAuditIn(List<Integer> values) {
             addCriterion("audit in", values, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotIn(List<Boolean> values) {
+        public Criteria andAuditNotIn(List<Integer> values) {
             addCriterion("audit not in", values, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditBetween(Boolean value1, Boolean value2) {
+        public Criteria andAuditBetween(Integer value1, Integer value2) {
             addCriterion("audit between", value1, value2, "audit");
             return (Criteria) this;
         }
 
-        public Criteria andAuditNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andAuditNotBetween(Integer value1, Integer value2) {
             addCriterion("audit not between", value1, value2, "audit");
             return (Criteria) this;
         }

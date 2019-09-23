@@ -1,6 +1,8 @@
 package com.jk.pojo;
 
-public class QsMembers {
+import java.io.Serializable;
+
+public class QsMembers implements Serializable {
     private Integer uid;
 
     private Boolean utype;
