@@ -12,4 +12,5 @@
 	<dubbo:application name="zhaopin-service"/>
     <dubbo:registry address="zookeeper://localhost:2181"/>
     <dubbo:annotation package="com.jk.service.impl" />
+
 </beans>

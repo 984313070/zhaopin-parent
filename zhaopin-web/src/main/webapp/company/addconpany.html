@@ -1,0 +1,318 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery-1.9.1.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/vue/vue.min.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+  <!--  <script src="../upload/Application/Admin/View/default/public/js/common.js"></script>-->
+    <script>
+        var URL = '../upload/index.php/admin/company',
+            SELF = '../upload/index.php?m=admin&amp;c=company&amp;a=add',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div id="contentType">
+<div class="allpagetop">企业<strong>/</strong>企业会员</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            企业会员
+        </div>
+        <div class="topnav">
+            <a href="../upload/index.php?m=admin&c=company_members&a=index" class="select">会员列表</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+        <div class="toptit">会员资料</div>
+        <div class="form_main width150">
+            <div class="fl">用户名:</div>
+            <div class="fr">
+                <input name="username" type="text" class="input_text_default" maxlength="25" value=""/>
+            </div>
+            <div class="fl">邮箱地址:</div>
+            <div class="fr">
+                <input name="email" type="text" class="input_text_default" maxlength="25" value=""/>
+            </div>
+            <div class="fl">登录密码:</div>
+            <div class="fr">
+                <input name="password" type="password" class="input_text_default" maxlength="25" value=""/>
+            </div>
+            <div class="fl">再次输入密码:</div>
+            <div class="fr">
+                <input name="repassword" type="password" class="input_text_default" maxlength="25" value=""/>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="toptit">企业资料</div>
+        <div class="form_main width150">
+            <div class="fl">公司名称:</div>
+            <div class="fr">
+                <input name="companyname" type="text" class="input_text_default" maxlength="30" value=""/>
+            </div>
+            <div class="fl">公司简称:</div>
+            <div class="fr">
+                <input name="shortName" type="text" class="input_text_default" maxlength="30" value=""/>
+            </div>
+            <div class="fl">认证状态:</div>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="audit" type="hidden" value="0">
+                    <div class="radio " data="1">认证通过</div>
+                    <div class="radio " data="2">等待认证</div>
+                    <div class="radio " data="3">认证未通过</div>
+                    <div class="radio select" data="0">未认证</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 企业性质:</div>
+            <div class="fr">
+                <div class="imgradio J_company_nature">
+                    <input name="nature" type="hidden" value="0">
+                    <input name="natureCn" type="hidden" value="" id="nature_cn"/>
+                    <div class="radio select" data="0" title="请选择">请选择</div>
+                    <div class="radio " data="46" title="国企">国企</div><div class="radio " data="47" title="民营">民营</div><div class="radio " data="48" title="合资">合资</div><div class="radio " data="49" title="外商独资">外商独资</div><div class="radio " data="50" title="股份制企业">股份制企业</div><div class="radio " data="51" title="上市公司">上市公司</div><div class="radio " data="52" title="国家机关">国家机关</div><div class="radio " data="53" title="事业单位">事业单位</div><div class="radio " data="54" title="其它">其它</div>            <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 所属行业:</div>
+            <div class="fr">
+                <input name="tradeCn" id="trade_cn" type="text" class="input_text_default arrow J_resuletitle_trade" value="请选择所属行业" readonly="readonly" data-title="请选择所属行业" data-multiple="false" data-maxnum="0" data-width="682"/>
+                <input class="J_resultcode_trade" name="trade" id="trade" type="hidden" value="" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 所在地区:</div>
+            <div class="fr">
+                <input name="categoryCn" id="district_cn" type="text" class="input_text_default arrow J_resuletitle_city" value="请选择工作地区" readonly="readonly" data-toggle="funCityModal" data-title="请选择地区" data-multiple="false" data-maximum="0" data-width="760"/>
+                <input class="J_resultcode_city" name="district" id="district" type="hidden" value="" keep="" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 公司规模:</div>
+            <div class="fr">
+                <div class="imgradio J_company_scale">
+                    <input name="scale" type="hidden" value="">
+                    <input name="scaleCn" type="hidden" value="" id="scale_cn"/>
+                    <div class="radio select" data="0" title="请选择">请选择</div>
+                    <div class="radio" data="80" title="20人以下">20人以下</div><div class="radio" data="81" title="20-99人">20-99人</div><div class="radio" data="82" title="100-499人">100-499人</div><div class="radio" data="83" title="500-999人">500-999人</div><div class="radio" data="84" title="1000-9999人">1000-9999人</div><div class="radio" data="85" title="10000人以上">10000人以上</div>            <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl">注册资金:</div>
+            <div class="fr">
+                <div style="float: left;">
+                    <input name="registered" type="text" class="input_text_default" maxlength="5" value="" style="width: 100px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 万
+                </div>
+                <div class="imgradio" style="float: left; margin-left: 20px;">
+                    <input name="currency" type="hidden" value="万人民币">
+                    <div class="radio select" data="万人民币" title="万人民币">人民币</div>
+                    <div class="radio " data="万美元" title="万美元">美元</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="fl">企业福利:</div>
+            <div class="fr">
+                <input name="tagCn" id="tag_cn" type="text" class="input_text_default arrow J_resuletitle_jobtag" value="请选择企业福利" readonly="readonly" data-title="请选择企业福利" data-multiple="true" data-maxnum="6" data-width="582"/>
+                <input class="J_resultcode_jobtag" name="tag" id="tag" type="hidden" value="" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 企业联系人:</div>
+            <div class="fr">
+                <input name="contact" type="text" class="input_text_default" maxlength="15" value=""/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 手机号码:</div>
+            <div class="fr">
+                <input name="telephone" type="text" class="input_text_default" maxlength="11" value="" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 固定电话:</div>
+            <div class="fr">
+                <input name="landline_tel_first" type="text" class="input_text_default" maxlength="4" value="" style="width: 70px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> -
+                <input name="landline_tel_next" type="text" class="input_text_default" maxlength="11" value="" style="width: 207px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> -
+                <input name="landline_tel_last" type="text" class="input_text_default" maxlength="6" value="" style="width: 70px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+            </div>
+            <div class="fl">公司网址:</div>
+            <div class="fr">
+                <input name="website" type="text" class="input_text_default middle" maxlength="80" value=""/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 联系地址:</div>
+            <div class="fr">
+                <input name="address" type="text" class="input_text_default middle" maxlength="50" value=""/>
+            </div>
+            <div class="fl">公司简介:</div>
+            <div class="fr">
+                <input name="shortDesc" type="text" class="input_text_default" maxlength="120" value=""/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 公司介绍:</div>
+            <div class="fr">
+                <textarea id="contents" name="contents" class="input_text_default" style="line-height:200%; height:150px;" onpropertychange="if(this.value.length&gt;2000){this.value=this.value.slice(0,2000)}"></textarea>
+                <div style="color: #999999; padding-top: 10px;">请将字数控制在2000字以内。</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="toptit">积分/套餐设置</div>
+        <div class="form_main width150">
+            <div class="fl">是否赠送积分:</div>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="regpoints" type="hidden" value="y">
+                    <div class="radio yes_points select" data="y" title="赠送">赠送</div>
+                    <div class="radio no_points" data="n" title="不赠送">不赠送</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="regpoints_num">
+                <div class="fl">赠送积分数量:</div>
+                <div class="fr">
+                    <input name="regpoints_num" type="text" class="input_text_default" maxlength="11" value="0" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+                </div>
+            </div>
+            <div class="fl">赠送服务套餐:</div>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="reg_service" type="hidden" value="1">
+                    <div class="radio " data="2" title="月度会员">月度会员</div><div class="radio " data="3" title="季度会员">季度会员</div><div class="radio " data="4" title="年度会员">年度会员</div>            <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF0000">是否已收费:</span></div>
+            <div class="fr">
+                <div data-code="0,1" class="imgchecked_small select"><input name="is_money" type="hidden" value="1" /></div>
+                <div class="clear"></div>
+            </div>
+            <div class="log_amount">
+                <div class="fl"><span style="color:#FF0000">收费金额:</span></div>
+                <div class="fr">
+                    <input name="log_amount" type="text" class="input_text_default middle" maxlength="5" value=""/> 元
+                    <span style="color: #999999;">请填写收费金额</span>
+                </div>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="utype"  value="1"/>
+                <input type="submit" class="admin_submit" value="确定"/>
+                <input type="button" class="admin_submit" value="返回" onclick="window.location.href='conpanylist.html'"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+  </div>
+
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+</div>
+<!-- public:footer 以上内容 -->
+<script type="text/javascript" src="../upload/data/static/6f557ceaff36b5f87598d5441e0a6ba3.js?"></script><script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/jquery.user.city.js"></script>
+<script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/jquery.modal.userselectlayer.js"></script>
+</body>
+<script type="text/javascript">
+    var vm ;
+    var contentTypeVue;
+    $(function () {
+        contentTypeVue = new Vue({
+            el: '#contentType',
+            data: {
+                contentType: ""
+            }
+        })
+    })
+
+    function addContentType() {
+        $.ajax({
+            url:'../company/addCompany.do',
+            type:'post',
+            data:{
+                "id":contentTypeVue.contentType.id,
+                "companyname" : $('#companyname').val(),
+                "shortName"   : $('#shortName').val(),
+                "audit"       : $('#audit').val(),
+                "nature"   : $('#nature').val(),
+                "natureCn"   : $('#natureCn').val(),
+                "tradeCn"   : $('#tradeCn').val(),
+                "trade"   : $('#trade').val(),
+                "district"   : $('#district').val(),
+                "scale"   : $('#scale').val(),
+                "scaleCn"   : $('#scaleCn').val(),
+                "registered"   : $('#registered').val(),
+                "currency"   : $('#currency').val(),
+                "tagCn"   : $('#tagCn').val(),
+                "tag"   : $('#tag').val(),
+                "contact"   : $('#contact').val(),
+                "website"   : $('#website').val(),
+                "address"   : $('#address').val(),
+                "shortDesc"   : $('#shortDesc').val(),
+                "contents"   : $('#contents').val(),
+            },
+            dataType:'json',
+            success:function(data){
+                if(data){
+                    location.href="conpanylist.html"
+                }else{
+                    alert("编辑失败")
+                }
+            }
+        })
+    }
+
+
+
+
+
+    $(document).ready(function () {
+        $(".no_points").click(function(){
+            $(".regpoints_num").hide();
+        });
+        $(".yes_points").click(function(){
+            $(".regpoints_num").show();
+        });
+        // 公司性质cn
+        $(".J_company_nature .radio").live('click',function(){
+            $("#nature_cn").val($(this).attr("title"));
+        });
+        // 公司规模cn
+        $(".J_company_scale .radio").live('click',function(){
+            $("#scale_cn").val($(this).attr("title"));
+        });
+    });
+</script>
+</html>

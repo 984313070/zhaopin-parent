@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.QsMembersSetmealMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.QsMembersSetmeal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="expire" property="expire" jdbcType="BIT" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="setmeal_id" property="setmealId" jdbcType="INTEGER" />
+    <result column="setmeal_name" property="setmealName" jdbcType="VARCHAR" />
+    <result column="days" property="days" jdbcType="INTEGER" />
+    <result column="expense" property="expense" jdbcType="INTEGER" />
+    <result column="jobs_meanwhile" property="jobsMeanwhile" jdbcType="INTEGER" />
+    <result column="refresh_jobs_free" property="refreshJobsFree" jdbcType="INTEGER" />
+    <result column="download_resume" property="downloadResume" jdbcType="INTEGER" />
+    <result column="download_resume_max" property="downloadResumeMax" jdbcType="INTEGER" />
+    <result column="added" property="added" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="INTEGER" />
+    <result column="endtime" property="endtime" jdbcType="INTEGER" />
+    <result column="setmeal_img" property="setmealImg" jdbcType="VARCHAR" />
+    <result column="show_apply_contact" property="showApplyContact" jdbcType="BIT" />
+    <result column="is_free" property="isFree" jdbcType="BIT" />
+    <result column="discount_download_resume" property="discountDownloadResume" jdbcType="DOUBLE" />
+    <result column="discount_sms" property="discountSms" jdbcType="DOUBLE" />
+    <result column="discount_stick" property="discountStick" jdbcType="DOUBLE" />
+    <result column="discount_emergency" property="discountEmergency" jdbcType="DOUBLE" />
+    <result column="discount_tpl" property="discountTpl" jdbcType="DOUBLE" />
+    <result column="discount_auto_refresh_jobs" property="discountAutoRefreshJobs" jdbcType="DOUBLE" />
+    <result column="show_contact_direct" property="showContactDirect" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, expire, uid, setmeal_id, setmeal_name, days, expense, jobs_meanwhile, refresh_jobs_free, 
+    download_resume, download_resume_max, added, starttime, endtime, setmeal_img, show_apply_contact, 
+    is_free, discount_download_resume, discount_sms, discount_stick, discount_emergency, 
+    discount_tpl, discount_auto_refresh_jobs, show_contact_direct
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jk.pojo.QsMembersSetmealExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from qs_members_setmeal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qs_members_setmeal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qs_members_setmeal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jk.pojo.QsMembersSetmealExample" >
+    delete from qs_members_setmeal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.QsMembersSetmeal" >
+    insert into qs_members_setmeal (id, expire, uid, 
+      setmeal_id, setmeal_name, days, 
+      expense, jobs_meanwhile, refresh_jobs_free, 
+      download_resume, download_resume_max, added, 
+      starttime, endtime, setmeal_img, 
+      show_apply_contact, is_free, discount_download_resume, 
+      discount_sms, discount_stick, discount_emergency, 
+      discount_tpl, discount_auto_refresh_jobs, show_contact_direct
+      )
+    values (#{id,jdbcType=INTEGER}, #{expire,jdbcType=BIT}, #{uid,jdbcType=INTEGER}, 
+      #{setmealId,jdbcType=INTEGER}, #{setmealName,jdbcType=VARCHAR}, #{days,jdbcType=INTEGER}, 
+      #{expense,jdbcType=INTEGER}, #{jobsMeanwhile,jdbcType=INTEGER}, #{refreshJobsFree,jdbcType=INTEGER}, 
+      #{downloadResume,jdbcType=INTEGER}, #{downloadResumeMax,jdbcType=INTEGER}, #{added,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=INTEGER}, #{endtime,jdbcType=INTEGER}, #{setmealImg,jdbcType=VARCHAR}, 
+      #{showApplyContact,jdbcType=BIT}, #{isFree,jdbcType=BIT}, #{discountDownloadResume,jdbcType=DOUBLE}, 
+      #{discountSms,jdbcType=DOUBLE}, #{discountStick,jdbcType=DOUBLE}, #{discountEmergency,jdbcType=DOUBLE}, 
+      #{discountTpl,jdbcType=DOUBLE}, #{discountAutoRefreshJobs,jdbcType=DOUBLE}, #{showContactDirect,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.QsMembersSetmeal" >
+    insert into qs_members_setmeal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="setmealId != null" >
+        setmeal_id,
+      </if>
+      <if test="setmealName != null" >
+        setmeal_name,
+      </if>
+      <if test="days != null" >
+        days,
+      </if>
+      <if test="expense != null" >
+        expense,
+      </if>
+      <if test="jobsMeanwhile != null" >
+        jobs_meanwhile,
+      </if>
+      <if test="refreshJobsFree != null" >
+        refresh_jobs_free,
+      </if>
+      <if test="downloadResume != null" >
+        download_resume,
+      </if>
+      <if test="downloadResumeMax != null" >
+        download_resume_max,
+      </if>
+      <if test="added != null" >
+        added,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="setmealImg != null" >
+        setmeal_img,
+      </if>
+      <if test="showApplyContact != null" >
+        show_apply_contact,
+      </if>
+      <if test="isFree != null" >
+        is_free,
+      </if>
+      <if test="discountDownloadResume != null" >
+        discount_download_resume,
+      </if>
+      <if test="discountSms != null" >
+        discount_sms,
+      </if>
+      <if test="discountStick != null" >
+        discount_stick,
+      </if>
+      <if test="discountEmergency != null" >
+        discount_emergency,
+      </if>
+      <if test="discountTpl != null" >
+        discount_tpl,
+      </if>
+      <if test="discountAutoRefreshJobs != null" >
+        discount_auto_refresh_jobs,
+      </if>
+      <if test="showContactDirect != null" >
+        show_contact_direct,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=BIT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="setmealId != null" >
+        #{setmealId,jdbcType=INTEGER},
+      </if>
+      <if test="setmealName != null" >
+        #{setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null" >
+        #{days,jdbcType=INTEGER},
+      </if>
+      <if test="expense != null" >
+        #{expense,jdbcType=INTEGER},
+      </if>
+      <if test="jobsMeanwhile != null" >
+        #{jobsMeanwhile,jdbcType=INTEGER},
+      </if>
+      <if test="refreshJobsFree != null" >
+        #{refreshJobsFree,jdbcType=INTEGER},
+      </if>
+      <if test="downloadResume != null" >
+        #{downloadResume,jdbcType=INTEGER},
+      </if>
+      <if test="downloadResumeMax != null" >
+        #{downloadResumeMax,jdbcType=INTEGER},
+      </if>
+      <if test="added != null" >
+        #{added,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="setmealImg != null" >
+        #{setmealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="showApplyContact != null" >
+        #{showApplyContact,jdbcType=BIT},
+      </if>
+      <if test="isFree != null" >
+        #{isFree,jdbcType=BIT},
+      </if>
+      <if test="discountDownloadResume != null" >
+        #{discountDownloadResume,jdbcType=DOUBLE},
+      </if>
+      <if test="discountSms != null" >
+        #{discountSms,jdbcType=DOUBLE},
+      </if>
+      <if test="discountStick != null" >
+        #{discountStick,jdbcType=DOUBLE},
+      </if>
+      <if test="discountEmergency != null" >
+        #{discountEmergency,jdbcType=DOUBLE},
+      </if>
+      <if test="discountTpl != null" >
+        #{discountTpl,jdbcType=DOUBLE},
+      </if>
+      <if test="discountAutoRefreshJobs != null" >
+        #{discountAutoRefreshJobs,jdbcType=DOUBLE},
+      </if>
+      <if test="showContactDirect != null" >
+        #{showContactDirect,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jk.pojo.QsMembersSetmealExample" resultType="java.lang.Integer" >
+    select count(*) from qs_members_setmeal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update qs_members_setmeal
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.expire != null" >
+        expire = #{record.expire,jdbcType=BIT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.setmealId != null" >
+        setmeal_id = #{record.setmealId,jdbcType=INTEGER},
+      </if>
+      <if test="record.setmealName != null" >
+        setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.days != null" >
+        days = #{record.days,jdbcType=INTEGER},
+      </if>
+      <if test="record.expense != null" >
+        expense = #{record.expense,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobsMeanwhile != null" >
+        jobs_meanwhile = #{record.jobsMeanwhile,jdbcType=INTEGER},
+      </if>
+      <if test="record.refreshJobsFree != null" >
+        refresh_jobs_free = #{record.refreshJobsFree,jdbcType=INTEGER},
+      </if>
+      <if test="record.downloadResume != null" >
+        download_resume = #{record.downloadResume,jdbcType=INTEGER},
+      </if>
+      <if test="record.downloadResumeMax != null" >
+        download_resume_max = #{record.downloadResumeMax,jdbcType=INTEGER},
+      </if>
+      <if test="record.added != null" >
+        added = #{record.added,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starttime != null" >
+        starttime = #{record.starttime,jdbcType=INTEGER},
+      </if>
+      <if test="record.endtime != null" >
+        endtime = #{record.endtime,jdbcType=INTEGER},
+      </if>
+      <if test="record.setmealImg != null" >
+        setmeal_img = #{record.setmealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showApplyContact != null" >
+        show_apply_contact = #{record.showApplyContact,jdbcType=BIT},
+      </if>
+      <if test="record.isFree != null" >
+        is_free = #{record.isFree,jdbcType=BIT},
+      </if>
+      <if test="record.discountDownloadResume != null" >
+        discount_download_resume = #{record.discountDownloadResume,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountSms != null" >
+        discount_sms = #{record.discountSms,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountStick != null" >
+        discount_stick = #{record.discountStick,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountEmergency != null" >
+        discount_emergency = #{record.discountEmergency,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountTpl != null" >
+        discount_tpl = #{record.discountTpl,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountAutoRefreshJobs != null" >
+        discount_auto_refresh_jobs = #{record.discountAutoRefreshJobs,jdbcType=DOUBLE},
+      </if>
+      <if test="record.showContactDirect != null" >
+        show_contact_direct = #{record.showContactDirect,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update qs_members_setmeal
+    set id = #{record.id,jdbcType=INTEGER},
+      expire = #{record.expire,jdbcType=BIT},
+      uid = #{record.uid,jdbcType=INTEGER},
+      setmeal_id = #{record.setmealId,jdbcType=INTEGER},
+      setmeal_name = #{record.setmealName,jdbcType=VARCHAR},
+      days = #{record.days,jdbcType=INTEGER},
+      expense = #{record.expense,jdbcType=INTEGER},
+      jobs_meanwhile = #{record.jobsMeanwhile,jdbcType=INTEGER},
+      refresh_jobs_free = #{record.refreshJobsFree,jdbcType=INTEGER},
+      download_resume = #{record.downloadResume,jdbcType=INTEGER},
+      download_resume_max = #{record.downloadResumeMax,jdbcType=INTEGER},
+      added = #{record.added,jdbcType=VARCHAR},
+      starttime = #{record.starttime,jdbcType=INTEGER},
+      endtime = #{record.endtime,jdbcType=INTEGER},
+      setmeal_img = #{record.setmealImg,jdbcType=VARCHAR},
+      show_apply_contact = #{record.showApplyContact,jdbcType=BIT},
+      is_free = #{record.isFree,jdbcType=BIT},
+      discount_download_resume = #{record.discountDownloadResume,jdbcType=DOUBLE},
+      discount_sms = #{record.discountSms,jdbcType=DOUBLE},
+      discount_stick = #{record.discountStick,jdbcType=DOUBLE},
+      discount_emergency = #{record.discountEmergency,jdbcType=DOUBLE},
+      discount_tpl = #{record.discountTpl,jdbcType=DOUBLE},
+      discount_auto_refresh_jobs = #{record.discountAutoRefreshJobs,jdbcType=DOUBLE},
+      show_contact_direct = #{record.showContactDirect,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.QsMembersSetmeal" >
+    update qs_members_setmeal
+    <set >
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=BIT},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="setmealId != null" >
+        setmeal_id = #{setmealId,jdbcType=INTEGER},
+      </if>
+      <if test="setmealName != null" >
+        setmeal_name = #{setmealName,jdbcType=VARCHAR},
+      </if>
+      <if test="days != null" >
+        days = #{days,jdbcType=INTEGER},
+      </if>
+      <if test="expense != null" >
+        expense = #{expense,jdbcType=INTEGER},
+      </if>
+      <if test="jobsMeanwhile != null" >
+        jobs_meanwhile = #{jobsMeanwhile,jdbcType=INTEGER},
+      </if>
+      <if test="refreshJobsFree != null" >
+        refresh_jobs_free = #{refreshJobsFree,jdbcType=INTEGER},
+      </if>
+      <if test="downloadResume != null" >
+        download_resume = #{downloadResume,jdbcType=INTEGER},
+      </if>
+      <if test="downloadResumeMax != null" >
+        download_resume_max = #{downloadResumeMax,jdbcType=INTEGER},
+      </if>
+      <if test="added != null" >
+        added = #{added,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="setmealImg != null" >
+        setmeal_img = #{setmealImg,jdbcType=VARCHAR},
+      </if>
+      <if test="showApplyContact != null" >
+        show_apply_contact = #{showApplyContact,jdbcType=BIT},
+      </if>
+      <if test="isFree != null" >
+        is_free = #{isFree,jdbcType=BIT},
+      </if>
+      <if test="discountDownloadResume != null" >
+        discount_download_resume = #{discountDownloadResume,jdbcType=DOUBLE},
+      </if>
+      <if test="discountSms != null" >
+        discount_sms = #{discountSms,jdbcType=DOUBLE},
+      </if>
+      <if test="discountStick != null" >
+        discount_stick = #{discountStick,jdbcType=DOUBLE},
+      </if>
+      <if test="discountEmergency != null" >
+        discount_emergency = #{discountEmergency,jdbcType=DOUBLE},
+      </if>
+      <if test="discountTpl != null" >
+        discount_tpl = #{discountTpl,jdbcType=DOUBLE},
+      </if>
+      <if test="discountAutoRefreshJobs != null" >
+        discount_auto_refresh_jobs = #{discountAutoRefreshJobs,jdbcType=DOUBLE},
+      </if>
+      <if test="showContactDirect != null" >
+        show_contact_direct = #{showContactDirect,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.QsMembersSetmeal" >
+    update qs_members_setmeal
+    set expire = #{expire,jdbcType=BIT},
+      uid = #{uid,jdbcType=INTEGER},
+      setmeal_id = #{setmealId,jdbcType=INTEGER},
+      setmeal_name = #{setmealName,jdbcType=VARCHAR},
+      days = #{days,jdbcType=INTEGER},
+      expense = #{expense,jdbcType=INTEGER},
+      jobs_meanwhile = #{jobsMeanwhile,jdbcType=INTEGER},
+      refresh_jobs_free = #{refreshJobsFree,jdbcType=INTEGER},
+      download_resume = #{downloadResume,jdbcType=INTEGER},
+      download_resume_max = #{downloadResumeMax,jdbcType=INTEGER},
+      added = #{added,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=INTEGER},
+      setmeal_img = #{setmealImg,jdbcType=VARCHAR},
+      show_apply_contact = #{showApplyContact,jdbcType=BIT},
+      is_free = #{isFree,jdbcType=BIT},
+      discount_download_resume = #{discountDownloadResume,jdbcType=DOUBLE},
+      discount_sms = #{discountSms,jdbcType=DOUBLE},
+      discount_stick = #{discountStick,jdbcType=DOUBLE},
+      discount_emergency = #{discountEmergency,jdbcType=DOUBLE},
+      discount_tpl = #{discountTpl,jdbcType=DOUBLE},
+      discount_auto_refresh_jobs = #{discountAutoRefreshJobs,jdbcType=DOUBLE},
+      show_contact_direct = #{showContactDirect,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

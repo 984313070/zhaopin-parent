@@ -90,6 +90,12 @@
       <artifactId>zhaopin-interface</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+      <dependency>
+          <groupId>com.jk</groupId>
+          <artifactId>zhaopin-common</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
 
   </dependencies>
 </project>

@@ -1,0 +1,289 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.highlight-3.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.vtip-min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.modal.dialog.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/common.js"></script>
+    <script>
+        var URL = '../upload/index.php/admin/jobs',
+            SELF = '../upload/index.php?m=admin&amp;c=jobs&amp;a=edit&amp;id=1',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>职位管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            职位管理                        </div>
+        <div class="clear"></div>
+    </div>
+
+    <form action="../upload/index.php?m=admin&c=jobs&a=edit" method="post" name="FormData" id="FormData" >
+        <div class="toptit link_blue">
+            修改职位 - <span style="color:#0066CC">助理</span>
+            (会员名：aaa，企业名称：<a href="../upload/index.php?m=home&c=jobs&a=com_show&id=1" target="_blank">爱吃</a>)
+        </div>
+        <div class="form_main width120">
+            <!--<div class="fl">所属会员:</div>
+            <div class="fr txt">aaa</div>
+            <div class="fl">所属企业:</div>
+            <div class="fr txt link_blue">
+                <a href="../upload/index.php?m=home&c=jobs&a=com_show&id=1" target="_blank">爱吃</a>
+            </div>-->
+            <div class="fl">发布期限:</div>
+            <div class="fr txt link_blue">
+                2019-09-20 17:38&nbsp;&nbsp;-&nbsp;&nbsp;2019-12-19 17:36            <input name="olddeadline" type="hidden" value="1576748171" />
+            </div>
+            <div class="fl">刷新时间:</div>
+            <div class="fr txt link_blue">2019-09-20 17:38:27</div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 职位名称:</div>
+            <div class="fr">
+                <input name="jobs_name" type="text" class="input_text_default" maxlength="50" value="助理"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 招聘状态:</div>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="display" type="hidden" value="1">
+                    <div class="radio select" data="1">在招</div>
+                    <div class="radio " data="2">关闭</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 审核状态:</div>
+            <div class="fr">
+                <div class="imgradio">
+                    <input name="audit" type="hidden" value="1">
+                    <div class="radio select" data="1">审核通过</div>
+                    <div class="radio " data="2">审核中</div>
+                    <div class="radio " data="3">审核未通过</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 职位性质:</div>
+            <div class="fr">
+                <div class="imgradio J_job_nature">
+                    <input name="nature" type="hidden" value="62">
+                    <input name="nature_cn" type="hidden" value="全职" id="nature_cn"/>
+                    <div class="radio select" data="62" title="全职">全职</div><div class="radio " data="63" title="兼职">兼职</div><div class="radio " data="64" title="实习">实习</div>                <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 职位类别:</div>
+            <div class="fr">
+                <input name="category_cn" id="category_cn" type="text" class="input_text_default arrow J_resuletitle_jobs" value="销售助理" readonly="readonly" data-title="请选择职位类别" data-multiple="false" data-addjob="true" data-maxnum="0" data-width="667" data-category="3"/>
+                <input class="J_resultcode_jobs" name="jobcategory" id="jobcategory" type="hidden" value="3.21.156" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 工作地区:</div>
+            <div class="fr">
+                <input name="category_cn" id="district_cn" type="text" class="input_text_default arrow J_resuletitle_city" value="北京/北京市/朝阳区" readonly="readonly" data-toggle="funCityModal" data-title="请选择地区" data-multiple="false" data-maximum="0" data-width="760"/>
+                <input class="J_resultcode_city" name="district" id="district" type="hidden" value="1.35.405" keep="1.35.405" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 薪资待遇:</div>
+            <div class="fr modVal">
+            <span class="input_wrap">
+                <input name="minwage" type="text" class="input_text_default input_val" maxlength="10" value="4444" style="width: 100px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 元/月 -
+                <input name="maxwage" type="text" class="input_text_default input_val" maxlength="10" value="7777" style="width: 100px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 元/月
+            </span>
+                <label><input name="negotiable" type="checkbox" id="J_negotiable" value="1" />面议</label>
+            </div>
+            <div class="fl">所属部门:</div>
+            <div class="fr">
+                <input name="department" type="text" class="input_text_default" maxlength="8" value="总务部"/>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 学历要求:</div>
+            <div class="fr">
+                <div class="imgradio J_job_education">
+                    <input name="education" type="hidden" value="69">
+                    <input name="education_cn" id="education_cn" type="hidden" value="大专"/>
+                    <div class="radio " data="0" title="不限">不限</div>
+                    <div class="radio " data="65" title="初中">初中</div><div class="radio " data="66" title="高中">高中</div><div class="radio " data="67" title="中技">中技</div><div class="radio " data="68" title="中专">中专</div><div class="radio select" data="69" title="大专">大专</div><div class="radio " data="70" title="本科">本科</div><div class="radio " data="71" title="硕士">硕士</div><div class="radio " data="72" title="博士">博士</div><div class="radio " data="73" title="博后">博后</div>                <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 工作经验:</div>
+            <div class="fr">
+                <div class="imgradio J_job_experience">
+                    <input name="experience" type="hidden" value="76">
+                    <input name="experience_cn" id="experience_cn" type="hidden" value="1-3年"/>
+                    <div class="radio " data="0" title="不限">不限</div>
+                    <div class="radio " data="74" title="无经验">无经验</div>
+                    <div class="radio " data="75" title="1年以下">1年以下</div>
+                    <div class="radio select" data="76" title="1-3年">1-3年</div>
+                    <div class="radio " data="77" title="3-5年">3-5年</div>
+                    <div class="radio " data="78" title="5-10年">5-10年</div>
+                    <div class="radio " data="79" title="10年以上">10年以上</div>                <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 性别要求:</div>
+            <div class="fr">
+                <div class="imgradio J_job_sex">
+                    <input name="sex" type="hidden" value="2">
+                    <input name="sex_cn"  id="sex_cn" type="hidden" value="女"/>
+                    <div class="radio " data="0" title="不限">不限</div>
+                    <div class="radio " data="1" title="男">男</div>
+                    <div class="radio select" data="2" title="女">女</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fl">年龄要求:</div>
+            <div class="fr">
+                <input name="minage" type="text" class="input_text_default" maxlength="3" value="22" style="width: 50px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 岁 -
+                <input name="maxage" type="text" class="input_text_default" maxlength="3" value="26" style="width: 50px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 岁
+            </div>
+            <div class="fl">招聘人数:</div>
+            <div class="fr">
+                <input name="amount" type="text" class="input_text_default" maxlength="3" value="2" style="width: 50px;"
+                       onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> 人
+                &nbsp;&nbsp;<span style="color: #999999;">0表示若干</span>
+            </div>
+            <div class="fl">职位亮点:</div>
+            <div class="fr">
+                <input name="tag_cn" id="tag_cn" type="text" class="input_text_default arrow J_resuletitle_jobtag" value="晋升快,车贴" readonly="readonly" data-title="请选择职位亮点" data-multiple="true" data-maxnum="6" data-width="582"/>
+                <input class="J_resultcode_jobtag" name="tag" id="tag" type="hidden" value="160,161" />
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 职位描述:</div>
+            <div class="fr">
+                <textarea id="contents" name="contents" class="input_text_default" style="line-height:200%; height:150px;">有事秘书干</textarea>
+                <div style="color: #999999; padding-top: 10px;">说明：请详细描述该职位，内容可包括：职位要求，岗位职责等。</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="toptit link_blue">修改联系方式</div>
+        <div class="form_main width120">
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 联 系 人:</div>
+            <div class="fr">
+                <input name="contact" type="text" class="input_text_default middle" maxlength="15" value="王丽丽"/>
+                <label><input name="contact_show" type="checkbox" value="1"  />对外公开</label>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 联系电话:</div>
+            <div class="fr">
+                <input name="telephone" type="text" class="input_text_default middle" maxlength="11" value="17671107242" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+                <label><input name="telephone_show" type="checkbox" value="1"  />对外公开</label>
+            </div>
+            <div class="fl">&nbsp;</div>
+            <div class="fr">
+                <input name="landline_tel_first" type="text" class="input_text_default" maxlength="4" value="121" style="width: 70px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> -
+                <input name="landline_tel_next" type="text" class="input_text_default" maxlength="11" value="1231" style="width: 207px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/> -
+                <input name="landline_tel_last" type="text" class="input_text_default" maxlength="6" value="212" style="width: 70px;" onKeyUp="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"/>
+                <label><input name="landline_tel_show" type="checkbox" value="1"  />对外公开</label>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 联系邮箱:</div>
+            <div class="fr">
+                <input name="email" type="text" class="input_text_default middle" maxlength="50" value="2691487689@qq.com"/>
+                <label><input name="notify" type="checkbox" value="1"  />接收投递的简历</label>
+            </div>
+            <div class="fl"><span style="color:#FF3300; font-weight:bold">*</span> 联系地址:</div>
+            <div class="fr">
+                <input name="address" type="text" class="input_text_default middle" maxlength="50" value="王寺东街71号"/>
+            </div>
+            <div class="fl"></div>
+            <div class="fr">
+                <input type="hidden" name="id" value="1" />
+                <input type="hidden" name="uid" value="1" />
+                <input type="hidden" name="company_id" value="1" />
+                <input type="submit" class="admin_submit" value="保存修改"/>
+                <input type="button" class="admin_submit" value="返回" onClick="history.go(-1)"/>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+<script type="text/javascript" src="../upload/data/static/6f557ceaff36b5f87598d5441e0a6ba3.js?"></script><script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/jquery.user.city.js"></script>
+<script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/jquery.modal.userselectlayer.js"></script>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // 性别要求cn
+        $(".J_job_sex .radio").live('click',function(){
+            $("#sex_cn").val($(this).attr("title"));
+        });
+        // 职位性质cn
+        $(".J_job_nature .radio").live('click',function(){
+            $("#nature_cn").val($(this).attr("title"));
+        });
+        // 学历要求cn
+        $(".J_job_education .radio").live('click',function(){
+            $("#education_cn").val($(this).attr("title"));
+        });
+        // 工作经验要求cn
+        $(".J_job_experience .radio").live('click',function(){
+            $("#experience_cn").val($(this).attr("title"));
+        });
+        // 薪资面议
+        var negotiable = $('#J_negotiable');
+        if (negotiable.is(':checked')) {
+            negotiable.closest('.modVal').addClass('txt');
+            negotiable.closest('.modVal').find('.input_val').val('').prop('disabled', !0);
+            negotiable.closest('.modVal').find('.input_wrap').hide();
+        }
+        // 面议选中后，最低和最高薪资不能编辑
+        negotiable.die().live('click', function(event) {
+            if ($(this).is(':checked')) {
+                $(this).closest('.modVal').addClass('txt');
+                $(this).closest('.modVal').find('.input_val').val('').prop('disabled', !0);
+                $(this).closest('.modVal').find('.input_wrap').hide();
+            } else {
+                $(this).closest('.modVal').removeClass('txt');
+                $(this).closest('.modVal').find('.input_val').each(function(index, el) {
+                    $(this).val($(this).data('title')).prop('disabled', 0);
+                });
+                $(this).closest('.modVal').find('.input_wrap').show();
+            }
+        });
+    });
+</script>
+</html>

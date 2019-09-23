@@ -1,0 +1,297 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Admin/View/default/public/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/vue/vue.min.js"></script>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript">
+   /*     (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };*/
+    </script>
+    <![endif]-->
+    <script>
+        var URL = '../upload/index.php/admin/personal',
+            SELF = '../upload/index.php?m=admin&amp;c=personal&amp;a=match&amp;id=1&amp;uid=1',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">个人<strong>/</strong>委托投递</div>
+<div class="mains" >
+    <div class="h1tit">
+        <div class="h1">
+            委托投递
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="toptip" id="resumeId">
+        <p style="font-size: 14px;">
+            简历：<span class="font_green" v-model="">{{title}}</span>，
+            姓名：<span class="font_green" v-model="">{{fullname}}</span>，
+            基本信息：
+            <span class="font_green" v-model="">
+               {{ birthdate }}岁 / {{ sexCn }} / {{ educationCn }} / {{ experienceCn }}
+            </span>，
+            手机：<span class="font_green" v-model="">{{telephone}}</span>，
+            邮箱：<span class="font_green" v-model="">{{email}}</span>
+        </p>
+        <p style="font-size: 14px;">
+            意向职位：<span class="font_green" v-model="">{{intentionJobs}}</span>，
+            意向地区：<span class="font_green" v-model="">{{districtCn}}</span>，
+            意向行业：<span class="font_green" v-model="">{{tradeCn}}</span>，
+            意向薪资：<span class="font_green" v-model="">{{wageCn}}</span>
+        </p>
+    </div>
+<div id="resume_grid">
+    <form id="form1" name="form1" method="post">
+        <input type="hidden" name="id" value="2"/>
+        <input type="hidden" name="uid" value="2"/>
+        <div class="list_th">
+            <div class="td" style=" width:20%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" @click="checkAll" v-model="checked">
+                    　　<span>全选/职位名称</span>
+                </label>
+            </div>
+            <div class="td" style=" width:16%;">公司名称</div>
+            <div class="td center" style=" width:14%;">所在地区</div>
+            <div class="td center" style=" width:12%;">所属行业</div>
+            <div class="td center" style=" width:13%;">职位要求</div>
+            <div class="td center" style=" width:10%;">薪资待遇</div>
+            <div class="td center" style=" width:10%;">刷新时间</div>
+            <div class="td" style=" width:5%;">操作</div>
+            <div class="clear"></div>
+        </div>
+        <div class="list_tr link_black" v-for=" resume in resumeList ">
+            <input type="text" name="id" style="display: none">
+            <div class="td" style=" width:20%;">
+                <label  class="left_padding">
+                    <input type="checkbox" v-model="checkModel" :value="resume.id">
+                    {{resume.jobsName}}
+                </label>
+            </div>
+            <div class="td" style=" width:16%;">{{ resume.companyname }}</div>
+            <div class="td center" style=" width:14%;"> {{resume.districtCn}}</div>
+            <div class="td center" style=" width:12%;">{{resume.tradeCn}}</div>
+            <div class="td center" style=" width:13%;">{{resume.educationCn}} / {{resume.experienceCn}}</div>
+            <div class="td center" style=" width:10%;">{{resume.minwage}} K--{{resume.maxwage}} K</div>
+            <div class="td center" style=" width:10%;">{{resume.refreshtime}}</div>
+            <div class="td" style=" width:5%;">
+                <div class="td edit" style=" width:80%;">
+                <a href="javascript:void(0)" @click="javascript:toudi()">投递</a>
+            </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" @click="javascript:toudi()" class="admin_submit" id="ButApply" value="投递"/>
+            <input type="button" class="admin_submit" value="返回" onclick="window.location='entrust.html'"/>
+            <!--<input type="button" onclick="importXLS()" class="admin_submit"  value="导入"/>-->
+            <input type="button" onclick="exportJobExce()" class="admin_submit"  value="导出"/>
+        </div>
+
+        <div class="footso"></div>
+    </div>
+    <div class="pages">
+        <a class='unable'>上一页</a>
+        <span class='current'>1</span>
+        <a class='unable'>下一页</a>
+    </div>
+</div>
+</div>
+
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+<div id="dialogId">
+    <div class="popWindow" v-show="ok">
+        <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+            <tr style="background-color:#075E8B;">
+                <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+                <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                    <img onclick="closeDialog()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+                </td>
+            </tr>
+        </table>
+        <div>
+            请选择要导入的excel文件
+            <input type="file"  id="file">
+
+        </div>
+        <input type="button" onclick="importXLS1()" class="admin_submit"  value="确定"/>
+        <input type="button" onclick="closeDialog()" class="admin_submit"  value="取消"/>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    /*$(document).ready(function () {
+        //点击批量投递
+        $("#ButApply").click(function () {
+            $("form[name=form1]").submit();
+        });
+    });*/
+    var loc = location.href;
+    var n1 = loc.length;//地址的总长度
+    var n2 = loc.indexOf("=");//取得=号的位置
+    var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容*/
+    //alert(id);
+    var vm;
+    $(function () {
+        //alert(10)
+        $.ajax({
+            type: "post",
+            url: "../resume/findResumeById.do?id="+id,
+            success: function (result) {
+               // alert(result);
+              vm=  new Vue({
+                    el: '#resumeId',
+                    data: {
+                        title: result.title,
+                        fullname: result.fullname,
+                        birthdate:result.birthdate,
+                        sexCn:result.sexCn,
+                        educationCn:result.educationCn,
+                        experienceCn:result.experienceCn,
+                        telephone:result.telephone,
+                        email:result.email,
+                        intentionJobs:result.intentionJobs,
+                        tradeCn:result.tradeCn,
+                        districtCn:result.districtCn,
+                        wageCn:result.wageCn
+                    }
+                })
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+
+        $.ajax({
+            type: "post",
+            url: "../resume/findCenter.do",
+            data: '',
+            dataType: "",
+            success: function (result) {
+                //alert(result.rows);
+                vm = new Vue({
+                    el: '#resume_grid',
+                    data: {
+                        resumeList: result.rows,
+                        checked:false, //是否全选
+                        checkModel:[] //双向数据绑定的数组，我是用的id
+                    },
+
+                    watch:{
+                        checkModel(){
+                            if(this.checkModel.length==this.resumeList.length){
+                                this.checked=true;
+                            }else{
+                                this.checked=false;
+                            }
+                        }
+                    },
+                    methods:{
+                        checkAll(){
+                            if(this.checked){
+                                this.resumeList.forEach((item)=>{
+                                    if(this.checkModel.indexOf(item.id)==-1){
+                                        this.checkModel.push(item.id)
+                                    }
+                                })
+
+                            }else{
+                                this.checkModel=[];
+                            }
+                        }
+                    }
+                })
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    })
+
+    function toudi(){
+        alert("投递成功")
+    }
+
+    //导出
+   /*function exportResumeList(){
+        window.location.href = "../resume/exportResumeList.do";
+    }*/
+
+    //导入
+    var dialog = new Vue({
+        el: '#dialogId',
+        data: {
+            ok: false,
+            excel:'',
+        }
+    })
+
+    function exportJobExce(){
+        openDialog()
+        window.location.href = "../resume/exportMatchList.do";
+    }
+    function importXLS1(){
+        var file_url = document.getElementById("file").value;
+        $.post('../resume/importMatchXLS.do',{filePath:file_url},function (data) {
+            alert(data)
+
+        })
+    }
+    function closeDialog() {
+        dialog.ok=false;
+    }
+    function openDialog(){
+        dialog.ok=true;
+    }
+</script>
+
+</html>

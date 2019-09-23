@@ -3,20 +3,20 @@
 <mapper namespace="com.jk.mapper.QsMembersMapper" >
   <resultMap id="BaseResultMap" type="com.jk.pojo.QsMembers" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="utype" property="utype" jdbcType="BIT" />
+    <result column="utype" property="utype" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="email_audit" property="emailAudit" jdbcType="BIT" />
+    <result column="email_audit" property="emailAudit" jdbcType="INTEGER" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="mobile_audit" property="mobileAudit" jdbcType="BIT" />
+    <result column="mobile_audit" property="mobileAudit" jdbcType="INTEGER" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="pwd_hash" property="pwdHash" jdbcType="VARCHAR" />
-    <result column="reg_time" property="regTime" jdbcType="INTEGER" />
+    <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
     <result column="reg_ip" property="regIp" jdbcType="VARCHAR" />
     <result column="reg_address" property="regAddress" jdbcType="VARCHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="INTEGER" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
     <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="avatars" property="avatars" jdbcType="VARCHAR" />
     <result column="robot" property="robot" jdbcType="TINYINT" />
     <result column="consultant" property="consultant" jdbcType="SMALLINT" />
@@ -136,11 +136,11 @@
       reg_type, remind_email_ex_time, invitation_code, 
       reg_source, reg_source_cn, secretkey, 
       sitegroup_uid)
-    values (#{uid,jdbcType=INTEGER}, #{utype,jdbcType=BIT}, #{username,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{emailAudit,jdbcType=BIT}, #{mobile,jdbcType=VARCHAR}, 
-      #{mobileAudit,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{pwdHash,jdbcType=VARCHAR}, 
-      #{regTime,jdbcType=INTEGER}, #{regIp,jdbcType=VARCHAR}, #{regAddress,jdbcType=VARCHAR}, 
-      #{lastLoginTime,jdbcType=INTEGER}, #{lastLoginIp,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+    values (#{uid,jdbcType=INTEGER}, #{utype,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{emailAudit,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, 
+      #{mobileAudit,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{pwdHash,jdbcType=VARCHAR}, 
+      #{regTime,jdbcType=TIMESTAMP}, #{regIp,jdbcType=VARCHAR}, #{regAddress,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{avatars,jdbcType=VARCHAR}, #{robot,jdbcType=TINYINT}, #{consultant,jdbcType=SMALLINT}, 
       #{remindEmailTime,jdbcType=INTEGER}, #{imei,jdbcType=VARCHAR}, #{smsNum,jdbcType=INTEGER}, 
       #{regType,jdbcType=BIT}, #{remindEmailExTime,jdbcType=TINYINT}, #{invitationCode,jdbcType=VARCHAR}, 
@@ -240,7 +240,7 @@
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="utype != null" >
-        #{utype,jdbcType=BIT},
+        #{utype,jdbcType=INTEGER},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
@@ -249,13 +249,13 @@
         #{email,jdbcType=VARCHAR},
       </if>
       <if test="emailAudit != null" >
-        #{emailAudit,jdbcType=BIT},
+        #{emailAudit,jdbcType=INTEGER},
       </if>
       <if test="mobile != null" >
         #{mobile,jdbcType=VARCHAR},
       </if>
       <if test="mobileAudit != null" >
-        #{mobileAudit,jdbcType=BIT},
+        #{mobileAudit,jdbcType=INTEGER},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -264,7 +264,7 @@
         #{pwdHash,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
-        #{regTime,jdbcType=INTEGER},
+        #{regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="regIp != null" >
         #{regIp,jdbcType=VARCHAR},
@@ -273,13 +273,13 @@
         #{regAddress,jdbcType=VARCHAR},
       </if>
       <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=INTEGER},
+        #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastLoginIp != null" >
         #{lastLoginIp,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="avatars != null" >
         #{avatars,jdbcType=VARCHAR},
@@ -335,7 +335,7 @@
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
       <if test="record.utype != null" >
-        utype = #{record.utype,jdbcType=BIT},
+        utype = #{record.utype,jdbcType=INTEGER},
       </if>
       <if test="record.username != null" >
         username = #{record.username,jdbcType=VARCHAR},
@@ -344,13 +344,13 @@
         email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.emailAudit != null" >
-        email_audit = #{record.emailAudit,jdbcType=BIT},
+        email_audit = #{record.emailAudit,jdbcType=INTEGER},
       </if>
       <if test="record.mobile != null" >
         mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
       <if test="record.mobileAudit != null" >
-        mobile_audit = #{record.mobileAudit,jdbcType=BIT},
+        mobile_audit = #{record.mobileAudit,jdbcType=INTEGER},
       </if>
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
@@ -359,7 +359,7 @@
         pwd_hash = #{record.pwdHash,jdbcType=VARCHAR},
       </if>
       <if test="record.regTime != null" >
-        reg_time = #{record.regTime,jdbcType=INTEGER},
+        reg_time = #{record.regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.regIp != null" >
         reg_ip = #{record.regIp,jdbcType=VARCHAR},
@@ -368,13 +368,13 @@
         reg_address = #{record.regAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.lastLoginTime != null" >
-        last_login_time = #{record.lastLoginTime,jdbcType=INTEGER},
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastLoginIp != null" >
         last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=TINYINT},
+        status = #{record.status,jdbcType=INTEGER},
       </if>
       <if test="record.avatars != null" >
         avatars = #{record.avatars,jdbcType=VARCHAR},
@@ -423,20 +423,20 @@
   <update id="updateByExample" parameterType="map" >
     update qs_members
     set uid = #{record.uid,jdbcType=INTEGER},
-      utype = #{record.utype,jdbcType=BIT},
+      utype = #{record.utype,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      email_audit = #{record.emailAudit,jdbcType=BIT},
+      email_audit = #{record.emailAudit,jdbcType=INTEGER},
       mobile = #{record.mobile,jdbcType=VARCHAR},
-      mobile_audit = #{record.mobileAudit,jdbcType=BIT},
+      mobile_audit = #{record.mobileAudit,jdbcType=INTEGER},
       password = #{record.password,jdbcType=VARCHAR},
       pwd_hash = #{record.pwdHash,jdbcType=VARCHAR},
-      reg_time = #{record.regTime,jdbcType=INTEGER},
+      reg_time = #{record.regTime,jdbcType=TIMESTAMP},
       reg_ip = #{record.regIp,jdbcType=VARCHAR},
       reg_address = #{record.regAddress,jdbcType=VARCHAR},
-      last_login_time = #{record.lastLoginTime,jdbcType=INTEGER},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=INTEGER},
       avatars = #{record.avatars,jdbcType=VARCHAR},
       robot = #{record.robot,jdbcType=TINYINT},
       consultant = #{record.consultant,jdbcType=SMALLINT},
@@ -458,7 +458,7 @@
     update qs_members
     <set >
       <if test="utype != null" >
-        utype = #{utype,jdbcType=BIT},
+        utype = #{utype,jdbcType=INTEGER},
       </if>
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
@@ -467,13 +467,13 @@
         email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="emailAudit != null" >
-        email_audit = #{emailAudit,jdbcType=BIT},
+        email_audit = #{emailAudit,jdbcType=INTEGER},
       </if>
       <if test="mobile != null" >
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
       <if test="mobileAudit != null" >
-        mobile_audit = #{mobileAudit,jdbcType=BIT},
+        mobile_audit = #{mobileAudit,jdbcType=INTEGER},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -482,7 +482,7 @@
         pwd_hash = #{pwdHash,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
-        reg_time = #{regTime,jdbcType=INTEGER},
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="regIp != null" >
         reg_ip = #{regIp,jdbcType=VARCHAR},
@@ -491,13 +491,13 @@
         reg_address = #{regAddress,jdbcType=VARCHAR},
       </if>
       <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=INTEGER},
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastLoginIp != null" >
         last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="avatars != null" >
         avatars = #{avatars,jdbcType=VARCHAR},
@@ -543,20 +543,20 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jk.pojo.QsMembers" >
     update qs_members
-    set utype = #{utype,jdbcType=BIT},
+    set utype = #{utype,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      email_audit = #{emailAudit,jdbcType=BIT},
+      email_audit = #{emailAudit,jdbcType=INTEGER},
       mobile = #{mobile,jdbcType=VARCHAR},
-      mobile_audit = #{mobileAudit,jdbcType=BIT},
+      mobile_audit = #{mobileAudit,jdbcType=INTEGER},
       password = #{password,jdbcType=VARCHAR},
       pwd_hash = #{pwdHash,jdbcType=VARCHAR},
-      reg_time = #{regTime,jdbcType=INTEGER},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
       reg_ip = #{regIp,jdbcType=VARCHAR},
       reg_address = #{regAddress,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=INTEGER},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
       avatars = #{avatars,jdbcType=VARCHAR},
       robot = #{robot,jdbcType=TINYINT},
       consultant = #{consultant,jdbcType=SMALLINT},

@@ -1,12 +1,7 @@
 package com.jk.pojo;
 
-import java.io.Serializable;
-
-public class QsMembers implements Serializable{
-	
-    private static final long serialVersionUID = 1L;
-
-	private Integer uid;
+public class QsMembers {
+    private Integer uid;
 
     private Boolean utype;
 
@@ -285,22 +280,4 @@ public class QsMembers implements Serializable{
     public void setSitegroupUid(Integer sitegroupUid) {
         this.sitegroupUid = sitegroupUid;
     }
-
-	/* (non-Javadoc)    
-	 * @see java.lang.Object#toString()    
-	 */
-	@Override
-	public String toString() {
-		return "QsMembers [uid=" + uid + ", utype=" + utype + ", username=" + username + ", email=" + email
-				+ ", emailAudit=" + emailAudit + ", mobile=" + mobile + ", mobileAudit=" + mobileAudit + ", password="
-				+ password + ", pwdHash=" + pwdHash + ", regTime=" + regTime + ", regIp=" + regIp + ", regAddress="
-				+ regAddress + ", lastLoginTime=" + lastLoginTime + ", lastLoginIp=" + lastLoginIp + ", status="
-				+ status + ", avatars=" + avatars + ", robot=" + robot + ", consultant=" + consultant
-				+ ", remindEmailTime=" + remindEmailTime + ", imei=" + imei + ", smsNum=" + smsNum + ", regType="
-				+ regType + ", remindEmailExTime=" + remindEmailExTime + ", invitationCode=" + invitationCode
-				+ ", regSource=" + regSource + ", regSourceCn=" + regSourceCn + ", secretkey=" + secretkey
-				+ ", sitegroupUid=" + sitegroupUid + "]";
-	}
-    
-   
 }

@@ -1,8 +1,9 @@
 package com.jk.mapper;
 
+import java.util.List;
+
 import com.jk.pojo.QsMembers;
 import com.jk.pojo.QsMembersExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface QsMembersMapper {

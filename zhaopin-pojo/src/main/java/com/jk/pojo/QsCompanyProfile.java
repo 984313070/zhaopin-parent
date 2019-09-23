@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class QsCompanyProfile implements Serializable {
+
+
     private Integer id;
 
     private Integer uid;
@@ -56,7 +58,7 @@ public class QsCompanyProfile implements Serializable {
 
     private String setmealName;
 
-    private Byte audit;
+    private Integer audit;
 
     private Byte mapOpen;
 
@@ -314,11 +316,11 @@ public class QsCompanyProfile implements Serializable {
         this.setmealName = setmealName == null ? null : setmealName.trim();
     }
 
-    public Byte getAudit() {
+    public Integer getAudit() {
         return audit;
     }
 
-    public void setAudit(Byte audit) {
+    public void setAudit(Integer audit) {
         this.audit = audit;
     }
 
@@ -512,62 +514,5 @@ public class QsCompanyProfile implements Serializable {
 
     public void setContents(String contents) {
         this.contents = contents == null ? null : contents.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "QsCompanyProfile{" +
-                "id=" + id +
-                ", uid=" + uid +
-                ", tpl='" + tpl + '\'' +
-                ", companyname='" + companyname + '\'' +
-                ", nature=" + nature +
-                ", natureCn='" + natureCn + '\'' +
-                ", trade=" + trade +
-                ", tradeCn='" + tradeCn + '\'' +
-                ", district='" + district + '\'' +
-                ", districtCn='" + districtCn + '\'' +
-                ", street=" + street +
-                ", streetCn='" + streetCn + '\'' +
-                ", scale=" + scale +
-                ", scaleCn='" + scaleCn + '\'' +
-                ", registered='" + registered + '\'' +
-                ", currency='" + currency + '\'' +
-                ", address='" + address + '\'' +
-                ", contact='" + contact + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", landlineTel='" + landlineTel + '\'' +
-                ", email='" + email + '\'' +
-                ", website='" + website + '\'' +
-                ", certificateImg='" + certificateImg + '\'' +
-                ", logo='" + logo + '\'' +
-                ", setmealId=" + setmealId +
-                ", setmealName='" + setmealName + '\'' +
-                ", audit=" + audit +
-                ", mapOpen=" + mapOpen +
-                ", mapX=" + mapX +
-                ", mapY=" + mapY +
-                ", mapZoom=" + mapZoom +
-                ", addtime=" + addtime +
-                ", refreshtime=" + refreshtime +
-                ", click=" + click +
-                ", userStatus=" + userStatus +
-                ", contactShow=" + contactShow +
-                ", telephoneShow=" + telephoneShow +
-                ", emailShow=" + emailShow +
-                ", landlineTelShow=" + landlineTelShow +
-                ", robot=" + robot +
-                ", comment=" + comment +
-                ", resumeProcessing=" + resumeProcessing +
-                ", tag='" + tag + '\'' +
-                ", wzpTpl=" + wzpTpl +
-                ", jobs=" + jobs +
-                ", replys=" + replys +
-                ", qq='" + qq + '\'' +
-                ", shortName='" + shortName + '\'' +
-                ", shortDesc='" + shortDesc + '\'' +
-                ", famous=" + famous +
-                ", contents='" + contents + '\'' +
-                '}';
     }
 }

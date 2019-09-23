@@ -1,0 +1,677 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.highlight-3.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.vtip-min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.modal.dialog.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/common.js"></script>
+    <script>
+        var URL = '../upload/index.php/admin/database',
+            SELF = '../upload/index.php?m=admin&amp;c=database&amp;a=index',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">工具<strong>/</strong>数据安全</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            数据安全                        </div>
+        <div class="topnav">
+            <a href="../upload/index.php?m=admin&c=database&a=index" class="select">备份</a><a href="../upload/index.php?m=admin&c=database&a=restore" class="">恢复</a><a href="../upload/index.php?m=admin&c=database&a=optimize" class="">优化</a><a href="../upload/index.php?m=admin&c=dataclear&a=index" class="">数据清理</a><a href="../upload/index.php?m=admin&c=qiniu&a=index" class="">七牛云存储</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>数据备份功能根据您的选择备份网站数据库的数据，导出的数据文件可用“数据恢复”功能导入。</p>
+        <p>全部备份均不包含模板文件和附件文件。模板、附件的备份只需通过 FTP 等下载，74cms 不提供单独备份。</p>
+    </div>
+    <div class="toptit">生成备份数据库</div>
+    <form id="form1" name="form1" method="post" action="../upload/index.php?m=admin&c=database&a=index">
+        <input type="hidden" name="initBackup" value="1">
+        <div id="backupshow">
+            <table width="100%" border="0" cellspacing="0" cellpadding="4" style="padding-left:20px;">
+                <tr>
+                    <td style=" line-height:180%; color:#666666; padding-left:20px;font-size:13px;">
+                        <ul style="margin:0px; padding:3px;">
+                            <li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                                <label>
+                                    <input name="tables[qs_ad]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                           checked="checked"/>qs_ad                                </label>
+                            </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_ad_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_ad_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_admin]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_admin                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_admin_auth]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_admin_auth                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_admin_auth_group]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_admin_auth_group                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_admin_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_admin_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_admin_role]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_admin_role                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_credent]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_credent                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_education]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_education                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_img]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_img                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_language]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_language                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_training]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_training                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_adv_resume_work]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_adv_resume_work                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_apply]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_apply                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_article]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_article                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_article_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_article_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_article_property]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_article_property                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_audit_reason]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_audit_reason                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_authentication]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_authentication                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_badword]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_badword                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_baidu_submiturl]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_baidu_submiturl                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_baiduxml]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_baiduxml                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_category_district]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_category_district                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_category_group]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_category_group                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_category_jobs]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_category_jobs                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_category_major]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_category_major                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_down_resume]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_down_resume                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_favorites]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_favorites                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_img]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_img                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_interview]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_interview                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_praise]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_praise                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_profile]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_profile                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_statistics]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_statistics                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_company_tpl]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_company_tpl                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_config]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_config                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_consultant]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_consultant                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_consultant_complaint]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_consultant_complaint                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_crons]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_crons                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_explain]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_explain                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_explain_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_explain_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_feedback]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_feedback                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_help]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_help                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_help_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_help_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_hotword]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_hotword                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_hrtools]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_hrtools                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_hrtools_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_hrtools_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_im_message]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_im_message                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_im_user]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_im_user                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs_contact]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs_contact                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs_search]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs_search                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs_search_key]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs_search_key                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs_tag]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs_tag                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_jobs_tmp]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_jobs_tmp                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_link]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_link                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_link_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_link_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_mail_templates]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_mail_templates                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_mailconfig]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_mailconfig                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_mailqueue]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_mailqueue                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_appeal]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_appeal                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_bind]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_bind                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_charge_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_charge_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_handsel]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_handsel                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_msgtip]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_msgtip                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_perfected_allowance]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_perfected_allowance                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_points]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_points                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_setmeal]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_setmeal                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_members_setmeal_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_members_setmeal_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_menu]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_menu                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_msg]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_msg                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_navigation]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_navigation                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_navigation_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_navigation_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_notice]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_notice                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_notice_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_notice_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_oauth]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_oauth                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_order]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_order                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_order_invoice]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_order_invoice                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_order_invoice_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_order_invoice_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_page]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_page                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_payment]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_payment                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_favorites]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_favorites                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_focus_company]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_focus_company                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_jobs_apply]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_jobs_apply                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_jobs_subscribe]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_jobs_subscribe                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_service_stick]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_service_stick                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_service_stick_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_service_stick_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_service_tag]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_service_tag                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_service_tag_category]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_service_tag_category                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_service_tag_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_service_tag_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_personal_shield_company]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_personal_shield_company                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_pms]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_pms                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_pms_sys]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_pms_sys                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_promotion]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_promotion                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_queue_auto_refresh]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_queue_auto_refresh                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_refresh_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_refresh_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_report]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_report                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_report_resume]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_report_resume                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_credent]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_credent                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_education]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_education                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_entrust]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_entrust                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_img]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_img                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_language]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_language                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_search_full]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_search_full                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_search_precise]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_search_precise                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_tpl]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_tpl                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_training]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_training                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_resume_work]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_resume_work                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_rongyun_token]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_rongyun_token                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_setmeal]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_setmeal                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_setmeal_increment]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_setmeal_increment                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_sms]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_sms                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_sms_config]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_sms_config                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_sms_oauth]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_sms_oauth                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_sms_templates]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_sms_templates                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_smsqueue]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_smsqueue                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_sys_email_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_sys_email_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_syslog]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_syslog                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_task]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_task                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_task_log]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_task_log                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_text]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_text                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_tpl]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_tpl                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_unbind_mobile]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_unbind_mobile                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_view_jobs]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_view_jobs                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_view_resume]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_view_resume                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[qs_weixin_msg_queue_list]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>qs_weixin_msg_queue_list                                </label>
+                        </li><li style=" list-style:none; padding:0px; margin:0px; float:left; width:260px; height:26px; display:block">
+                            <label>
+                                <input name="tables[test]" type="checkbox" style=" vertical-align: middle" value="-1"
+                                       checked="checked"/>test                                </label>
+                        </li>                        <li class="clear" style="list-style:none"></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td style=" line-height:180%; padding-left:25px;">
+                        <input type="button" class="admin_submit small gray" value="全选" id="selectAll">
+                        <input type="button" class="admin_submit small gray" value="全不选" id="uncheckAll">
+                        <input type="button" class="admin_submit small gray" value="反选" id="opposite">
+                        分卷备份：
+                        <input name="sizelimit" type="text" id="sizelimit" value="10240" maxlength="20"
+                               onkeyup="if(event.keyCode !=37 && event.keyCode != 39) value=value.replace(/\D/g,'');"
+                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/\D/g,''))"
+                               class="input_text_default small"/> K
+                    </td>
+                </tr>
+            </table>
+            <div class="list_foot" style="margin-top: 10px;">
+                <div class="btnbox">
+                    <input type="submit" class="admin_submit" id="ButAudit" value="开始备份" onclick="document.getElementById('backupshow').style.display='none';document.getElementById('hide').style.display='block';"/>
+                </div>
+            </div>
+        </div>
+
+        <table width="600" height="100" border="0" cellpadding="5" cellspacing="0" id="hide"
+               style="display:none;padding-left:20px;font-size:12px;">
+            <tr>
+                <td align="center" valign="bottom"><img src="../upload/Application/Admin/View/default/public/images/ajax_loader.gif" border="0"/></td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" style="color: #009900">正在备份，请稍候......</td>
+            </tr>
+        </table>
+    </form>
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+<script type="text/javascript">
+    function CheckAll(form) {
+        for (var i = 0; i < form.elements.length; i++) {
+            var e = form.elements[i];
+            if (e.Name != "chkAll" && e.disabled != true)
+                e.checked = form.chkAll.checked;
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#selectAll").click(function () {
+            $("form :checkbox").attr("checked", true);
+            setbg();
+        });
+        $("#uncheckAll").click(function () {
+            $("form :checkbox").attr("checked", false);
+            setbg();
+        });
+        $("#opposite").click(function () {
+            $("form :checkbox").each(function () {
+                $(this).attr("checked") ? $(this).attr("checked", false) : $(this).attr("checked", true);
+            });
+            setbg();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="/74cms_v4.2.111/upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>业务管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="yewuguanli.html" class="">套餐</a>
+            <a href="jifen.html" class="">积分</a>
+            <a href="dingdanguanli.html" class="">订单管理</a>
+            <a href="qiyetuiguang.html" class="">企业推广</a>
+            <a href="zengzhifuwu.html" class="">增值服务</a>
+            <a href="fapiaoguanli.html" class="">发票管理</a>
+            <a href="mobanguanli.html" class="select">模板</a>
+            <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+    <div class="list_th">
+        <div class="td" style=" width:10%;">
+            <label id="chkAll" class="left_padding">
+                模板名称
+            </label>
+        </div>
+        <div class="td center" style=" width:10%;">缩略图</div>
+        <div class="td center" style=" width:25%;">公司名称</div>
+        <div class="td center" style=" width:10%;">用户名</div>
+        <div class="td center" style=" width:15%;">版本</div>
+        <div class="td center" style=" width:15%;">作者</div>
+        <div class="td" style=" width:15%;">操作</div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="list_tr link_black" style="height:136px;line-height:136px;">
+        <div class="td" style=" width:10%;">
+            <div class="left_padding striking">
+                默认模版                </div>
+        </div>
+        <div class="td center" style=" width:10%;"><img src="./Application//Home/View/tpl_company/default/thumbnail.jpg" alt="默认模版" width="225" height="136" border="1"  style="border: #CCCCCC;" /></div>
+        <div class="td center" style=" width:25%;"><a href="/74cms_v4.2.111/upload/index.php?m=home&c=jobs&a=com_show&id=2" target="_blank">帅哥哥的公司</a> </div>
+        <div class="td center" style=" width:10%;">shuaigege</div>
+        <div class="td center" style=" width:15%;">4.0</div>
+        <div class="td center" style=" width:15%;">74cms.com</div>
+        <div class="td edit" style=" width:15%;">
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=business_tpl&a=edit&uid=2&_k_v=2">编辑</a>
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black" style="height:136px;line-height:136px;">
+    <div class="td" style=" width:10%;">
+        <div class="left_padding striking">
+            默认模版                </div>
+    </div>
+    <div class="td center" style=" width:10%;"><img src="./Application//Home/View/tpl_company/default/thumbnail.jpg" alt="默认模版" width="225" height="136" border="1"  style="border: #CCCCCC;" /></div>
+    <div class="td center" style=" width:25%;"><a href="/74cms_v4.2.111/upload/index.php?m=home&c=jobs&a=com_show&id=3" target="_blank">一号公司</a> </div>
+    <div class="td center" style=" width:10%;">shuaigege1</div>
+    <div class="td center" style=" width:15%;">4.0</div>
+    <div class="td center" style=" width:15%;">74cms.com</div>
+    <div class="td edit" style=" width:15%;">
+        <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=business_tpl&a=edit&uid=3&_k_v=3">编辑</a>
+    </div>
+    <div class="clear"></div>
+</div><div class="list_tr link_black" style="height:136px;line-height:136px;">
+    <div class="td" style=" width:10%;">
+        <div class="left_padding striking">
+            默认模版                </div>
+    </div>
+    <div class="td center" style=" width:10%;"><img src="./Application//Home/View/tpl_company/default/thumbnail.jpg" alt="默认模版" width="225" height="136" border="1"  style="border: #CCCCCC;" /></div>
+    <div class="td center" style=" width:25%;"><a href="/74cms_v4.2.111/upload/index.php?m=home&c=jobs&a=com_show&id=4" target="_blank">二号公司</a> </div>
+    <div class="td center" style=" width:10%;">shuaigege2</div>
+    <div class="td center" style=" width:15%;">4.0</div>
+    <div class="td center" style=" width:15%;">74cms.com</div>
+    <div class="td edit" style=" width:15%;">
+        <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=business_tpl&a=edit&uid=4&_k_v=4">编辑</a>
+    </div>
+    <div class="clear"></div>
+</div>
+
+    <div class="list_foot">
+        <div class="btnbox">
+        </div>
+
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="BusinessTpl">
+                    <input type="hidden" name="a" value="index">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="公司名"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">公司名</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="公司名">公司名</li>
+                            <li id="2" title="公司ID">公司ID</li>
+                            <li id="3" title="会员名">会员名</li>
+                            <li id="4" title="会员ID">会员ID</li>
+                            <li id="5" title="地址">地址</li>
+                            <li id="6" title="电话">电话</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="pages"> <a class='unable'>上一页</a>  <span class='current'>1</span> <a class='unable'>下一页</a> </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+
+</body>
+</html>
