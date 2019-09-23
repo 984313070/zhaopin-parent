@@ -1,0 +1,302 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        .popWindow{
+            background-color:#ffffff;
+            border-radius:3px;
+            border:2px solid #075E8B;
+            position:absolute;
+            display:block;
+            width:460px;
+            height:300px;
+            left:30%;
+            top:30%;
+            box-shadow:5px 5px 5px #322E2F;
+            z-index:999;
+        }
+    </style>
+</head>
+<body>
+<div id="dialogId">
+    <table style="width:100%;line-height:22px;" cellspacing="0" cellpadding="0">
+        <tr style="background-color:#075E8B;">
+            <td style="color:#e2e2e2;font-family:bolder;font-size:10pt;">删除框</td>
+            <td style="color:#EBEBEB;font-weight:bolder;width:20px;">
+                <img onclick="closeDialog()"  src="../upload/Application/Admin/View/default/public/images/menu/cross.png" style="width:16px;height:16px;" title="关闭"/>
+            </td>
+        </tr>
+    </table>
+    <div class="popWindow" v-show="ok">
+        <div class="toptit nomargin">
+            <label  class="left_padding">
+                <h4>
+                    审核图片
+                </h4>
+            </label>
+        </div>
+        <table class="table">
+            <tr>
+                <td>
+                    <label  class="left_padding">
+                        将所选图片设置为：
+                    </label>
+                </td>
+                <td>
+                    <input type="radio" value="1"  name="redioname" />审核通过
+                    <input type="radio" value="3"  name="redioname" />审核未通过
+                    <input type="radio" value="2"  name="redioname" />等待审核
+                </td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td>
+                    <!--<textarea  style="height: 100px;width: 200px"></textarea>-->
+                    <textarea  class="input_text_default" style="height: 100px;width: 200px " /></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="list_foot">
+            <div class="btnbox">
+                <input type="button" onclick="updateImg()" class="admin_submit"  value="确定"/>
+                <input type="button" onclick="closeDialog()" class="admin_submit"  value="取消"/>
+            </div>
+
+
+        </div>
+
+    </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var dialog = new Vue({
+        el: '#dialogId',
+        data: {
+            ok: false,
+            excel:'',
+        }
+    })
+
+    function closeDialog() {
+        dialog.ok=false;
+    }
+    function openDialog(){
+        dialog.ok=true;
+    }
+
+    function exportExce(){
+        openDialog();
+    }
+    function importXLS1(){
+        var file_url = document.getElementById("file").value;
+
+        $.post('../excel/importXLS.do',{filePath:file_url},function (data) {
+            alert(data)
+
+        })
+    }
+</script>
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>企业风采</div>
+<div class="mains" id="vue_Id">
+    <div class="h1tit">
+
+        <div class="h1">
+            企业风采
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="seltpye_x">
+        <div class="left">审核状态</div>
+        <div class="right">
+            <a href="" class="select">不限</a>
+            <a href="javascript:search(1)" >审核通过<span id="shenhetongguo"></span></a>
+            <a href="javascript:search(2)" >等待审核<span id="dengdaishenhe"></span></a>
+            <a href="javascript:search(3)" >审核未通过<span id="shenheweitongguo"></span></a>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="seltpye_x">
+        <div class="left">添加时间</div>
+        <div class="right">
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=company_img&a=index&settr=" class="select">不限</a>
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=company_img&a=index&settr=3" >三天内</a>
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=company_img&a=index&settr=7" >一周内</a>
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=company_img&a=index&settr=30" >一月内</a>
+            <a href="/74cms_v4.2.111/upload/index.php?m=admin&c=company_img&a=index&settr=90" >三月内</a>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <form id="form1" name="form1" method="post" >
+        <input name="utype" type="hidden" value="1">
+        <div class="toptit nomargin">
+            <label id="chkAll" class="left_padding">
+                <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>企业风采
+            </label>
+        </div>
+        <div class="imglist">
+            <div class="li" v-for="companyImg in companyImgList">
+                <div class="checkbox">
+                    <input type="checkbox" id="checkbox" :value="companyImg.id" v-model="checkboxid">
+                </div>
+                <a href="" class="audit" id="setAudit" v-if="companyImg.audit==1">
+                    <span style="color: #99FF00">审核通过</span>
+                </a>
+                <a href="" class="audit" id="setAudit2" v-if="companyImg.audit==2">
+                    <span style="color: darkorange ">等待审核</span>
+                </a>
+                <a href="" class="audit" id="setAudit3" v-if="companyImg.audit==3">
+                    <span style="color: #D91600">审核未通过</span>
+                </a>
+                <a href="../{{companyImg.img}}" target="_blank">
+                    <img src="../img/1909/10/5d7743483b175.jpg" border="0" align="absmiddle" />
+                </a>
+            <div class="imgfoot link_w">
+                <div class="date">{{new Date(companyImg.addtime*1000).toLocaleString()}}</div>
+                <div class="del">
+                    <a @click="deleteImg(companyImg.id)">删除</a>
+                </div>
+            </div>
+        </div>
+            <div class="clear" style="height:20px;"></div>
+        </div>
+    </form>
+
+
+    <div class="list_foot">
+        <div class="btnbox">
+            <button  class="admin_submit" onclick="openDialog()" >
+                审核图片
+            </button>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="pages"> <a class='unable'>上一页</a>
+        <span class='current'>1</span>
+        <a class='unable'>下一页</a> </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+
+</body>
+<script type="text/javascript">
+    var vm;
+    $(function () {
+        findCompanyImgList();
+    })
+
+
+
+    function updateImg() {
+        var ids='';
+       checkbox=vm.checkboxid;
+        checkedval=$("[name='redioname']:checked").val();
+
+       if (checkbox.length<1){
+           alert("请选择图片");
+       }else {
+           for (let i = 0; i < checkbox.length; i++) {
+               ids+=','+checkbox[i]
+           }
+           ids=ids.substr(1);
+           $.post('../companyImg/updateImg.do',{ids:ids,audit:checkedval},function (data) {
+               if (data.success==true) {
+                   closeDialog();
+                   alert(data.message);
+                   search(null);
+               }else {
+                   alert(data.message);
+               }
+           })
+       }
+
+
+    }
+
+
+    function findCompanyImgList() {
+        $.ajax({
+            type: "post",
+            url: "../companyImg/findCompanyImgList.do",
+            data:{
+                "page":1,
+                "rows":5
+            },
+            dataType: "json",
+            success: function (result) {
+                vm = new Vue({
+                    el: '#vue_Id',
+                    data: {
+                        companyImgList: result.rows,
+                        total:Math.ceil(result.total/5),
+                        checkboxid:[],
+                        current:1,
+                        display:5,
+                        rowsList:[5,10,15]
+                    },
+                })
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+
+    function search(audit) {
+        $.ajax({
+            type: "post",
+            url: "../companyImg/findCompanyImgList.do",
+            data:{
+                "audit":audit,
+                "page":1,
+                "rows":5
+            },
+            dataType: "json",
+            success: function (result) {
+                vm.companyImgList=result.rows
+            },
+            error: function () {
+                alert("系统错误，请联系管理员！");
+            }
+        })
+    }
+
+    function deleteImg(id) {
+        if (confirm('你确定要删除吗？')){
+            $.post('../companyImg/deletecompanyImg.do',{id:id},function (data) {
+               if (data.success==true) {
+                   alert(data.message);
+                   search(null);
+               }else {
+                   alert(data.message);
+               }
+            })
+        }
+
+    }
+</script>
+</html>

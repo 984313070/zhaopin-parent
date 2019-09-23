@@ -1,0 +1,249 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.highlight-3.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.vtip-min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.modal.dialog.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../upload/Application/Admin/View/default/public/js/PIE.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.pie = function (name, v) {
+                // 如果没有加载 PIE 则直接终止
+                if (!PIE) return false;
+                // 是否 jQuery 对象或者选择器名称
+                var obj = typeof name == 'object' ? name : $(name);
+                // 指定运行插件的 IE 浏览器版本
+                var version = 9;
+                // 未指定则默认使用 ie10 以下全兼容模式
+                if (typeof v != 'number' && v < 9) {
+                    version = v;
+                }
+                // 可对指定的多个 jQuery 对象进行样式兼容
+                if ($.browser.msie && obj.size() > 0) {
+                    if ($.browser.version * 1 <= version * 1) {
+                        obj.each(function () {
+                            PIE.attach(this);
+                        });
+                    }
+                }
+            }
+        })(jQuery);
+        if ($.browser.msie) {
+            $.pie('.pie_about');
+        };
+    </script>
+    <![endif]-->
+    <script src="../upload/Application/Admin/View/default/public/js/jquery.disappear.tooltip.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/js/common.js"></script>
+    <script>
+        var URL = '../upload/index.php/admin/crons',
+            SELF = '../upload/index.php?m=admin&amp;c=crons&amp;a=index',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">工具<strong>/</strong>计划任务</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            计划任务                        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="toptip">
+        <div class="toptit">提示：</div>
+        <p>计划任务是一项使系统在规定时间自动执行某些特定任务的功能，在需要的情况下，您也可以方便的将其用于功能的扩展。</p>
+        <p>计划任务是与系统核心紧密关联的功能特性，不当的设置可能造成功能的隐患，严重时可能导致网站无法正常运行。</p>
+    </div>
+    <form id="form1" name="form1" method="post" action="../upload/index.php?m=admin&c=crons&a=delete">
+        <div class="list_th">
+            <div class="td" style=" width:55%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>名称
+                </label>
+            </div>
+            <div class="td center" style=" width:10%;"> 可用 </div>
+            <div class="td center" style=" width:10%;">类型</div>
+            <div class="td center" style=" width:12%;">下次执行时间</div>
+            <div class="td center" style=" width:13%;">操作</div>
+            <div class="clear"></div>
+        </div>
+        <div class="list_tr link_black">
+            <div class="td" style="width:55%;">
+                <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="8" />好难啊&nbsp;</div>
+            </div>
+            <div class="td center" style=" width:10%;">
+                可用&nbsp;
+            </div>
+            <div class="td center" style=" width:10%;">
+                自定义&nbsp;
+            </div>
+            <div class="td center" style=" width:12%;">2019-09-16 16:00&nbsp;</div>
+            <div class="td edit center" style=" width:13%;">
+                <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=8">编辑</a>&nbsp;&nbsp;&nbsp;
+                <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=8"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="clear"></div>
+        </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="7" />每天处理未支付订单&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-11 01:01&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=7">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=7"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="6" />每小时清除过期套餐及职位&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-10 10:01&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=6">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=6"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="5" />每小时自动刷新预约刷新的职位&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-10 10:10&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=5">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=5"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="4" />每小时自动刷新简历&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-10 10:10&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=4">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=4"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="3" />职位订阅发送邮件&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-16 00:00&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=3">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=3"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="2" />限时推广清理&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-10 10:01&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=2">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=2"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div><div class="list_tr link_black">
+        <div class="td" style="width:55%;">
+            <div class="left_padding striking"><input name="cronid[]" type="checkbox"  value="1" />每周清除缓存文件&nbsp;</div>
+        </div>
+        <div class="td center" style=" width:10%;">
+            可用&nbsp;
+        </div>
+        <div class="td center" style=" width:10%;">
+            内置&nbsp;
+        </div>
+        <div class="td center" style=" width:12%;">2019-09-14 01:00&nbsp;</div>
+        <div class="td edit center" style=" width:13%;">
+            <a href="../upload/index.php?m=admin&c=crons&a=edit&cronid=1">编辑</a>&nbsp;&nbsp;&nbsp;
+            <a href="../upload/index.php?m=admin&c=crons&a=execution&cronid=1"  class="exe">执行</a>&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="clear"></div>
+    </div></form>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit" id="ButAudit" value="添加任务"  onclick="window.location='../upload/index.php?m=admin&c=crons&a=add'"/>
+            <input type="button" class="admin_submit" id="ButDel" value="删除所选"/>
+        </div>
+    </div>
+    <div class="pages"> <a class='unable'>上一页</a>  <span class='current'>1</span> <a class='unable'>下一页</a> </div>
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        // 执行
+        $(".exe").click(function () {
+            var qsDialog = $(this).dialog({
+                title: '系统提示',
+                content: '计划任务正在执行，请等待...',
+                footer : false
+            })
+        })
+        //点击批量取消
+        $("#ButDel").click(function() {
+            if (confirm('你确定要删除吗？')) {
+                $("form[name=form1]").submit()
+            }
+        })
+    })
+</script>
+</body>
+</html>

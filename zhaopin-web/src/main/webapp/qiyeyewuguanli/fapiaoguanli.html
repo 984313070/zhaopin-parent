@@ -1,0 +1,140 @@
+
+<!-- public:header 以下内容 -->
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="/74cms_v4.2.111/upload/favicon.ico"/>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/public/vue.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<!-- public:header 以上内容 -->
+<div class="allpagetop">企业<strong>/</strong>业务管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="yewuguanli.html" class="">套餐</a>
+            <a href="jifen.html" class="">积分</a>
+            <a href="dingdanguanli.html" class="">订单管理</a>
+            <a href="qiyetuiguang.html" class="">企业推广</a>
+            <a href="zengzhifuwu.html" class="">增值服务</a>
+            <a href="fapiaoguanli.html" class="select">发票管理</a>
+            <a href="mobanguanli.html" class="">模板</a>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="seltpye_y">
+        <div class="tit">处理状态</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&audit=&audit_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&audit=1&audit_cn=%E5%B7%B2%E5%A4%84%E7%90%86">已处理</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&audit=0&audit_cn=%E5%BE%85%E5%A4%84%E7%90%86">待处理</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">发票抬头</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&title=&title_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&title=1&title_cn=%E5%8D%95%E4%BD%8D">单位</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&title=2&title_cn=%E4%B8%AA%E4%BA%BA">个人</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">发票内容</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&cid=&cid_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&cid=3&cid_cn=%E6%9C%8D%E5%8A%A1%E8%B4%B9">服务费</li><li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&cid=2&cid_cn=%E5%92%A8%E8%AF%A2%E6%9C%8D%E5%8A%A1%E8%B4%B9">咨询服务费</li><li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&cid=1&cid_cn=%E5%92%A8%E8%AF%A2%E8%B4%B9">咨询费</li>    </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">添加时间</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=&settr_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=3&settr_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=7&settr_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=30&settr_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=180&settr_cn=%E5%8D%8A%E5%B9%B4%E5%86%85">半年内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=index&settr=360&settr_cn=%E4%B8%80%E5%B9%B4%E5%86%85">一年内</li>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <form id="form1" name="form1" method="post" action="/74cms_v4.2.111/upload/index.php?m=admin&c=order_invoice&a=delete">
+        <div class="list_th">
+            <div class="td" style=" width:10%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>发票内容
+                </label>
+            </div>
+            <div class="td" style=" width:8%;">处理状态</div>
+            <div class="td" style=" width:8%;">发票抬头</div>
+            <div class="td" style=" width:15%;">单位名称</div>
+            <div class="td" style=" width:8%;">收件人</div>
+            <div class="td center" style=" width:10%;">手机号</div>
+            <div class="td center" style=" width:23%;">邮寄地址</div>
+            <div class="td center" style=" width:8%;">邮编</div>
+            <div class="td" style=" width:10%;">操作</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+
+    <div class="list_empty">没有任何信息！</div>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit" id="ButSet" value="处理状态"/>
+            <input type="button" class="admin_submit" id="ButDelOrder" value="删除"/>
+        </div>
+
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="OrderInvoice">
+                    <input type="hidden" name="a" value="index">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="会员ID"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">会员ID</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="会员ID">会员ID</li>
+                            <li id="2" title="收件人">收件人</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="pages"></div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+
+</body>
+</html>

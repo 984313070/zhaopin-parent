@@ -1,38 +1,35 @@
 package com.jk.pojo;
 
-import java.io.Serializable;
-import java.util.Date;
-
-public class QsMembers implements Serializable {
+public class QsMembers {
     private Integer uid;
 
-    private Integer utype;
+    private Boolean utype;
 
     private String username;
 
     private String email;
 
-    private Integer emailAudit;
+    private Boolean emailAudit;
 
     private String mobile;
 
-    private Integer mobileAudit;
+    private Boolean mobileAudit;
 
     private String password;
 
     private String pwdHash;
 
-    private Date regTime;
+    private Integer regTime;
 
     private String regIp;
 
     private String regAddress;
 
-    private Date lastLoginTime;
+    private Integer lastLoginTime;
 
     private String lastLoginIp;
 
-    private Integer status;
+    private Byte status;
 
     private String avatars;
 
@@ -68,11 +65,11 @@ public class QsMembers implements Serializable {
         this.uid = uid;
     }
 
-    public Integer getUtype() {
+    public Boolean getUtype() {
         return utype;
     }
 
-    public void setUtype(Integer utype) {
+    public void setUtype(Boolean utype) {
         this.utype = utype;
     }
 
@@ -92,11 +89,11 @@ public class QsMembers implements Serializable {
         this.email = email == null ? null : email.trim();
     }
 
-    public Integer getEmailAudit() {
+    public Boolean getEmailAudit() {
         return emailAudit;
     }
 
-    public void setEmailAudit(Integer emailAudit) {
+    public void setEmailAudit(Boolean emailAudit) {
         this.emailAudit = emailAudit;
     }
 
@@ -108,11 +105,11 @@ public class QsMembers implements Serializable {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public Integer getMobileAudit() {
+    public Boolean getMobileAudit() {
         return mobileAudit;
     }
 
-    public void setMobileAudit(Integer mobileAudit) {
+    public void setMobileAudit(Boolean mobileAudit) {
         this.mobileAudit = mobileAudit;
     }
 
@@ -132,11 +129,11 @@ public class QsMembers implements Serializable {
         this.pwdHash = pwdHash == null ? null : pwdHash.trim();
     }
 
-    public Date getRegTime() {
+    public Integer getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(Date regTime) {
+    public void setRegTime(Integer regTime) {
         this.regTime = regTime;
     }
 
@@ -156,11 +153,11 @@ public class QsMembers implements Serializable {
         this.regAddress = regAddress == null ? null : regAddress.trim();
     }
 
-    public Date getLastLoginTime() {
+    public Integer getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
+    public void setLastLoginTime(Integer lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
@@ -172,11 +169,11 @@ public class QsMembers implements Serializable {
         this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 

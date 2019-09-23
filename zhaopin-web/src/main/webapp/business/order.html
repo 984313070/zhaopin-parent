@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+    <title>网站后台管理中心- Powered by 74cms.com</title>
+    <link rel="shortcut icon" href="../upload/favicon.ico"/>
+    <script src="../upload/Application/Admin/View/default/public/vue/axios.min.js"></script>
+    <script src="../upload/Application/Admin/View/default/public/vue/vue.min.js"></script>
+    <meta name="author" content="骑士CMS" />
+    <meta name="copyright" content="74cms.com" />
+    <link href="../upload/Application/Admin/View/default/public/css/common.css" rel="stylesheet" type="text/css">
+    <script src="../upload/Application/Admin/View/default/jquery-1.9.1.min.js"></script>
+
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <script>
+        var URL = '../upload/index.php/admin/order',
+            SELF = '../upload/index.php?m=admin&amp;c=order&amp;a=index_per',
+            ROOT_PATH = '../upload/index.php/admin',
+            APP	 =	 '../upload/index.php';
+
+        var qscms = {
+            is_subsite : 0,
+            subsite_level : "3",
+            default_district : ""
+        };
+    </script>
+</head>
+<body>
+
+<div class="allpagetop">个人<strong>/</strong>业务管理</div><div class="mains">
+    <div class="h1tit">
+        <div class="h1">
+            业务管理                        </div>
+        <div class="topnav">
+            <a href="order.html" class="select">订单管理</a><a href="personal.html" class="">个人推广</a>                <div class="clear"></div>
+        </div>		<div class="clear"></div>
+    </div>
+
+    <div class="seltpye_y">
+        <div class="tit">完成状态</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&is_paid=&is_paid_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&is_paid=2&is_paid_cn=%E5%B7%B2%E5%AE%8C%E6%88%90">已完成</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&is_paid=1&is_paid_cn=%E5%BE%85%E4%BB%98%E6%AC%BE">待付款</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&is_paid=3&is_paid_cn=%E5%B7%B2%E5%8F%96%E6%B6%88">已取消</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">付款方式</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&payment=&payment_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&payment=points&payment_cn=%E7%A7%AF%E5%88%86%E6%94%AF%E4%BB%98">积分支付</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&payment=alipay&payment_cn=%E6%94%AF%E4%BB%98%E5%AE%9D">支付宝</li><li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&payment=wxpay&payment_cn=%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98">微信支付</li><li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&payment=remittance&payment_cn=%E7%BA%BF%E4%B8%8B%E8%BD%AC%E8%B4%A6">线下转账</li>    </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">订单类型</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&type=&type_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&type=3&type_cn=%E7%AE%80%E5%8E%86%E7%BD%AE%E9%A1%B6">简历置顶</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&type=4&type_cn=%E9%86%92%E7%9B%AE%E6%A0%87%E7%AD%BE">醒目标签</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&type=5&type_cn=%E7%AE%80%E5%8E%86%E6%A8%A1%E6%9D%BF">简历模板</li>
+        </div>
+    </div>
+    <div class="seltpye_y">
+        <div class="tit">添加时间</div>
+        <div class="ct">
+            <div class="txt ">不限</div>
+        </div>
+        <div class="downlist">
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=&settr_cn=%E4%B8%8D%E9%99%90">不限</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=3&settr_cn=%E4%B8%89%E5%A4%A9%E5%86%85">三天内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=7&settr_cn=%E4%B8%80%E5%91%A8%E5%86%85">一周内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=30&settr_cn=%E4%B8%80%E6%9C%88%E5%86%85">一月内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=180&settr_cn=%E5%8D%8A%E5%B9%B4%E5%86%85">半年内</li>
+            <li url="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=index_per&settr=360&settr_cn=%E4%B8%80%E5%B9%B4%E5%86%85">一年内</li>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <form id="form1" name="form1" method="post" action="/74cms_v4.2.111/upload/index.php?m=admin&c=order&a=order_cancel_per">
+        <input type="hidden" name="_k_v" value="">
+        <div class="list_th">
+            <div class="td" style=" width:10%;">
+                <label id="chkAll" class="left_padding">
+                    <input type="checkbox" name="chkAll" id="chk" title="全选/反选"/>全选
+                </label>
+            </div>
+            <div class="td" style=" width:10%;">金额</div>
+            <div class="td" style=" width:27%;">说明</div>
+            <div class="td center" style=" width:12%;">单号</div>
+            <div class="td center" style=" width:10%;">申请会员</div>
+            <div class="td center" style=" width:9%;">申请时间</div>
+            <div class="td center" style=" width:9%;">支付方式</div>
+            <div class="td" style=" width:13%;">操作</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+
+    <div class="list_empty">没有任何信息！</div>
+    <div class="list_foot">
+        <div class="btnbox">
+            <input type="button" class="admin_submit" id="ButDelOrder" value="取消订单"/>
+        </div>
+        <div class="footso">
+            <form action="?" method="get">
+                <div class="sobox">
+                    <input type="hidden" name="m" value="Admin">
+                    <input type="hidden" name="c" value="Order">
+                    <input type="hidden" name="a" value="index_per">
+                    <input name="key" type="text" class="sinput" value=""/>
+                    <input name="key_type" id="J_key_type_id" type="hidden" value="1" />
+                    <input name="key_type_cn" id="J_key_type_cn" type="hidden" value="用户名"/>
+                    <input name="" type="submit" value="" class="sobtn"/>
+                    <div class="sotype" id="J_key_click">用户名</div>
+                    <div class="mlist" id="J_mlist">
+                        <ul>
+                            <li id="1" title="用户名">用户名</li>
+                            <li id="2" title="订单号">订单号</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>    </div>
+    </div>
+    <div class="pages">
+        <a class='unable'>上一页</a>
+        <span class='current'>1</span>
+        <a class='unable'>下一页</a>
+    </div>
+
+</div>
+<!-- public:footer 以下内容 -->
+<div class="footer link_blue">
+    Powered by <a href="http://www.74cms.com" target="_blank"><span style="color:#009900">74</span><span
+        style="color: #FF3300">cms</span></a> v4.2.111</div>
+<!-- public:footer 以上内容 -->
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+</html>

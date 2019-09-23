@@ -1,21 +1,15 @@
 package com.jk.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jk.mapper.QsJobsMapper;
 import com.jk.pojo.QsJobs;
-import com.jk.pojo.QsJobsWithBLOBs;
+import com.jk.pojo.QsJobsExample;
 import com.jk.service.JobsService;
 import entity.PageResult;
-import entity.Result;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,13 +45,8 @@ public class JobsServiceImpl implements JobsService {
     }
 
     @Override
-    public void updJobs(Integer audit,Integer[] ids) {
-        for (Integer id : ids) {
-            QsJobs qsJobs = new QsJobs();
-            qsJobs.setId(id);
-            qsJobs.setAudit(audit);
-            qsJobsMapper.updateJobs(qsJobs);
-        }
+    public void updJobs(QsJobs qsJobs) {
+        qsJobsMapper.updateByPrimaryKey(qsJobs);
     }
 
     @Override
@@ -70,61 +59,6 @@ public class JobsServiceImpl implements JobsService {
     @Override
     public void deleteJobs(Integer id) {
         qsJobsMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public List<QsJobs> findAll() {
-
-        return qsJobsMapper.selectByExample(null);
-    }
-
-    @Override
-    public Result importXLS(String filePath) {
-
-        try {
-            InputStream inputStream = new FileInputStream(filePath);
-
-            //2、获取Excel工作簿对象
-            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
-
-            //3、得到Excel工作表对象
-            HSSFSheet sheetAt = workbook.getSheetAt(0);
-
-            //4、循环读取表格数据
-            List<QsJobs> qsJobs = new ArrayList<>();
-
-            for (Row row : sheetAt) {
-
-                //首行（即表头）不读取
-                if (row.getRowNum() == 0 || row.getRowNum() == 1 || row.getRowNum() == 2) {
-                    continue;
-                }
-                QsJobsWithBLOBs qsJobsWithBLOBs = new QsJobsWithBLOBs();
-                //读取当前行中单元格数据，索引从0开始
-
-                String id = row.getCell(0).getStringCellValue();
-                String jobsName = row.getCell(1).getStringCellValue();
-                String companyname = row.getCell(2).getStringCellValue();
-                String audit = row.getCell(3).getStringCellValue();
-                String addtime = row.getCell(4).getStringCellValue();
-                String refreshtime = row.getCell(5).getStringCellValue();
-
-                qsJobsWithBLOBs.setId(Integer.parseInt(id));
-                qsJobsWithBLOBs.setJobsName(jobsName);
-                qsJobsWithBLOBs.setCompanyname(companyname);
-                qsJobsWithBLOBs.setAudit(Integer.parseInt(audit));
-                qsJobsWithBLOBs.setAddtime(Integer.parseInt(addtime));
-                qsJobsWithBLOBs.setRefreshtime(Integer.parseInt(refreshtime));
-
-                qsJobsMapper.insert(qsJobsWithBLOBs);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false,"导入失败");
-        }
-
-        return new Result(true,"导入成功");
     }
 
 
