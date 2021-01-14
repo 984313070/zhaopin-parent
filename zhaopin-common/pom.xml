@@ -45,7 +45,7 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
 <<<<<<< HEAD
-      <version>3.10-beta2</version>
+      <version>3.17</version>
 =======
 >>>>>>> origin/master
     </dependency>
