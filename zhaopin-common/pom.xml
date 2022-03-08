@@ -63,7 +63,7 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-scratchpad</artifactId>
 <<<<<<< HEAD
-      <version>3.10-beta2</version>
+      <version>5.2.1</version>
 =======
 >>>>>>> origin/master
     </dependency>
